@@ -123,7 +123,7 @@ export const Footer = () => {
                                 class="form-control border-end-0 rounded-end-0"
                                 placeholder="Votre adresse mail ici"
                             />
-                            <span className="input-group-text bg-danger" id="basic-addon2">
+                            <span className="input-group-text bg-primary px-4" id="basic-addon2">
                                 <SuivFlecheIcon />
                             </span>
                         </div>

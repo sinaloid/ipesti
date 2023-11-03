@@ -87,7 +87,7 @@ export const Header = () => {
                 </div>
             </header>
 
-            <nav className="row border-bottom bg-black">
+            <nav className="row border-bottom border-color bg-black">
                 <div className="col-12 col-md-10 mx-auto d-flex flex-wrap">
                     <ul className="nav me-auto py-2">
                         <li className="nav-item">
@@ -139,7 +139,7 @@ export const Header = () => {
                             </NavLink>
                         </li>
                     </ul>
-                    <ul className="nav bg-danger py-2">
+                    <ul className="nav bg-primary py-2">
                         <li className="nav-item ">
                             <NavLink
                                 href="#"
