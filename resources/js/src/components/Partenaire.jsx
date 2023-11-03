@@ -4,7 +4,7 @@ import { LogoIcon } from "../icons/LogoIcon";
 export const Partenaire = ({ children }) => {
     return (
         <>
-            <div className="row w-100 my-5 border-top pt-5 bg-gray-f6">
+            <div className="row my-5 border-top pt-5 bg-gray-f6">
                 <h2 className="text-center mb-4">{children}</h2>
                 <div className="d-flex justify-content-center mb-4">
                     <LogoIcon />
