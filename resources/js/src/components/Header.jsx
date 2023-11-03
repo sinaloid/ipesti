@@ -1,0 +1,156 @@
+import { NavLink } from "react-router-dom";
+import logo from "../assets/images/logo.png";
+import { FRIcon } from "../icons/FRIcon";
+import { ModeIcon } from "../icons/ModeIcon";
+import { SearchIcon } from "../icons/SearchIcon";
+import { UserIcon } from "../icons/UserIcon";
+
+export const Header = () => {
+    return (
+        <>
+            <header className="row py-3 border-bottom px-0">
+                <div className="col-12 col-md-10 mx-auto d-flex flex-wrap justify-content-center">
+                    <a
+                        href="/"
+                        className="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-uppercase text-white text-decoration-none"
+                    >
+                        <img src={logo} alt="logo ipesti" />
+                    </a>
+                    <div className="col-12 col-lg-auto d-flex mb-3 mb-lg-0 pt-5">
+                        <button
+                            className="btn border h-44 dropdown-toggle text-center mx-3"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            <span
+                                className="me-2"
+                                style={{ marginTop: "-20px" }}
+                            >
+                                <UserIcon />
+                            </span>
+                            <span className="pt-2">Je suis</span>
+                        </button>
+                        <div className="input-group mx-3 input-width-165">
+                            <input
+                                type="text"
+                                className="form-control border-end-0"
+                                placeholder="Rechercher..."
+                            />
+                            <span
+                                className="input-group-text bg-white border-start-0 h-44"
+                                id="basic-addon2"
+                            >
+                                <SearchIcon />
+                            </span>
+                        </div>
+                        <div className="mx-3 d-inline-block d-flex align-items-center">
+                            <div className="fw-bold">
+                                <span className="fs-20">A+/</span>
+                                <span className="fs-14">A-</span>
+                            </div>
+                            <span className="ms-3 me-5">
+                                <ModeIcon />
+                            </span>
+                            <div className="">
+                                <span className="ms-3 me-1">
+                                    <FRIcon />
+                                </span>
+                                <div className="btn-group">
+                                    <button
+                                        className="btn btn-primary1 dropdown-toggle border-0 px-0 pxx-2"
+                                        type="button"
+                                        data-bs-toggle="dropdown"
+                                        data-bs-auto-close="true"
+                                        aria-expanded="false"
+                                    >
+                                        <span className="d-inline-block px-1">
+                                            FR
+                                        </span>
+                                    </button>
+                                    {/**
+                                                 * <ul className="dropdown-menu">
+                                                <li>
+                                                    <a
+                                                        className="dropdown-item"
+                                                        href="#"
+                                                    >
+                                                        FR 
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                                 */}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <nav className="row border-bottom bg-black">
+                <div className="col-12 col-md-10 mx-auto d-flex flex-wrap">
+                    <ul className="nav me-auto py-2">
+                        <li className="nav-item">
+                            <NavLink
+                                href="#"
+                                className="nav-link link-body-emphasis text-uppercase text-white px-2 active"
+                            >
+                                accueil
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink
+                                href="#"
+                                className="nav-link link-body-emphasis text-uppercase text-white px-2"
+                            >
+                                L’IPESTI
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink
+                                href="#"
+                                className="nav-link link-body-emphasis text-uppercase text-white px-2"
+                            >
+                                La Recherche
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink
+                                href="#"
+                                className="nav-link link-body-emphasis text-uppercase text-white px-2"
+                            >
+                                Formations
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink
+                                href="#"
+                                className="nav-link link-body-emphasis text-uppercase text-white px-2"
+                            >
+                                Publications
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink
+                                href="#"
+                                className="nav-link link-body-emphasis text-uppercase text-white px-2"
+                            >
+                                Actualités & Evénements
+                            </NavLink>
+                        </li>
+                    </ul>
+                    <ul className="nav bg-danger py-2">
+                        <li className="nav-item ">
+                            <NavLink
+                                href="#"
+                                className="nav-link link-body-emphasis text-uppercase text-white px-2"
+                            >
+                                fasolics
+                            </NavLink>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </>
+    );
+};
