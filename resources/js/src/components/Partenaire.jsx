@@ -9,13 +9,13 @@ export const Partenaire = ({ children }) => {
                 <div className="d-flex justify-content-center mb-4">
                     <LogoIcon />
                 </div>
-                <div className="col-12 col-md-9 mx-auto mb-5">
+                <div className="col-12 col-md-8 col-lg-7 mx-auto mb-5">
                     <div className="row row-cols-4">
                         {[...Array(4).keys()].map((data) => {
                             return (
                                 <div className="col px-3">
                                     <div className="card p-3 pb-2 text-center">
-                                        <span className="text-primary fs-36">300</span>
+                                        <span className="text-primary fw-bold fs-36">300</span>
                                         <p className="p-0 pt-2 m-0">partenaires à travers le monde...</p>
                                     </div>
                                 </div>
