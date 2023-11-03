@@ -20,7 +20,7 @@ export const Banier = () => {
                             );
                         })}
 
-                        <div className="h-100 text-center pt-4 mt-1">
+                        <div className="h-100 text-center py-3 pt-lg-4 mt-1">
                             <span className="sm-circle bg-white mx-1"></span>
                             <span className="sm-circle bg-white mx-1"></span>
                             <span className="sm-circle bg-white mx-1"></span>
@@ -28,21 +28,25 @@ export const Banier = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-9 ps-0 position-relative">
-                    <img width={"100%"} src={img} alt="" />
-                    <span
-                        className="bg-primary position-absolute text-white p-2 text-uppercase fw-bold"
-                        style={{ right: "3%", top: "3%" }}
+                <div className="col-9 ps-0">
+                    <div
+                        className="position-relative bg-banier w-100 h-100"
+                        style={{ backgroundImage: `url(${img})` }}
                     >
-                        Actu
-                    </span>
-                    <p
-                        className="position-absolute text-white"
-                        style={{ left: "20%", bottom: "3%" }}
-                    >
-                        Festival de l’Histoire des Science et des Techniques
-                        Burkina Faso 2023...
-                    </p>
+                        <span
+                            className="bg-primary position-absolute text-white p-2 text-uppercase fw-bold"
+                            style={{ right: "3%", top: "3%" }}
+                        >
+                            Actu
+                        </span>
+                        <p
+                            className="position-absolute text-white"
+                            style={{ left: "20%", bottom: "3%" }}
+                        >
+                            Festival de l’Histoire des Science et des Techniques
+                            Burkina Faso 2023...
+                        </p>
+                    </div>
                 </div>
             </div>
         </Container>

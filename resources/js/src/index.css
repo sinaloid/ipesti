@@ -1,7 +1,6 @@
 @font-face {
     font-family: "Sora";
-    src: local("Sora"),
-        url(./assets/sora/Sora-Regular.ttf) format("truetype");
+    src: local("Sora"), url(./assets/sora/Sora-Regular.ttf) format("truetype");
     /* Ajoutez d'autres styles de police selon vos besoins */
 }
 
@@ -16,11 +15,10 @@
     --link-color: rgba(227, 229, 234, 0.4);
     --danger-color: #ffe8e8;
 
-
-    --black-color:#2E2E2E;
-    --gray-color-60:#606060;
-    --gray-color-f6:#F6F6F6;
-    --red-color:#EE302F;
+    --black-color: #2e2e2e;
+    --gray-color-60: #606060;
+    --gray-color-f6: #f6f6f6;
+    --red-color: #ee302f;
 }
 
 *,
@@ -69,7 +67,6 @@ body {
     font-size: 14px;
 }
 
-
 .bg-black {
     background-color: var(--black-color) !important;
 }
@@ -82,20 +79,28 @@ body {
     background-color: var(--gray-color-f6) !important;
 }
 
-input,select, .h-44{
-    height: 44px !important;
-    
+.bg-banier {
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
 }
 
-.input-width-165{
+input,
+select,
+.h-44 {
+    height: 44px !important;
+}
+
+.input-width-165 {
     max-width: 165px !important;
 }
 
-input, .btn {
+input,
+.btn {
     border-radius: 4px !important;
 }
 
-.border-color{
+.border-color {
     border-width: 3px !important;
     border-color: var(--red-color) !important;
 }
@@ -105,31 +110,29 @@ input[type="search"],
 input[type="email"],
 input[type="password"],
 input[type="checkbox"],
-textarea, select {
+textarea,
+select {
     outline: none !important;
     box-shadow: none !important;
     border-color: #ccc !important;
     border: 1px solid #ccc;
 }
 
-.text-primary{
+.text-primary {
     color: var(--red-color) !important;
 }
 
 .bg-primary {
-
     background-color: var(--red-color) !important;
 }
-
 
 .footer > div > ul > .nav-item {
     margin-bottom: 8px;
 }
 
-.sm-circle{
+.sm-circle {
     display: inline-block;
     width: 16px;
     height: 16px;
     border-radius: 50%;
 }
-
