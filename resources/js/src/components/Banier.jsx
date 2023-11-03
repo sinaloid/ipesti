@@ -27,10 +27,11 @@ export const Banier = () => {
                 </div>
             </div>
             <div className="col-9 ps-0 position-relative">
+                
                 <img width={"100%"} src={img} alt="" />
                 <p className="position-absolute text-white" style={{left:"20%", bottom:"3%"}}>
                     Festival de l’Histoire des Science et des Techniques Burkina
-                    Faso 2023...
+                    Faso 2023... 
                 </p>
             </div>
         </div>
