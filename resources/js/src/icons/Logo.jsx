@@ -1,7 +1,7 @@
 
-import logo from "../assets/images/logo.png";
+import logo from "../assets/images/footer.png";
 
 export const Logo = () => {
 
-    return <img src={logo} alt="logo ipesti" />
+    return <img height={"80px"} className="img" src={logo} alt="logo ipesti" />
 }

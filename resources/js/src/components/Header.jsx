@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import logo from "../assets/images/logo.png";
+import logo from "../assets/images/header.png";
 import { FRIcon } from "../icons/FRIcon";
 import { ModeIcon } from "../icons/ModeIcon";
 import { SearchIcon } from "../icons/SearchIcon";
@@ -49,7 +49,7 @@ export const Header = () => {
                         href="/"
                         className="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-uppercase text-white text-decoration-none"
                     >
-                        <img src={logo} alt="logo ipesti" />
+                        <img height={"80px"} src={logo} alt="logo ipesti" />
                     </a>
                     <div className="col-12 col-lg-auto d-flex mb-3 mb-lg-0 pt-5">
                         <div class="dropdown text-center mx-3">
