@@ -12,19 +12,19 @@
     "assets": [
       "assets/rect-ef7ad498.png",
       "assets/img-56911f51.png",
-      "assets/footer-2a3a072b.png",
+      "assets/footer-00125d4c.png",
       "assets/header-af53ae7b.png",
       "assets/recherche-9a57e693.png"
     ],
     "css": [
       "assets/app-3bedecee.css"
     ],
-    "file": "assets/app-b8be2028.js",
+    "file": "assets/app-24aa66d1.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },
   "resources/js/src/assets/images/footer.png": {
-    "file": "assets/footer-2a3a072b.png",
+    "file": "assets/footer-00125d4c.png",
     "src": "resources/js/src/assets/images/footer.png"
   },
   "resources/js/src/assets/images/header.png": {

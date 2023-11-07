@@ -16,7 +16,7 @@ export const Content = () => {
                 <div className="row my-5">
                     <div className="col-12 col-md-4">
                         <h3 className="bg-gray-60 text-white text-center py-2">
-                            actualités & événements
+                            La recherche
                         </h3>
                         <div className="bg-gray-e9 p-4">
                             <div className="d-inline-block bg-gray-25 mb-3">
