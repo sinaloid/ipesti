@@ -2,10 +2,10 @@ import { Container } from "../components/Container";
 import { Page } from "../components/Page";
 import { FlecheIcon } from "../icons/FlecheIcon";
 import recherche from "../assets/images/recherche.png";
+import { Filtre } from "../icons/Filtre";
 
 export const Content = () => {
     const tab = [
-
         "Projets de recherche",
         "Séminaires de recherches",
         "Tous les séminaires de l’IPESTI",
@@ -20,16 +20,21 @@ export const Content = () => {
                         </h3>
                         <div className="bg-gray-e9 p-4">
                             <div className="d-inline-block bg-gray-25 mb-3">
-                                <div className="fw-bold text-primary mb-3"><FlecheIcon /> Programmes / axes de recherches</div>
+                                <div className="fw-bold text-primary mb-3">
+                                    <FlecheIcon /> Programmes / axes de
+                                    recherches
+                                </div>
                                 <div className="px-3">
                                     {[...Array(4).keys()].map((data, idx) => {
                                         return (
                                             <>
                                                 <div
-                                                    className="d-inline-block mb-3"
+                                                    className="d-inline-block mb-3 fs-14"
                                                     key={idx}
                                                 >
-                                                    <FlecheIcon /> {"Programme de recherche " + (idx +1)}
+                                                    <FlecheIcon />{" "}
+                                                    {"Programme de recherche " +
+                                                        (idx + 1)}
                                                 </div>
                                                 <br />
                                             </>
@@ -51,6 +56,46 @@ export const Content = () => {
                                     </>
                                 );
                             })}
+                        </div>
+
+                        <div className="bg-gray-e9  mt-4 p-4">
+                            <div className="mb-3 fs-18 fw-bold"> <Filtre /> Filtres</div>
+                            <select
+                                class="form-select mb-3"
+                                aria-label="Default select example"
+                            >
+                                <option selected>Année de publication</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <select
+                                class="form-select mb-3"
+                                aria-label="Default select example"
+                            >
+                                <option selected>Auteur</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <select
+                                class="form-select mb-3"
+                                aria-label="Default select example"
+                            >
+                                <option selected>Programmes de recherche</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <select
+                                class="form-select mb-3"
+                                aria-label="Default select example"
+                            >
+                                <option selected>Statut</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
                         </div>
                     </div>
                     <div className="col-12 col-md-8">
