@@ -6,6 +6,41 @@ import { SearchIcon } from "../icons/SearchIcon";
 import { UserIcon } from "../icons/UserIcon";
 
 export const Header = () => {
+    const ipesti = [
+        "Histoire",
+        "Vision & Missions",
+        "Structure & Gouvernance",
+        "équipes",
+        "Partenaires de recherche",
+        "Opportunités",
+        "Prix & distinctions",
+    ];
+
+    const rech = [
+        "Programmes de recherche",
+        "Projets de recherche",
+        "Séminaires de recherche",
+        "Tous les séminaires de l’IPESTI",
+    ];
+
+    const form = [
+        "Formation courte durée",
+        "Formation longue durée",
+        "PhD Academy",
+        "Etudier à IPESTI",
+    ];
+
+    const pub = [
+        "Thèses",
+        "Rapports annuels",
+        "Articles",
+        "Livres",
+        "Rapport de projets",
+        "Plans stratégiques",
+        "Newsletters",
+    ];
+
+    const actu = ["Actualités", "événements"];
     return (
         <>
             <header className="row py-3 border-bottom px-0">
@@ -17,20 +52,39 @@ export const Header = () => {
                         <img src={logo} alt="logo ipesti" />
                     </a>
                     <div className="col-12 col-lg-auto d-flex mb-3 mb-lg-0 pt-5">
-                        <button
-                            className="btn border h-44 dropdown-toggle text-center mx-3"
-                            type="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                        >
-                            <span
-                                className="me-2"
-                                style={{ marginTop: "-20px" }}
+                        <div class="dropdown text-center mx-3">
+                            <button
+                                class="btn h-44 border dropdown-toggle"
+                                type="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
                             >
-                                <UserIcon />
-                            </span>
-                            <span className="pt-2">Je suis</span>
-                        </button>
+                                <span
+                                    className="me-2"
+                                    style={{ marginTop: "-20px" }}
+                                >
+                                    <UserIcon />
+                                </span>
+                                <span className="pt-2">Je suis</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        Visiteur
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        étudiant
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        Autre
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                         <div className="input-group mx-3 input-width-165">
                             <input
                                 type="text"
@@ -92,51 +146,143 @@ export const Header = () => {
                     <ul className="nav me-auto py-2">
                         <li className="nav-item">
                             <NavLink
-                                href="#"
+                                to="/"
                                 className="nav-link link-body-emphasis text-uppercase text-white px-2 active"
                             >
                                 accueil
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink
-                                href="#"
-                                className="nav-link link-body-emphasis text-uppercase text-white px-2"
-                            >
-                                L’IPESTI
-                            </NavLink>
+                            <div class="dropdown">
+                                <NavLink
+                                    href="#"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                    className="nav-link link-body-emphasis dropdown-toggle text-uppercase text-white px-2"
+                                >
+                                    L’IPESTI
+                                </NavLink>
+
+                                <ul class="dropdown-menu bg-black">
+                                    {ipesti.map((data, idx) => {
+                                        return (
+                                            <li key={idx}>
+                                                <a
+                                                    class="dropdown-item text-white"
+                                                    href="/content"
+                                                >
+                                                    {data}
+                                                </a>
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                            </div>
                         </li>
                         <li className="nav-item">
                             <NavLink
                                 href="#"
-                                className="nav-link link-body-emphasis text-uppercase text-white px-2"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                                className="nav-link link-body-emphasis dropdown-toggle text-uppercase text-white px-2"
                             >
                                 La Recherche
                             </NavLink>
+
+                            <ul class="dropdown-menu bg-black">
+                                {rech.map((data, idx) => {
+                                    return (
+                                        <li key={idx}>
+                                            <a
+                                                class="dropdown-item text-white"
+                                                href="/content"
+                                            >
+                                                {data}
+                                            </a>
+                                        </li>
+                                    );
+                                })}
+                            </ul>
                         </li>
                         <li className="nav-item">
                             <NavLink
                                 href="#"
-                                className="nav-link link-body-emphasis text-uppercase text-white px-2"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                                className="nav-link link-body-emphasis dropdown-toggle text-uppercase text-white px-2"
                             >
                                 Formations
                             </NavLink>
+
+                            <ul class="dropdown-menu bg-black">
+                                {form.map((data, idx) => {
+                                    return (
+                                        <li key={idx}>
+                                            <a
+                                                class="dropdown-item text-white"
+                                                href="/content"
+                                            >
+                                                {data}
+                                            </a>
+                                        </li>
+                                    );
+                                })}
+                            </ul>
                         </li>
                         <li className="nav-item">
                             <NavLink
                                 href="#"
-                                className="nav-link link-body-emphasis text-uppercase text-white px-2"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                                className="nav-link link-body-emphasis dropdown-toggle text-uppercase text-white px-2"
                             >
                                 Publications
                             </NavLink>
+
+                            <ul class="dropdown-menu bg-black">
+                                {pub.map((data, idx) => {
+                                    return (
+                                        <li key={idx}>
+                                            <a
+                                                class="dropdown-item text-white"
+                                                href="/content"
+                                            >
+                                                {data}
+                                            </a>
+                                        </li>
+                                    );
+                                })}
+                            </ul>
                         </li>
                         <li className="nav-item">
                             <NavLink
                                 href="#"
-                                className="nav-link link-body-emphasis text-uppercase text-white px-2"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                                className="nav-link link-body-emphasis dropdown-toggle text-uppercase text-white px-2"
                             >
                                 Actualités & Evénements
                             </NavLink>
+
+                            <ul class="dropdown-menu bg-black">
+                                {actu.map((data, idx) => {
+                                    return (
+                                        <li key={idx}>
+                                            <a
+                                                class="dropdown-item text-white"
+                                                href="/content"
+                                            >
+                                                {data}
+                                            </a>
+                                        </li>
+                                    );
+                                })}
+                            </ul>
                         </li>
                     </ul>
                     <ul className="nav bg-primary py-2">

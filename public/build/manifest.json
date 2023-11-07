@@ -5,18 +5,19 @@
     "src": "resources/css/app.css"
   },
   "resources/js/app.css": {
-    "file": "assets/app-021dafde.css",
+    "file": "assets/app-3bedecee.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.js": {
     "assets": [
+      "assets/rect-ef7ad498.png",
       "assets/img-56911f51.png",
       "assets/logo-32389fb7.png"
     ],
     "css": [
-      "assets/app-021dafde.css"
+      "assets/app-3bedecee.css"
     ],
-    "file": "assets/app-8cec871c.js",
+    "file": "assets/app-522e397d.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },
@@ -27,5 +28,9 @@
   "resources/js/src/assets/images/logo.png": {
     "file": "assets/logo-32389fb7.png",
     "src": "resources/js/src/assets/images/logo.png"
+  },
+  "resources/js/src/assets/images/rect.png": {
+    "file": "assets/rect-ef7ad498.png",
+    "src": "resources/js/src/assets/images/rect.png"
   }
 }

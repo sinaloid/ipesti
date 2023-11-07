@@ -1,8 +1,4 @@
-@font-face {
-    font-family: "Sora";
-    src: local("Sora"), url(./assets/sora/Sora-Regular.ttf) format("truetype");
-    /* Ajoutez d'autres styles de police selon vos besoins */
-}
+
 
 :root {
     --primary-color: #1f2e54;
@@ -18,6 +14,7 @@
     --black-color: #2e2e2e;
     --gray-color-60: #606060;
     --gray-color-f6: #f6f6f6;
+    --gray-color-e9: #E9E9E9;
     --red-color: #ee302f;
 }
 
@@ -34,7 +31,7 @@ body {
     padding: 0;
     width: 100%;
     font-size: 1rem;
-    font-family: Sora, "Rubik", "Sofia Sans Condensed", Nunito, Montserrat,
+    font-family: "Sora", "Rubik", "Sofia Sans Condensed", Nunito, Montserrat,
         "HK Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
         Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     line-height: 160%;
@@ -49,6 +46,14 @@ body {
     text-18-13-40-22-16-14
 
     */
+}
+
+.fw-400 {
+    font-weight:400 !important;
+}
+
+.fs-40 {
+    font-size: 40px;
 }
 
 .fs-36 {
@@ -77,6 +82,10 @@ body {
 
 .bg-gray-f6 {
     background-color: var(--gray-color-f6) !important;
+}
+
+.bg-gray-e9 {
+    background-color: var(--gray-color-e9) !important;
 }
 
 .bg-banier {
@@ -135,4 +144,17 @@ select {
     width: 16px;
     height: 16px;
     border-radius: 50%;
+}
+
+.nav-link:hover{
+    color: var(--red-color) !important;
+}
+
+.dropdown-menu > li > a:hover{
+
+    background-color: var(--red-color);
+}
+
+.dropdown-toggle:active {
+    color: #fff;
 }

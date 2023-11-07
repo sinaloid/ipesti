@@ -1,5 +1,6 @@
 import { DeleteCard } from "../icons/DeleteCard";
 import { LogoIcon } from "../icons/LogoIcon";
+import { ActuCard } from "./ActuCard";
 import { Container } from "./Container";
 
 export const ArticleList = ({ children }) => {
@@ -12,9 +13,11 @@ export const ArticleList = ({ children }) => {
                         <LogoIcon />
                     </div>
                     <div className="col-12">
-                        <div className="row row-cols-3">
+                        <div className="row row-cols-12 row-cols-md-3">
                             {[...Array(3).keys()].map((data) => {
-                                return <DeleteCard />;
+                                return <div className="col">
+                                    <ActuCard />
+                                </div>
                             })}
                         </div>
                         <div className="d-flex justify-content-center mt-4">

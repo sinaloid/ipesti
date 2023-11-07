@@ -8,8 +8,10 @@
     <title>IPESTI</title>
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/images/logo.png') }}" />
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/logo.png') }}" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     @viteReactRefresh
     @vite('resources/js/app.js')

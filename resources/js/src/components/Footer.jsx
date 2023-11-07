@@ -12,7 +12,7 @@ export const Footer = () => {
                     <Logo />
                 </div>
                 <div className="row pb-3 footer">
-                    <div className="col pe-lg-5">
+                    <div className="col-12 col-md mb-4 pe-lg-5">
                         <p className="text-justify1 text-white">
                             Restez informés de l'actualité de l’IPESTI en vous
                             inscrivant à notre newsletter trimestrielle :
@@ -48,7 +48,7 @@ export const Footer = () => {
                         </ul>
                     </div>
 
-                    <div className="col text-white">
+                    <div className="col-12 col-md mb-4 text-white">
                         <h5 className="text-uppercase text-18 fw-bold">
                             Nos liens utiles
                         </h5>
@@ -109,7 +109,7 @@ export const Footer = () => {
                             </li>
                         </ul>
                     </div>
-                    <div className="col text-white">
+                    <div className="col-12 col-md mb-4 text-white">
                         <h5 className="text-uppercase text-18 fw-bold">
                             SUIVEZ-NOUS
                         </h5>
@@ -131,7 +131,7 @@ export const Footer = () => {
                             <ReseauxSociauxIcon />
                         </div>
                     </div>
-                    <div className="col text-white">
+                    <div className="col-12 col-md mb-4 text-white">
                         <h5 className="text-uppercase text-18 fw-bold">
                             Nos partenaires
                         </h5>
