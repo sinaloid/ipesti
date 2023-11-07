@@ -12,22 +12,27 @@
     "assets": [
       "assets/rect-ef7ad498.png",
       "assets/img-56911f51.png",
-      "assets/logo-32389fb7.png"
+      "assets/footer-2a3a072b.png",
+      "assets/header-af53ae7b.png"
     ],
     "css": [
       "assets/app-3bedecee.css"
     ],
-    "file": "assets/app-522e397d.js",
+    "file": "assets/app-2301ab9b.js",
     "isEntry": true,
     "src": "resources/js/app.js"
+  },
+  "resources/js/src/assets/images/footer.png": {
+    "file": "assets/footer-2a3a072b.png",
+    "src": "resources/js/src/assets/images/footer.png"
+  },
+  "resources/js/src/assets/images/header.png": {
+    "file": "assets/header-af53ae7b.png",
+    "src": "resources/js/src/assets/images/header.png"
   },
   "resources/js/src/assets/images/img.png": {
     "file": "assets/img-56911f51.png",
     "src": "resources/js/src/assets/images/img.png"
-  },
-  "resources/js/src/assets/images/logo.png": {
-    "file": "assets/logo-32389fb7.png",
-    "src": "resources/js/src/assets/images/logo.png"
   },
   "resources/js/src/assets/images/rect.png": {
     "file": "assets/rect-ef7ad498.png",
