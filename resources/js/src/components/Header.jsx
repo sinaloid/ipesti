@@ -4,6 +4,8 @@ import { FRIcon } from "../icons/FRIcon";
 import { ModeIcon } from "../icons/ModeIcon";
 import { SearchIcon } from "../icons/SearchIcon";
 import { UserIcon } from "../icons/UserIcon";
+import { DropDown } from "./DropDown";
+import { LinkSelectedIcon } from "../icons/LinkSelectedIcon";
 
 export const Header = () => {
     const ipesti = [
@@ -147,10 +149,35 @@ export const Header = () => {
                         <li className="nav-item">
                             <NavLink
                                 to="/"
-                                className="nav-link link-body-emphasis text-uppercase text-white px-2 active"
+                                className="nav-link text-uppercase text-white px-2 active"
                             >
                                 accueil
+                                <span className="d-flex arrow-up w-100 px-2">
+                                    <span className="selected mx-auto">
+                                        <LinkSelectedIcon />
+                                    </span>
+                                </span>
                             </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <div class="dropdown position-relative">
+                                <NavLink
+                                    href="#"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                    className="nav-link dropdown-toggle text-uppercase text-white px-2"
+                                >
+                                    <span>L’IPESTI</span>
+
+                                    <span className="d-flex arrow-up w-100 px-2">
+                                        <span className="selected mx-auto">
+                                            <LinkSelectedIcon />
+                                        </span>
+                                    </span>
+                                </NavLink>
+                                <DropDown menu={ipesti} />
+                            </div>
                         </li>
                         <li className="nav-item">
                             <div class="dropdown">
@@ -159,137 +186,81 @@ export const Header = () => {
                                     role="button"
                                     data-bs-toggle="dropdown"
                                     aria-expanded="false"
-                                    className="nav-link link-body-emphasis dropdown-toggle text-uppercase text-white px-2"
+                                    className="nav-link dropdown-toggle text-uppercase text-white px-2"
                                 >
-                                    L’IPESTI
+                                    La Recherche
+                                    <span className="d-flex arrow-up w-100 px-2">
+                                        <span className="selected mx-auto">
+                                            <LinkSelectedIcon />
+                                        </span>
+                                    </span>
                                 </NavLink>
-
-                                <ul class="dropdown-menu bg-black">
-                                    {ipesti.map((data, idx) => {
-                                        return (
-                                            <li key={idx}>
-                                                <a
-                                                    class="dropdown-item text-white"
-                                                    href="/content"
-                                                >
-                                                    {data}
-                                                </a>
-                                            </li>
-                                        );
-                                    })}
-                                </ul>
+                                <DropDown menu={rech} />
                             </div>
                         </li>
                         <li className="nav-item">
-                            <NavLink
-                                href="#"
-                                role="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                                className="nav-link link-body-emphasis dropdown-toggle text-uppercase text-white px-2"
-                            >
-                                La Recherche
-                            </NavLink>
-
-                            <ul class="dropdown-menu bg-black">
-                                {rech.map((data, idx) => {
-                                    return (
-                                        <li key={idx}>
-                                            <a
-                                                class="dropdown-item text-white"
-                                                href="/content"
-                                            >
-                                                {data}
-                                            </a>
-                                        </li>
-                                    );
-                                })}
-                            </ul>
+                            <div class="dropdown">
+                                <NavLink
+                                    href="#"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                    className="nav-link dropdown-toggle text-uppercase text-white px-2"
+                                >
+                                    Formations
+                                    <span className="d-flex arrow-up w-100 px-2">
+                                        <span className="selected mx-auto">
+                                            <LinkSelectedIcon />
+                                        </span>
+                                    </span>
+                                </NavLink>
+                                <DropDown menu={form} />
+                            </div>
                         </li>
                         <li className="nav-item">
-                            <NavLink
-                                href="#"
-                                role="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                                className="nav-link link-body-emphasis dropdown-toggle text-uppercase text-white px-2"
-                            >
-                                Formations
-                            </NavLink>
-
-                            <ul class="dropdown-menu bg-black">
-                                {form.map((data, idx) => {
-                                    return (
-                                        <li key={idx}>
-                                            <a
-                                                class="dropdown-item text-white"
-                                                href="/content"
-                                            >
-                                                {data}
-                                            </a>
-                                        </li>
-                                    );
-                                })}
-                            </ul>
+                            <div class="dropdown">
+                                <NavLink
+                                    href="#"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                    className="nav-link dropdown-toggle text-uppercase text-white px-2"
+                                >
+                                    Publications
+                                    <span className="d-flex arrow-up w-100 px-2">
+                                        <span className="selected mx-auto">
+                                            <LinkSelectedIcon />
+                                        </span>
+                                    </span>
+                                </NavLink>
+                                <DropDown menu={pub} />
+                            </div>
                         </li>
                         <li className="nav-item">
-                            <NavLink
-                                href="#"
-                                role="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                                className="nav-link link-body-emphasis dropdown-toggle text-uppercase text-white px-2"
-                            >
-                                Publications
-                            </NavLink>
-
-                            <ul class="dropdown-menu bg-black">
-                                {pub.map((data, idx) => {
-                                    return (
-                                        <li key={idx}>
-                                            <a
-                                                class="dropdown-item text-white"
-                                                href="/content"
-                                            >
-                                                {data}
-                                            </a>
-                                        </li>
-                                    );
-                                })}
-                            </ul>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink
-                                href="#"
-                                role="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                                className="nav-link link-body-emphasis dropdown-toggle text-uppercase text-white px-2"
-                            >
-                                Actualités & Evénements
-                            </NavLink>
-
-                            <ul class="dropdown-menu bg-black">
-                                {actu.map((data, idx) => {
-                                    return (
-                                        <li key={idx}>
-                                            <a
-                                                class="dropdown-item text-white"
-                                                href="/content"
-                                            >
-                                                {data}
-                                            </a>
-                                        </li>
-                                    );
-                                })}
-                            </ul>
+                            <div class="dropdown">
+                                <NavLink
+                                    href="#"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                    className="nav-link dropdown-toggle text-uppercase text-white px-2"
+                                >
+                                    Actualités & Evénements
+                                    <span className="d-flex arrow-up w-100 px-2">
+                                        <span className="selected mx-auto">
+                                            <LinkSelectedIcon />
+                                        </span>
+                                    </span>
+                                </NavLink>
+                                <DropDown menu={actu} />
+                            </div>
                         </li>
                     </ul>
                     <ul className="nav bg-primary py-2">
                         <li className="nav-item ">
                             <NavLink
                                 href="#"
-                                className="nav-link link-body-emphasis text-uppercase text-white px-2"
+                                className="nav-link text-uppercase text-white px-2"
                             >
                                 fasolics
                             </NavLink>
