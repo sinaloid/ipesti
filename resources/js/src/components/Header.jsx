@@ -176,7 +176,7 @@ export const Header = () => {
                                         </span>
                                     </span>
                                 </NavLink>
-                                <DropDown menu={ipesti} />
+                                <DropDown menu={ipesti} link={'ipesti'} />
                             </div>
                         </li>
                         <li className="nav-item">
@@ -214,7 +214,7 @@ export const Header = () => {
                                         </span>
                                     </span>
                                 </NavLink>
-                                <DropDown menu={form} />
+                                <DropDown menu={form} link="formation" />
                             </div>
                         </li>
                         <li className="nav-item">
@@ -233,7 +233,7 @@ export const Header = () => {
                                         </span>
                                     </span>
                                 </NavLink>
-                                <DropDown menu={pub} />
+                                <DropDown menu={pub} link="publication" />
                             </div>
                         </li>
                         <li className="nav-item">
@@ -252,14 +252,14 @@ export const Header = () => {
                                         </span>
                                     </span>
                                 </NavLink>
-                                <DropDown menu={actu} />
+                                <DropDown menu={actu} link="actualites-evenements"/>
                             </div>
                         </li>
                     </ul>
                     <ul className="nav bg-primary py-2">
                         <li className="nav-item ">
                             <NavLink
-                                href="#"
+                                to={"/fasolics"}
                                 className="nav-link text-uppercase text-white px-2"
                             >
                                 fasolics

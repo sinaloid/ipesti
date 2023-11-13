@@ -1,4 +1,4 @@
-export const DropDown = ({ menu }) => {
+export const DropDown = ({ menu, link="content"}) => {
     return (
         <>
             <ul
@@ -8,7 +8,7 @@ export const DropDown = ({ menu }) => {
                 {menu.map((data, idx) => {
                     return (
                         <li key={idx}>
-                            <a class="dropdown-item text-white" href="/content">
+                            <a class="dropdown-item text-white" href={"/"+link}>
                                 {data}
                             </a>
                             <ul class="dropdown-menu dropdown-submenu bg-black">
