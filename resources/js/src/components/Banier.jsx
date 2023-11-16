@@ -1,4 +1,4 @@
-import img from "../assets/images/img.png";
+import img from "../assets/images/equipe.jpg";
 import { Container } from "./Container";
 export const Banier = () => {
     return (

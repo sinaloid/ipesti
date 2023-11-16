@@ -213,3 +213,16 @@ select {
   .nav-link:focus .selected{
     display: inline-block;
   }
+
+  .v-100-h{
+    min-height: 100vh;
+  }
+
+  .dash-active{
+    background-color: var(--red-color) !important;
+    color: #fff;
+  }
+
+  .dash-active:focus{
+    color: #fff !important;
+  }

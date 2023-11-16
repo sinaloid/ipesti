@@ -176,7 +176,7 @@ export const Header = () => {
                                         </span>
                                     </span>
                                 </NavLink>
-                                <DropDown menu={ipesti} link={'ipesti'} />
+                                <DropDown menu={ipesti} link={"ipesti"} />
                             </div>
                         </li>
                         <li className="nav-item">
@@ -252,8 +252,24 @@ export const Header = () => {
                                         </span>
                                     </span>
                                 </NavLink>
-                                <DropDown menu={actu} link="actualites-evenements"/>
+                                <DropDown
+                                    menu={actu}
+                                    link="actualites-evenements"
+                                />
                             </div>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink
+                                to="/login"
+                                className="nav-link text-uppercase text-white px-2 active"
+                            >
+                                connexion
+                                <span className="d-flex arrow-up w-100 px-2">
+                                    <span className="selected mx-auto">
+                                        <LinkSelectedIcon />
+                                    </span>
+                                </span>
+                            </NavLink>
                         </li>
                     </ul>
                     <ul className="nav bg-primary py-2">
@@ -268,6 +284,175 @@ export const Header = () => {
                     </ul>
                 </div>
             </nav>
+            {
+                /**
+                 * <div className="row border-bottom border-color bg-black">
+                <div className="col-12 col-md-10 mx-auto d-flex flex-wrap">
+                    <nav
+                        class="navbar navbar-expand-xxl w-100"
+                        aria-label="Seventh navbar example"
+                    >
+                        <div class="container-fluid">
+                            <button
+                                class="navbar-toggler"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#navbarsExampleXxl"
+                                aria-controls="navbarsExampleXxl"
+                                aria-expanded="false"
+                                aria-label="Toggle navigation"
+                            >
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+
+                            <div
+                                class="collapse navbar-collapse"
+                                id="navbarsExampleXxl"
+                            >
+                                <ul className="nav me-auto py-2">
+                        <li className="nav-item">
+                            <NavLink
+                                to="/"
+                                className="nav-link text-uppercase text-white px-2 active"
+                            >
+                                accueil
+                                <span className="d-flex arrow-up w-100 px-2">
+                                    <span className="selected mx-auto">
+                                        <LinkSelectedIcon />
+                                    </span>
+                                </span>
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <div class="dropdown position-relative">
+                                <NavLink
+                                    href="#"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                    className="nav-link dropdown-toggle text-uppercase text-white px-2"
+                                >
+                                    <span>L’IPESTI</span>
+
+                                    <span className="d-flex arrow-up w-100 px-2">
+                                        <span className="selected mx-auto">
+                                            <LinkSelectedIcon />
+                                        </span>
+                                    </span>
+                                </NavLink>
+                                <DropDown menu={ipesti} link={"ipesti"} />
+                            </div>
+                        </li>
+                        <li className="nav-item">
+                            <div class="dropdown">
+                                <NavLink
+                                    href="#"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                    className="nav-link dropdown-toggle text-uppercase text-white px-2"
+                                >
+                                    La Recherche
+                                    <span className="d-flex arrow-up w-100 px-2">
+                                        <span className="selected mx-auto">
+                                            <LinkSelectedIcon />
+                                        </span>
+                                    </span>
+                                </NavLink>
+                                <DropDown menu={rech} />
+                            </div>
+                        </li>
+                        <li className="nav-item">
+                            <div class="dropdown">
+                                <NavLink
+                                    href="#"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                    className="nav-link dropdown-toggle text-uppercase text-white px-2"
+                                >
+                                    Formations
+                                    <span className="d-flex arrow-up w-100 px-2">
+                                        <span className="selected mx-auto">
+                                            <LinkSelectedIcon />
+                                        </span>
+                                    </span>
+                                </NavLink>
+                                <DropDown menu={form} link="formation" />
+                            </div>
+                        </li>
+                        <li className="nav-item">
+                            <div class="dropdown">
+                                <NavLink
+                                    href="#"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                    className="nav-link dropdown-toggle text-uppercase text-white px-2"
+                                >
+                                    Publications
+                                    <span className="d-flex arrow-up w-100 px-2">
+                                        <span className="selected mx-auto">
+                                            <LinkSelectedIcon />
+                                        </span>
+                                    </span>
+                                </NavLink>
+                                <DropDown menu={pub} link="publication" />
+                            </div>
+                        </li>
+                        <li className="nav-item">
+                            <div class="dropdown">
+                                <NavLink
+                                    href="#"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                    className="nav-link dropdown-toggle text-uppercase text-white px-2"
+                                >
+                                    Actualités & Evénements
+                                    <span className="d-flex arrow-up w-100 px-2">
+                                        <span className="selected mx-auto">
+                                            <LinkSelectedIcon />
+                                        </span>
+                                    </span>
+                                </NavLink>
+                                <DropDown
+                                    menu={actu}
+                                    link="actualites-evenements"
+                                />
+                            </div>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink
+                                to="/login"
+                                className="nav-link text-uppercase text-white px-2 active"
+                            >
+                                connexion
+                                <span className="d-flex arrow-up w-100 px-2">
+                                    <span className="selected mx-auto">
+                                        <LinkSelectedIcon />
+                                    </span>
+                                </span>
+                            </NavLink>
+                        </li>
+                    </ul>
+                    <ul className="nav bg-primary py-2">
+                        <li className="nav-item ">
+                            <NavLink
+                                to={"/fasolics"}
+                                className="nav-link text-uppercase text-white px-2"
+                            >
+                                fasolics
+                            </NavLink>
+                        </li>
+                    </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+                 */
+            }
         </>
     );
 };
