@@ -14,12 +14,12 @@ export const DropDown = ({ menu, link="content"}) => {
                             <ul class="dropdown-menu dropdown-submenu bg-black">
                                 <li>
                                     <a class="dropdown-item text-white" href="#">
-                                        Submenu item 1
+                                        Equipe de direction administrative
                                     </a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item text-white" href="#">
-                                        Submenu item 2
+                                        Membres académiques
                                     </a>
                                 </li>
                                 <li>

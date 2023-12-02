@@ -19,6 +19,11 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@ckeditor/ckeditor5-build-classic": "^40.1.0",
+        "@ckeditor/ckeditor5-build-decoupled-document": "^40.1.0",
+        "@ckeditor/ckeditor5-react": "^6.2.0",
+        "@ckeditor/ckeditor5-upload": "^40.1.0",
+        "@tinymce/tinymce-react": "^4.3.2",
         "bootstrap-icons": "^1.11.1",
         "chart.js": "^4.4.0",
         "formik": "^2.4.5",

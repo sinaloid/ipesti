@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
-use App\Models\Categorie;
+use App\Models\Post;
 
-class CategorieController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,13 +22,13 @@ class CategorieController extends Controller
         //$data = Categorie::where("is_deleted", false)->get();
         //$data = Categorie::with('enfants')->whereNull('parent_id')->get();
         //$data = Categorie::avecToutesSousCategories()->whereNull('parent_id')->get();
-        $data = Categorie::with('toutesSousCategories')->whereNull('parent_id')->get();
+        $data = Post::with('toutesSousCategories')->whereNull('parent_id')->get();
 
         if ($data->isEmpty()) {
-            return response()->json(['message' => 'Aucune catégorie trouvée'], 404);
+            return response()->json(['message' => 'Aucun post trouvée'], 404);
         }
 
-        return response()->json(['message' => 'Catégories récupérées', 'data' => $data], 200);
+        return response()->json(['message' => 'Posts récupérés', 'data' => $data], 200);
     }
 
     /**
@@ -42,41 +42,53 @@ class CategorieController extends Controller
         // Vérifier que les champs obligatoires sont remplis
         //dd($request->parent);
         $validator = Validator::make($request->all(), [
-            'nom' => 'required|string|max:255',
+            'titre' => 'required|string|max:255',
             'parent' => 'nullable|string|max:8',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'description' => 'nullable|string|max:1000',
-        ]);
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'date' => 'nullable|date',
+            'date_debut' => 'nullable|date',
+            'date_fin' => 'nullable|date',
+            'lien_inscription' => 'nullable|string',
+            'contenu' => 'nullable|string',
 
+        ]);
+        
         if ($validator->fails()) {
             return response(['errors' => $validator->errors()->all()], 422);
         }
 
-        $parent = Categorie::where("slug",$request->parent)->first();
+        $parent = Post::where("slug",$request->parent)->first();
         
+        $data = Post::create([
+            'titre' => $request->input('titre'),
+            'contenu' => $request->input('contenu'),
+            'date' => $request->input('date'),
+            'date_debut' => $request->input('date_debut'),
+            'date_fin' => $request->input('date_fin'),
+            'lien_inscription' => $request->input('lien_inscription'),
+            'parent_id' => isset($parent) ? $parent->id : null,
+            'user_id' => Auth::user()->id,
+            'slug' => Str::random(8),
+        ]);
+
         if ($request->hasFile('image')) {
             // Générer un nom aléatoire pour l'image
             $imageName = Str::random(10) . '.' . $request->image->getClientOriginalExtension();
 
             // Enregistrer l'image dans le dossier public/images
-            $imagePath = $request->image->move(public_path('categories'), $imageName);
+            $imagePath = $request->image->move(public_path('posts'), $imageName);
 
             if ($imagePath) {
-                $data = Categorie::create([
-                    'nom' => $request->input('nom'),
-                    'description' => $request->input('description'),
-                    'image' => 'categories/' . $imageName,
-                    'parent_id' => isset($parent) ? $parent->id : null,
-                    'is_deleted' => false,
-                    'slug' => Str::random(8),
+                $data->update([
+                    'image' => 'posts/' . $imageName,
                 ]);
+            }else{
+                return response()->json(['error' => "Échec lors de l'enregistrement de l'image"], 422);
 
-                return response()->json(['message' => 'Catégorie créée avec succès', 'data' => $data], 200);
             }
-            return response()->json(['error' => 'Échec lors de la création'], 422);
         }
 
-        return response()->json(['error' => 'Échec lors de la création'], 422);
+        return response()->json(['message' => 'Post créé avec succès', 'data' => $data], 200);
     }
 
 
@@ -88,17 +100,17 @@ class CategorieController extends Controller
      */
     public function show($slug)
     {
-        $data = Categorie::where("slug",$slug)->with('toutesSousCategories')->first();
+        $data = Post::where("slug",$slug)->with('toutesSousCategories')->first();
 
         if (!$data) {
-            return response()->json(['message' => 'Catégorie non trouvée'], 404);
+            return response()->json(['message' => 'Post non trouvé'], 404);
         }
 
         if ($data->is_deleted) {
-            return response()->json(['message' => 'Catégorie supprimée'], 404);
+            return response()->json(['message' => 'Post supprimé'], 404);
         }
 
-        return response()->json(['message' => 'Catégorie trouvée', 'data' => $data], 200);
+        return response()->json(['message' => 'Post trouvé', 'data' => $data], 200);
     }
 
     /**
@@ -112,26 +124,34 @@ class CategorieController extends Controller
     {
         // Vérifier que les champs obligatoires sont remplis
         $validator = Validator::make($request->all(), [
-            'nom' => 'required|string|max:255',
+            'titre' => 'required|string|max:255',
             'parent' => 'nullable|string|max:8',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'description' => 'nullable|string|max:1000',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'date' => 'nullable|date',
+            'date_debut' => 'nullable|date',
+            'date_fin' => 'nullable|date',
+            'lien_inscription' => 'nullable|string',
+            'contenu' => 'nullable|string',
         ]);
         
         if ($validator->fails()) {
             return response(['errors' => $validator->errors()->all()], 422);
         }
 
-        $data = Categorie::where("slug", $slug)->where("is_deleted",false)->first();
-        $parent = Categorie::where("slug", $request->parent)->where("is_deleted",false)->first();
+        $data = Post::where("slug", $slug)->where("is_deleted",false)->first();
+        $parent = Post::where("slug", $request->parent)->where("is_deleted",false)->first();
 
         if (!$data) {
-            return response()->json(['message' => 'Catégorie non trouvée'], 404);
+            return response()->json(['message' => 'Post parent non trouvée'], 404);
         }
 
         $data->update([
-            'nom' => $request->input('nom'),
-            'description' => $request->input('description'),
+            'titre' => $request->input('titre'),
+            'contenu' => $request->input('contenu'),
+            'date' => $request->input('date'),
+            'date_debut' => $request->input('date_debut'),
+            'date_fin' => $request->input('date_fin'),
+            'lien_inscription' => $request->input('lien_inscription'),
         ]);
 
         if($parent){
@@ -145,19 +165,19 @@ class CategorieController extends Controller
             $imageName = Str::random(10) . '.' . $request->image->getClientOriginalExtension();
 
             // Enregistrer l'image dans le dossier public/images
-            $imagePath = $request->image->move(public_path('categories'), $imageName);
+            $imagePath = $request->image->move(public_path('posts'), $imageName);
 
             if ($imagePath) {
                 //Storage::delete($data->image);
                 File::delete(public_path($data->image));
                 $data->update([
-                    'image' => 'categories/' . $imageName,
+                    'image' => 'posts/' . $imageName,
                 ]);
 
             }
         }
 
-        return response()->json(['message' => 'Catégorie modifiée avec succès', 'data' => $data], 200);
+        return response()->json(['message' => 'Post modifié avec succès', 'data' => $data], 200);
 
     }
 
@@ -170,15 +190,15 @@ class CategorieController extends Controller
     public function destroy($slug)
     {
         // Trouver la catégorie de maison à supprimer
-        $data = Categorie::where("slug",$slug)->where("is_deleted",false)->first();
+        $data = Post::where("slug",$slug)->where("is_deleted",false)->first();
         if (!$data) {
-            return response()->json(['message' => 'Catégorie non trouvée'], 404);
+            return response()->json(['message' => 'Post non trouvée'], 404);
         }
 
 
         // Supprimer la catégorie de maison
         $data->update(["is_deleted" => true]);
 
-        return response()->json(['message' => 'Catégorie supprimée avec succès']);
+        return response()->json(['message' => 'Post supprimée avec succès']);
     }
 }

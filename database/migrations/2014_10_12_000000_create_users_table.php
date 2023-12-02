@@ -21,8 +21,9 @@ return new class extends Migration
             $table->string('type');
             $table->string('isActive')->nullable();
             $table->string('slug')->nullable();
-            $table->string('post')->unique()->nullable();
-            $table->string('image')->unique()->nullable();
+            $table->string('post')->nullable();
+            $table->string('genre')->nullable();
+            $table->string('image')->nullable();
             $table->string('number')->unique()->nullable();
             $table->string('email')->unique()->nullable();
             $table->boolean('email_verified')->nullable();

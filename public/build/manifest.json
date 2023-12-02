@@ -1,6 +1,6 @@
 {
   "resources/js/app.css": {
-    "file": "assets/app-af5b8f3a.css",
+    "file": "assets/app-dea784ed.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.js": {
@@ -10,15 +10,16 @@
       "assets/footer-00125d4c.png",
       "assets/header-af53ae7b.png",
       "assets/recherche-9a57e693.png",
+      "assets/prof-385f8d9d.png",
       "assets/educ-c5b0116c.png",
       "assets/book-d0ccc988.png",
       "assets/actu-e034af51.png",
       "assets/logo-32389fb7.png"
     ],
     "css": [
-      "assets/app-af5b8f3a.css"
+      "assets/app-dea784ed.css"
     ],
-    "file": "assets/app-ae754e81.js",
+    "file": "assets/app-c1491582.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },
@@ -49,6 +50,10 @@
   "resources/js/src/assets/images/logo.png": {
     "file": "assets/logo-32389fb7.png",
     "src": "resources/js/src/assets/images/logo.png"
+  },
+  "resources/js/src/assets/images/prof.png": {
+    "file": "assets/prof-385f8d9d.png",
+    "src": "resources/js/src/assets/images/prof.png"
   },
   "resources/js/src/assets/images/recherche.png": {
     "file": "assets/recherche-9a57e693.png",

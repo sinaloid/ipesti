@@ -14,8 +14,8 @@
     --gray-color-f6: #f6f6f6;
     --gray-color-e9: #e9e9e9;
     --red-color: #ee302f;
-    --green-color:#54934B;
-    --green-color-light:#54934B1A;
+    --green-color: #54934b;
+    --green-color-light: #54934b1a;
 }
 
 *,
@@ -88,11 +88,11 @@ body {
     background-color: var(--gray-color-e9) !important;
 }
 
-.bg-green{
+.bg-green {
     background-color: var(--green-color) !important;
 }
 
-.bg-green-light{
+.bg-green-light {
     background-color: var(--green-color-light) !important;
 }
 
@@ -187,7 +187,7 @@ select {
     display: block;
 }
 
-.nav-link:active{
+.nav-link:active {
     color: var(--red-color);
 }
 
@@ -202,27 +202,53 @@ select {
     position: absolute;
     bottom: -15px;
     left: 0;
-  }
-  .nav-link:focus{
+}
+.nav-link:focus {
     color: var(--red-color) !important;
-  }
+}
 
-  .selected{
+.selected {
     display: none;
-  }
-  .nav-link:focus .selected{
+}
+.nav-link:focus .selected {
     display: inline-block;
-  }
+}
 
-  .v-100-h{
+.v-100-h {
     min-height: 100vh;
-  }
+}
 
-  .dash-active{
+.dash-active {
     background-color: var(--red-color) !important;
     color: #fff;
-  }
+}
 
-  .dash-active:focus{
+.dash-active:focus {
     color: #fff !important;
-  }
+}
+
+/* Set the border color */
+
+.custom-toggler.navbar-toggler {
+    border-color: var(--red-color);
+}
+/* Setting the stroke to green using rgb values (0, 128, 0) */
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(238,48,47)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    color: rgba(0, 128, 0, 0.8);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="checkbox"],
+input[type="radio"],
+textarea,
+select {
+    outline: none;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+}
+
+

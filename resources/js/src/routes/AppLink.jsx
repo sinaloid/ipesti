@@ -14,8 +14,19 @@ export const AppLink = {
     categories:"categories",
     pages:"pages",
     utilisateurs:"utilisateurs",
-    infos:"infos",
+
+    actualites_dashboard:"actualites", 
+    publications_dashboard:"publications", 
+    formations_dashboard:"formations", 
+    recherches_dashboard:"recherches", 
+    ipesti_dashboard:"ipesti", 
+    fasolics_dashboard:"fasolics", 
+
     compte:"compte",
     newsletters:"newsletters",
+
+    list:"list",
+    detail:"detail/:slug",
+    detailOfPage:"pages/:slug",
 
 }

@@ -26,6 +26,7 @@ class User extends Authenticatable
         "image",
         "isActive",
         "post",
+        "genre",
         "number",
         "email",
         "password",

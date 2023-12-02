@@ -5,18 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Categorie extends Model
+class Post extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        "nom",
-        "slug",
+        "titre",
+        "date",
+        "date_debut",
+        "date_fin",
+        "lien_inscription",
         "image",
-        "description",
+        "contenu",
+        "slug",
         "is_deleted",
         "parent_id",
+        "user_id",
     ];
+
+
 
     /*public function toutesSousCategories()
     {
@@ -46,11 +53,11 @@ class Categorie extends Model
 
     public function parent()
     {
-        return $this->belongsTo(Categorie::class, 'parent_id');
+        return $this->belongsTo(Post::class, 'parent_id');
     }
 
     public function enfants()
     {
-        return $this->hasMany(Categorie::class, 'parent_id');
+        return $this->hasMany(Post::class, 'parent_id');
     }
 }

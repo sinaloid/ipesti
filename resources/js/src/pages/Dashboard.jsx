@@ -9,20 +9,25 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 import AppRoute from "../routes/AppRoute";
 import { deleteUser } from "../services/storage";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AppContext, initialUser } from "../services/context";
-import { URL } from "../services/request";
+import request, { URL } from "../services/request";
 import { AppLink } from "../routes/AppLink";
 import logo from "../assets/images/footer.png";
+import endPoint from "../services/endPoint";
 
 
 const Dashboard = () => {
   const authCtx = useContext(AppContext);
   const { user, onUserChange } = authCtx;
+  const [categories, setCategories] = useState([])
+  const [currentPage, setCurrentPage] = useState({
+    url:"",
+    slug:""
+  })
   const navigate = useNavigate()
   useEffect(() => {
-    //return navigate("/dashboard/")
-    //isAuth();
+    isAuth();
   }, [user]);
 
   const isAuth = () => {
@@ -33,10 +38,21 @@ const Dashboard = () => {
       return navigate("/");
     } else {
       console.log("isAuth true");
+      get()
     }
   };
+  const get = () => {
+    request
+      .get(endPoint.categories)
+      .then((res) => {
+        //console.log(res.data);
+        setCategories(res.data.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const deconnect = () => {
-    navigate("/") ///a supprimer
     deleteUser();
     onUserChange(initialUser);
   };
@@ -114,7 +130,7 @@ const Dashboard = () => {
                      * <li class="nav-item">
                     <NavLink
                       className={({ isActive }) =>
-                        `nav-link d-flex align-items-center text-white gap-2 ${
+                        `nav-link d-flex align-items-center text-white gap-2 text-uppercase  ${
                           isActive && "dash-active text-white rounded-3"
                         }`
                       }
@@ -129,20 +145,87 @@ const Dashboard = () => {
                   <li class="nav-item">
                     <NavLink
                       className={({ isActive }) =>
-                        `nav-link d-flex align-items-center text-white gap-2 ${
+                        `nav-link d-flex align-items-center text-white gap-2 text-uppercase  ${
                           isActive && "dash-active text-white rounded-3"
                         }`
                       }
-                      to={AppLink.infos}
+                      to={AppLink.actualites_dashboard}
                     >
                       <i class="bi bi-house"></i>
-                      Infos
+                      Actualités
                     </NavLink>
                   </li>
                   <li class="nav-item">
                     <NavLink
                       className={({ isActive }) =>
-                        `nav-link d-flex align-items-center text-white gap-2 ${
+                        `nav-link d-flex align-items-center text-white gap-2 text-uppercase  ${
+                          isActive && "dash-active text-white rounded-3"
+                        }`
+                      }
+                      to={AppLink.publications_dashboard}
+                    >
+                      <i class="bi bi-house"></i>
+                      Publications
+                    </NavLink>
+                  </li>
+                  <li class="nav-item">
+                    <NavLink
+                      className={({ isActive }) =>
+                        `nav-link d-flex align-items-center text-white gap-2 text-uppercase  ${
+                          isActive && "dash-active text-white rounded-3"
+                        }`
+                      }
+                      to={AppLink.formations_dashboard}
+                    >
+                      <i class="bi bi-house"></i>
+                      Formations
+                    </NavLink>
+                  </li>
+                  <li class="nav-item">
+                    <NavLink
+                      className={({ isActive }) =>
+                        `nav-link d-flex align-items-center text-white gap-2 text-uppercase  ${
+                          isActive && "dash-active text-white rounded-3"
+                        }`
+                      }
+                      to={AppLink.recherches_dashboard}
+                    >
+                      <i class="bi bi-house"></i>
+                      Recherches
+                    </NavLink>
+                  </li>
+                  <li class="nav-item">
+                    <NavLink
+                      className={({ isActive }) =>
+                        `nav-link d-flex align-items-center text-white gap-2 text-uppercase  ${
+                          isActive && "dash-active text-white rounded-3"
+                        }`
+                      }
+                      to={AppLink.ipesti_dashboard}
+                    >
+                      <i class="bi bi-house"></i>
+                      Ipesti
+                    </NavLink>
+                  </li>
+                  <li class="nav-item">
+                    <NavLink
+                      className={({ isActive }) =>
+                        `nav-link d-flex align-items-center text-white gap-2 text-uppercase  ${
+                          isActive && "dash-active text-white rounded-3"
+                        }`
+                      }
+                      to={AppLink.fasolics_dashboard}
+                    >
+                      <i class="bi bi-house"></i>
+                      FasoLICS
+                    </NavLink>
+                  </li>
+                  {
+                    /**
+                     * <li class="nav-item">
+                    <NavLink
+                      className={({ isActive }) =>
+                        `nav-link d-flex align-items-center text-white gap-2 text-uppercase  ${
                           isActive && "dash-active text-white rounded-3"
                         }`
                       }
@@ -152,23 +235,13 @@ const Dashboard = () => {
                       Catégories
                     </NavLink>
                   </li>
+                     */
+                  }
+                  
                   <li class="nav-item">
                     <NavLink
                       className={({ isActive }) =>
-                        `nav-link d-flex align-items-center text-white gap-2 ${
-                          isActive && "dash-active text-white rounded-3"
-                        }`
-                      }
-                      to={AppLink.pages}
-                    >
-                      <i class="bi bi-house"></i>
-                      Pages
-                    </NavLink>
-                  </li>
-                  <li class="nav-item">
-                    <NavLink
-                      className={({ isActive }) =>
-                        `nav-link d-flex align-items-center text-white gap-2 ${
+                        `nav-link d-flex align-items-center text-white gap-2 text-uppercase  ${
                           isActive && "dash-active text-white rounded-3"
                         }`
                       }
@@ -183,7 +256,7 @@ const Dashboard = () => {
                   <li class="nav-item">
                     <NavLink
                       className={({ isActive }) =>
-                        `nav-link d-flex align-items-center text-white gap-2 ${
+                        `nav-link d-flex align-items-center text-white gap-2 text-uppercase  ${
                           isActive && "dash-active text-white rounded-3"
                         }`
                       }
@@ -196,7 +269,7 @@ const Dashboard = () => {
                   <li class="nav-item">
                     <NavLink
                       className={({ isActive }) =>
-                        `nav-link d-flex align-items-center text-white gap-2 ${
+                        `nav-link d-flex align-items-center text-white gap-2 text-uppercase  ${
                           isActive && "dash-active text-white rounded-3"
                         }`
                       }
@@ -211,7 +284,7 @@ const Dashboard = () => {
                   <li class="nav-item border border-color rounded-3">
                     
                     <span
-                      class="nav-link d-flex align-items-center px-4 fw-bold gap-2 text-white"
+                      class="nav-link d-flex align-items-center px-4 fw-bold gap-2 text-uppercase  text-white"
                       onClick={deconnect}
                     >
                       {/**<DeconnectionIcon /> */}
