@@ -4,14 +4,20 @@ import { FlecheIcon } from "../icons/FlecheIcon";
 import educ from "../assets/images/educ.png";
 import { Filtre } from "../icons/Filtre";
 import { FlecheLongIcon } from "../icons/FlecheLong";
+import { formation } from "../utils/TabMenu";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { MenuSection } from "../components/MenuSection";
 
 export const Formation = () => {
-    const form = [
-        "Formation courte durée",
-        "Formation longue durée",
-        "PhD Academy",
-        "Etudier à IPESTI",
-    ];
+    const [data, setData] = useState({});
+    
+    const pages = {
+        histoire: <></>,
+        
+    };
+
+   
     return (
         <Page>
             <Container>
@@ -20,21 +26,7 @@ export const Formation = () => {
                         <h3 className="bg-gray-60 text-white text-center py-2">
                             La recherche
                         </h3>
-                        <div className="bg-gray-e9 p-4">
-                            {form.map((data, idx) => {
-                                return (
-                                    <>
-                                        <div
-                                            className="d-inline-block mb-3 fw-bold"
-                                            key={idx}
-                                        >
-                                            <FlecheIcon /> {data}
-                                        </div>
-                                        <br />
-                                    </>
-                                );
-                            })}
-                        </div>
+                        <MenuSection list={formation} setData={setData} link={"formation"} />
 
                         <div className="bg-gray-e9  mt-4 p-4">
                             <div className="mb-3 fs-18 fw-bold">

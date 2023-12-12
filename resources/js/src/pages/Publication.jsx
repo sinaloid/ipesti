@@ -5,17 +5,12 @@ import book from "../assets/images/book.png";
 import { Filtre } from "../icons/Filtre";
 import { FlecheLongIcon } from "../icons/FlecheLong";
 import { EditIcon } from "../icons/EditIcon";
+import { publication } from "../utils/TabMenu";
+import { useState } from "react";
+import { MenuSection } from "../components/MenuSection";
 
 export const Publication = () => {
-    const pub = [
-        "Thèses",
-        "Rapports annuels",
-        "Articles",
-        "Livres",
-        "Rapport de projets",
-        "Plans stratégiques",
-        "Newsletters",
-    ];
+    const [data, setData] = useState({});
     return (
         <Page>
             <Container>
@@ -24,21 +19,11 @@ export const Publication = () => {
                         <h3 className="bg-primary text-white text-center1 ps-4 py-2">
                             <EditIcon /> publications
                         </h3>
-                        <div className="bg-gray-e9 p-4">
-                            {pub.map((data, idx) => {
-                                return (
-                                    <>
-                                        <div
-                                            className="d-inline-block mb-3 fw-bold"
-                                            key={idx}
-                                        >
-                                            <FlecheIcon /> {data}
-                                        </div>
-                                        <br />
-                                    </>
-                                );
-                            })}
-                        </div>
+                        <MenuSection
+                            list={publication}
+                            setData={setData}
+                            link={"publication"}
+                        />
 
                         <div className="bg-gray-e9  mt-4 p-4">
                             <div className="mb-3 fs-18 fw-bold">
@@ -123,7 +108,9 @@ export const Publication = () => {
                             })}
                         </div>
                         <div className="d-flex justify-content-center mt-4">
-                            <div className="btn border">Voir tous les livres</div>
+                            <div className="btn border">
+                                Voir tous les livres
+                            </div>
                         </div>
                     </div>
                 </div>

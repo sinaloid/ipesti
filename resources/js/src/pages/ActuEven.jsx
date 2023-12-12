@@ -4,9 +4,12 @@ import { FlecheIcon } from "../icons/FlecheIcon";
 import actuP from "../assets/images/actu.png";
 import { Filtre } from "../icons/Filtre";
 import { Calendar } from "../icons/Calendar";
+import { MenuSection } from "../components/MenuSection";
+import { useState } from "react";
+import { actualites } from "../utils/TabMenu";
 
 export const ActuEven = () => {
-    const actu = ["Actualités", "événements"];
+    const [data, setData] = useState({})
     return (
         <Page>
             <Container>
@@ -15,21 +18,11 @@ export const ActuEven = () => {
                         <h3 className="bg-gray-60 text-white text-center py-2">
                             actualités & événements
                         </h3>
-                        <div className="bg-gray-e9 p-4">
-                            {actu.map((data, idx) => {
-                                return (
-                                    <>
-                                        <div
-                                            className="d-inline-block mb-3 fw-bold"
-                                            key={idx}
-                                        >
-                                            <FlecheIcon /> {data}
-                                        </div>
-                                        <br />
-                                    </>
-                                );
-                            })}
-                        </div>
+                        <MenuSection
+                            list={actualites}
+                            setData={setData}
+                            link={"actualites-evenements"}
+                        />
 
                         <div className="bg-gray-e9  mt-4 p-4">
                             <div className="mb-3 fs-18 fw-bold">

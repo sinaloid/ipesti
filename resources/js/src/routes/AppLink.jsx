@@ -8,6 +8,7 @@ export const AppLink = {
     recherche:"/recherche/:slugOne?/:slugTwo?",
     formation:"/formation/:slugOne?/:slugTwo?",
     publication:"/publication/:slugOne?/:slugTwo?",
+    expertise:"/expertise/:slugOne?/:slugTwo?",
     fasolics:"/fasolics/*",
     actuEven:"/actualites-evenements/:slugOne?/:slugTwo?",
     dashboard:"/dashboard/*",

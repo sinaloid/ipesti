@@ -39,8 +39,8 @@ const ipesti = [
             { slug: "chercheurs", label: "Chercheurs", children: [] },
             { slug: "doctorants", label: "Doctorants", children: [] },
             {
-                slug: "post-doctaurants",
-                label: "Post Doctaurants",
+                slug: "post-doctorants",
+                label: "Post Doctorants",
                 children: [],
             },
             {
@@ -108,7 +108,7 @@ const recherche = [
         children: [],
     },
     {
-        slug: "tous-les-seminaires-de-ipesti",
+        slug: "tous-les-seminaires",
         label: "Tous les séminaires de l’IPESTI",
         children: [],
     },
@@ -126,7 +126,7 @@ const formation = [
         children: [],
     },
     { slug: "phd-academy", label: "PhD Academy", children: [] },
-    { slug: "etudier-a-ipesti", label: "Etudier à IPESTI", children: [] },
+    { slug: "etudes", label: "Etudier à IPESTI", children: [] },
 ];
 
 const publication = [
@@ -150,11 +150,11 @@ const publication = [
 const expertise = [
     { slug: "centres", label: "Centres", children: [
         { slug: "centre-expertise-decision", label: "Centre d’Expertise et d’Aide à la Décision", children: [] },
-        { slug: "livres", label: "Observatoire de l’Enseignement Supérieur", children: [] },
-        { slug: "livres", label: "Observatoire de la Science et de la Technologie", children: [] },
-        { slug: "livres", label: "Observatoire de l’Innovation", children: [] },
-        { slug: "livres", label: "Observatoire d’éthique et la Qualité de l’Enseignement supérieur", children: [] },
-        { slug: "livres", label: "Observatoire de la transformation numérique", children: [] },
+        { slug: "enseignement-superieur", label: "Observatoire de l’Enseignement Supérieur", children: [] },
+        { slug: "science-technologie", label: "Observatoire de la Science et de la Technologie", children: [] },
+        { slug: "innovation", label: "Observatoire de l’Innovation", children: [] },
+        { slug: "ethique-et-qualite", label: "Observatoire d’éthique et la Qualité de l’Enseignement supérieur", children: [] },
+        { slug: "transformation-numerique", label: "Observatoire de la transformation numérique", children: [] },
     ] },
     
 ];

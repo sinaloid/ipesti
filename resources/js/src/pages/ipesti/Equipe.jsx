@@ -1,29 +1,65 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import prof from "../../assets/images/prof.png";
+import { useNavigate, useParams } from "react-router-dom";
 
-export const Equipe = () => {
+export const Equipe = ({ data }) => {
     const [viewContent, setViewContent] = useState(false);
+    const [idView, setIdView] = useState(0)
     const equipe = [
-        "Directeur", "Directeur Adjoint", "Chargé de programmes", "Assistante administrative"
-    ]
+        "Directeur",
+        "Directeur Adjoint",
+        "Chargé de programmes",
+        "Assistante administrative",
+    ];
+    const { slugTwo } = useParams();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        console.log(data);
+        if (
+            slugTwo === undefined &&
+            data.children !== undefined &&
+            data.children?.length !== 0
+        ) {
+            changerView(data.slug + "/" + data?.children[0]?.slug);
+            setIdView(0)
+        }
+    }, [data]);
+
+    const changerView = (slug) => {
+        navigate("/ipesti/" + slug);
+    };
     return (
         <div className="col-12 col-md-8">
             <h1 className="text-primary mb-4 text-uppercase">
-                équipe de l’IPESTI
+                Equipe de l’IPESTI
             </h1>
             <div className="d-flex mb-4 border-bottom">
-                <div className="border-bottom border-color fw-bold me-4">
-                    équipe de direction administrative
-                </div>
-                <div className="border-bottom me-4 text-muted">
-                    membres académiques
-                </div>
+                {data.children?.map((item, idx) => {
+                    return (
+                        <div
+                            key={"scat" + idx}
+                            className={`cursor border-bottom me-4 text-90 ${
+                                item.slug === slugTwo
+                                    ? "border-color fw-bold"
+                                    : "text-opacity-70"
+                            }`}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                changerView(data.slug + "/" + item.slug);
+                                setIdView(idx)
+                            }}
+                        >
+                            {item.label}
+                        </div>
+                    );
+                })}
             </div>
 
             {!viewContent ? (
                 <>
                     <div className="mb-4 fs-18 text-primary fw-bold">
-                        équipe de direction
+                        {(data?.children && data.children?.length !== 0)&& data.children[idView].label}
                     </div>
                     <div className="row row-cols-2 g-4 mb-4">
                         {equipe.map((data, idx) => {
@@ -49,7 +85,6 @@ export const Equipe = () => {
                                                 </span>{" "}
                                                 : {data}
                                             </div>
-                                            
                                         </div>
                                     </div>
                                 </div>
@@ -135,10 +170,11 @@ export const Equipe = () => {
                                 <li>Risques et sociétés</li>
                             </ul>
                         </p>
-
                     </div>
                     <div>
-                        <button className="btn border-secondary">Voir CV</button>
+                        <button className="btn border-secondary">
+                            Voir CV
+                        </button>
                     </div>
                 </div>
             )}

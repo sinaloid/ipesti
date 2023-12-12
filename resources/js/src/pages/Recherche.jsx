@@ -1,15 +1,26 @@
 import { Container } from "../components/Container";
 import { Page } from "../components/Page";
 import { FlecheIcon } from "../icons/FlecheIcon";
-import recherche from "../assets/images/recherche.png";
+import rech from "../assets/images/recherche.png";
 import { Filtre } from "../icons/Filtre";
 
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { recherche } from "../utils/TabMenu";
+import { MenuSection } from "../components/MenuSection";
 export const Recherche = () => {
     const tab = [
         "Projets de recherche",
         "Séminaires de recherches",
         "Tous les séminaires de l’IPESTI",
     ];
+    const { slugOne, slugTwo } = useParams();
+    const [data, setData] = useState({});
+    const pages = {
+        histoire: <></>,
+    };
+
+    
     return (
         <Page>
             <Container>
@@ -20,46 +31,19 @@ export const Recherche = () => {
                         </h3>
                         <div className="bg-gray-e9 p-4">
                             <div className="d-inline-block bg-gray-25 mb-3">
-                                <div className="fw-bold text-primary mb-3">
-                                    <FlecheIcon /> Programmes / axes de
-                                    recherches
-                                </div>
-                                <div className="px-3">
-                                    {[...Array(4).keys()].map((data, idx) => {
-                                        return (
-                                            <>
-                                                <div
-                                                    className="d-inline-block mb-3 fs-14"
-                                                    key={idx}
-                                                >
-                                                    <FlecheIcon />{" "}
-                                                    {"Programme de recherche " +
-                                                        (idx + 1)}
-                                                </div>
-                                                <br />
-                                            </>
-                                        );
-                                    })}
-                                </div>
+                                <MenuSection
+                                    list={recherche}
+                                    setData={setData}
+                                    link={"recherche"}
+                                />
                             </div>
-
-                            {tab.map((data, idx) => {
-                                return (
-                                    <>
-                                        <div
-                                            className="d-inline-block mb-3 fw-bold"
-                                            key={idx}
-                                        >
-                                            <FlecheIcon /> {data}
-                                        </div>
-                                        <br />
-                                    </>
-                                );
-                            })}
                         </div>
 
                         <div className="bg-gray-e9  mt-4 p-4">
-                            <div className="mb-3 fs-18 fw-bold"> <Filtre /> Filtres</div>
+                            <div className="mb-3 fs-18 fw-bold">
+                                {" "}
+                                <Filtre /> Filtres
+                            </div>
                             <select
                                 class="form-select mb-3"
                                 aria-label="Default select example"
@@ -82,7 +66,9 @@ export const Recherche = () => {
                                 class="form-select mb-3"
                                 aria-label="Default select example"
                             >
-                                <option selected>Programmes de recherche</option>
+                                <option selected>
+                                    Programmes de recherche
+                                </option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
@@ -126,7 +112,7 @@ export const Recherche = () => {
                                         <div className="position-relative">
                                             <img
                                                 width={"100%"}
-                                                src={recherche}
+                                                src={rech}
                                                 alt=""
                                             />
                                             <div
