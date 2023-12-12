@@ -120,7 +120,7 @@ const Dashboard = () => {
               <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto h-100">
                 <div className="d-flex align-items-center mb-5">
                   <div className="mx-4">
-                    <img width={"100px"} src={logo} alt="logo kelkou" /> <br />
+                    <a href="/"><img width={"100px"} src={logo} alt="logo kelkou" /></a> <br />
                     <span className="fw-bold text-white">Administration</span>
                   </div>
                 </div>

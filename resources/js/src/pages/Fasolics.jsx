@@ -32,51 +32,6 @@ export const Fasolics = () => {
                                 );
                             })}
                         </div>
-
-                        <div className="bg-gray-e9  mt-4 p-4">
-                            <div className="mb-3 fs-18 fw-bold">
-                                {" "}
-                                <Filtre /> Filtres
-                            </div>
-                            <select
-                                class="form-select mb-3"
-                                aria-label="Default select example"
-                            >
-                                <option selected>Année de publication</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                            <select
-                                class="form-select mb-3"
-                                aria-label="Default select example"
-                            >
-                                <option selected>Auteur</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                            <select
-                                class="form-select mb-3"
-                                aria-label="Default select example"
-                            >
-                                <option selected>
-                                    Programmes de recherche
-                                </option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                            <select
-                                class="form-select mb-3"
-                                aria-label="Default select example"
-                            >
-                                <option selected>Statut</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
                     </div>
                     <div className="col-12 col-md-8">
                         <h1 className="text-success">à propos</h1>

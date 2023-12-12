@@ -3,6 +3,9 @@ import prof from "../../assets/images/prof.png";
 
 export const Equipe = () => {
     const [viewContent, setViewContent] = useState(false);
+    const equipe = [
+        "Directeur", "Directeur Adjoint", "Chargé de programmes", "Assistante administrative"
+    ]
     return (
         <div className="col-12 col-md-8">
             <h1 className="text-primary mb-4 text-uppercase">
@@ -23,7 +26,7 @@ export const Equipe = () => {
                         équipe de direction
                     </div>
                     <div className="row row-cols-2 g-4 mb-4">
-                        {[...Array(4).keys()].map((data, idx) => {
+                        {equipe.map((data, idx) => {
                             return (
                                 <div
                                     className="col"
@@ -44,21 +47,9 @@ export const Equipe = () => {
                                                 <span className="fw-bold">
                                                     Poste
                                                 </span>{" "}
-                                                : Enseignant chercheur
+                                                : {data}
                                             </div>
-                                            <div>
-                                                <span className="fw-bold">
-                                                    Institution de rattachement{" "}
-                                                </span>
-                                                : Université Thomas SANKARA
-                                            </div>
-                                            <div>
-                                                <span className="fw-bold">
-                                                    Axe de recherche
-                                                </span>{" "}
-                                                : Science, Technologie et
-                                                Sociétés
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>

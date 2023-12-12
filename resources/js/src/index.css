@@ -102,6 +102,10 @@ body {
     background-size: cover; /* Resize the background image to cover the entire container */
 }
 
+.bg-green {
+    background-color: var(--green-color);
+}
+
 input,
 select,
 .h-44 {
@@ -122,6 +126,11 @@ input,
     border-color: var(--red-color) !important;
 }
 
+.border-color-green {
+    border-width: 3px !important;
+    border-color: var(--green-color) !important;
+}
+
 input[type="text"],
 input[type="search"],
 input[type="email"],
@@ -137,6 +146,14 @@ select {
 
 .text-primary {
     color: var(--red-color) !important;
+}
+
+.text-opacity-70 {
+    opacity: 70%;
+}
+
+.text-{
+    text-transform: capitalize;
 }
 
 .bg-primary {
@@ -156,6 +173,10 @@ select {
 
 .nav-link:hover {
     color: var(--red-color) !important;
+}
+
+.no-hover >.nav-item > .nav-link:hover {
+    color: #fff !important;
 }
 
 .dropdown-menu > li > a:hover {
@@ -249,6 +270,10 @@ select {
     outline: none;
     box-shadow: none !important;
     border: 1px solid #ccc !important;
+}
+
+.cursor {
+    cursor: pointer;
 }
 
 

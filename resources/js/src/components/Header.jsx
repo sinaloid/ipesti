@@ -6,43 +6,25 @@ import { SearchIcon } from "../icons/SearchIcon";
 import { UserIcon } from "../icons/UserIcon";
 import { DropDown } from "./DropDown";
 import { LinkSelectedIcon } from "../icons/LinkSelectedIcon";
+import {
+    actualites,
+    expertise,
+    formation,
+    ipesti,
+    publication,
+    recherche,
+} from "../utils/TabMenu";
+import { useEffect } from "react";
 
 export const Header = () => {
-    const ipesti = [
-        "Histoire",
-        "Vision & Missions",
-        "Structure & Gouvernance",
-        "équipes",
-        "Partenaires de recherche",
-        "Opportunités",
-        "Prix & distinctions",
-    ];
+    const url = window.location.pathname;
 
-    const rech = [
-        "Programmes de recherche",
-        "Projets de recherche",
-        "Séminaires de recherche",
-        "Tous les séminaires de l’IPESTI",
-    ];
+    useEffect(() => {
+        console.log(url);
+        const content = url.includes("ipesti");
+        console.log(content);
+    }, []);
 
-    const form = [
-        "Formation courte durée",
-        "Formation longue durée",
-        "PhD Academy",
-        "Etudier à IPESTI",
-    ];
-
-    const pub = [
-        "Thèses",
-        "Rapports annuels",
-        "Articles",
-        "Livres",
-        "Rapport de projets",
-        "Plans stratégiques",
-        "Newsletters",
-    ];
-
-    const actu = ["Actualités", "événements"];
     return (
         <>
             <header className="row py-3 border-bottom px-0">
@@ -143,8 +125,12 @@ export const Header = () => {
                 </div>
             </header>
 
+            <div 
             
-            <div className="row border-bottom border-color bg-black">
+            className={`row border-bottom  bg-black ${
+                url.includes("fasolics") ? "border-color-green" : "border-color"
+            }`}
+            >
                 <div className="col-12 col-md-10 mx-auto d-flex flex-wrap">
                     <nav
                         className="navbar navbar-dark navbar-expand-xxl w-100 m-0 p-0"
@@ -171,7 +157,9 @@ export const Header = () => {
                                     <li className="nav-item">
                                         <NavLink
                                             to="/"
-                                            className="nav-link text-uppercase text-white px-2 active"
+                                            className={`nav-link text-uppercase text-white px-2 active ${
+                                                url === "/" && "text-primary"
+                                            }`}
                                         >
                                             accueil
                                             <span className="d-flex arrow-up w-100 px-2">
@@ -188,7 +176,10 @@ export const Header = () => {
                                                 role="button"
                                                 data-bs-toggle="dropdown"
                                                 aria-expanded="false"
-                                                className="nav-link dropdown-toggle text-uppercase text-white px-2"
+                                                className={`dropdown-toggle nav-link text-uppercase text-white px-2 active ${
+                                                    url.includes("ipesti") &&
+                                                    "text-primary"
+                                                }`}
                                             >
                                                 <span>L’IPESTI</span>
 
@@ -211,7 +202,10 @@ export const Header = () => {
                                                 role="button"
                                                 data-bs-toggle="dropdown"
                                                 aria-expanded="false"
-                                                className="nav-link dropdown-toggle text-uppercase text-white px-2"
+                                                className={`dropdown-toggle nav-link text-uppercase text-white px-2 active ${
+                                                    url.includes("recherche") &&
+                                                    "text-primary"
+                                                }`}
                                             >
                                                 La Recherche
                                                 <span className="d-flex arrow-up w-100 px-2">
@@ -220,7 +214,10 @@ export const Header = () => {
                                                     </span>
                                                 </span>
                                             </NavLink>
-                                            <DropDown menu={rech} />
+                                            <DropDown
+                                                menu={recherche}
+                                                link="recherche"
+                                            />
                                         </div>
                                     </li>
                                     <li className="nav-item">
@@ -230,7 +227,10 @@ export const Header = () => {
                                                 role="button"
                                                 data-bs-toggle="dropdown"
                                                 aria-expanded="false"
-                                                className="nav-link dropdown-toggle text-uppercase text-white px-2"
+                                                className={`dropdown-toggle nav-link text-uppercase text-white px-2 active ${
+                                                    url.includes("formation") &&
+                                                    "text-primary"
+                                                }`}
                                             >
                                                 Formations
                                                 <span className="d-flex arrow-up w-100 px-2">
@@ -240,7 +240,7 @@ export const Header = () => {
                                                 </span>
                                             </NavLink>
                                             <DropDown
-                                                menu={form}
+                                                menu={formation}
                                                 link="formation"
                                             />
                                         </div>
@@ -252,7 +252,11 @@ export const Header = () => {
                                                 role="button"
                                                 data-bs-toggle="dropdown"
                                                 aria-expanded="false"
-                                                className="nav-link dropdown-toggle text-uppercase text-white px-2"
+                                                className={`dropdown-toggle nav-link text-uppercase text-white px-2 active ${
+                                                    url.includes(
+                                                        "publication"
+                                                    ) && "text-primary"
+                                                }`}
                                             >
                                                 Publications
                                                 <span className="d-flex arrow-up w-100 px-2">
@@ -262,7 +266,7 @@ export const Header = () => {
                                                 </span>
                                             </NavLink>
                                             <DropDown
-                                                menu={pub}
+                                                menu={publication}
                                                 link="publication"
                                             />
                                         </div>
@@ -274,7 +278,36 @@ export const Header = () => {
                                                 role="button"
                                                 data-bs-toggle="dropdown"
                                                 aria-expanded="false"
-                                                className="nav-link dropdown-toggle text-uppercase text-white px-2"
+                                                className={`dropdown-toggle nav-link text-uppercase text-white px-2 active ${
+                                                    url.includes("expertise") &&
+                                                    "text-primary"
+                                                }`}
+                                            >
+                                                Expertise conseil
+                                                <span className="d-flex arrow-up w-100 px-2">
+                                                    <span className="selected mx-auto">
+                                                        <LinkSelectedIcon />
+                                                    </span>
+                                                </span>
+                                            </NavLink>
+                                            <DropDown
+                                                menu={expertise}
+                                                link="expertise"
+                                            />
+                                        </div>
+                                    </li>
+                                    <li className="nav-item">
+                                        <div className="dropdown">
+                                            <NavLink
+                                                href="#"
+                                                role="button"
+                                                data-bs-toggle="dropdown"
+                                                aria-expanded="false"
+                                                className={`dropdown-toggle nav-link text-uppercase text-white px-2 active ${
+                                                    url.includes(
+                                                        "actualites-evenements"
+                                                    ) && "text-primary"
+                                                }`}
                                             >
                                                 Actualités & Evénements
                                                 <span className="d-flex arrow-up w-100 px-2">
@@ -284,11 +317,27 @@ export const Header = () => {
                                                 </span>
                                             </NavLink>
                                             <DropDown
-                                                menu={actu}
+                                                menu={actualites}
                                                 link="actualites-evenements"
                                             />
                                         </div>
                                     </li>
+                                </ul>
+                                <ul
+                                    className={`nav py-2 ${
+                                        url.includes("fasolics") && "bg-green no-hover"
+                                    }`}
+                                >
+                                    <li className="nav-item ">
+                                        <NavLink
+                                            to={"/fasolics"}
+                                            className="nav-link text-uppercase text-white px-2"
+                                        >
+                                            fasolics
+                                        </NavLink>
+                                    </li>
+                                </ul>
+                                <ul className="nav py-2">
                                     <li className="nav-item">
                                         <NavLink
                                             to="/login"
@@ -300,16 +349,6 @@ export const Header = () => {
                                                     <LinkSelectedIcon />
                                                 </span>
                                             </span>
-                                        </NavLink>
-                                    </li>
-                                </ul>
-                                <ul className="nav bg-primary py-2">
-                                    <li className="nav-item ">
-                                        <NavLink
-                                            to={"/fasolics"}
-                                            className="nav-link text-uppercase text-white px-2"
-                                        >
-                                            fasolics
                                         </NavLink>
                                     </li>
                                 </ul>

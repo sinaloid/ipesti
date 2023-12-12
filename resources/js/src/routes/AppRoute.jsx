@@ -24,6 +24,7 @@ import { DashFormation } from "../pages/admin/DashFormation";
 import { DashRecherche } from "../pages/admin/DashRecherche";
 import { DashIpesti } from "../pages/admin/DashIpesti";
 import { DashFasolics } from "../pages/admin/DashFasolics";
+import { Recherche } from "../pages/Recherche";
 
 const AppRoute = ({ type }) => {
     if (type === "app") {
@@ -31,7 +32,7 @@ const AppRoute = ({ type }) => {
             <Routes>
                 <Route path={AppLink.home} element={<Home />} />
                 <Route path={AppLink.ipesti} element={<Ipesti />} />
-                <Route path={AppLink.content} element={<Content />} />
+                <Route path={AppLink.recherche} element={<Recherche />} />
                 <Route path={AppLink.formation} element={<Formation />} />
                 <Route path={AppLink.publication} element={<Publication />} />
                 <Route path={AppLink.actuEven} element={<ActuEven />} />
