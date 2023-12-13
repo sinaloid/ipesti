@@ -6,11 +6,25 @@ import { Filtre } from "../icons/Filtre";
 import { FlecheLongIcon } from "../icons/FlecheLong";
 import { EditIcon } from "../icons/EditIcon";
 import { publication } from "../utils/TabMenu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MenuSection } from "../components/MenuSection";
+import { useParams } from "react-router-dom";
 
 export const Publication = () => {
     const [data, setData] = useState({});
+    const {slugOne} = useParams()
+    const [label, setLabel] = useState()
+    useEffect(() => {
+        getLabel()
+    },[slugOne])
+
+    const getLabel = () => {
+        publication.map((data) => {
+            if(data.slug === slugOne){
+                setLabel(data.label)
+            }
+        })
+    }
     return (
         <Page>
             <Container>
@@ -71,7 +85,7 @@ export const Publication = () => {
                         </div>
                     </div>
                     <div className="col-12 col-md-8">
-                        <h1 className="text-primary">Livres</h1>
+                        <h1 className="text-primary">{label}</h1>
                         <div className="my-4">
                             De la dizaine de centres de recherche sur les STIES
                             sur le continent, aucune ne se trouve en Afrique

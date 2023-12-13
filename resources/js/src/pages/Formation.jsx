@@ -17,7 +17,19 @@ export const Formation = () => {
         
     };
 
-   
+    const {slugOne} = useParams()
+    const [label, setLabel] = useState()
+    useEffect(() => {
+        getLabel()
+    },[slugOne])
+
+    const getLabel = () => {
+        formation.map((data) => {
+            if(data.slug === slugOne){
+                setLabel(data.label)
+            }
+        })
+    }
     return (
         <Page>
             <Container>
@@ -74,7 +86,7 @@ export const Formation = () => {
                         </div>
                     </div>
                     <div className="col-12 col-md-8">
-                        <h1 className="text-primary">Formation longue durée</h1>
+                        <h1 className="text-primary">{label}</h1>
                         <div className="my-4">
                             De la dizaine de centres de recherche sur les STIES
                             sur le continent, aucune ne se trouve en Afrique

@@ -5,11 +5,25 @@ import actuP from "../assets/images/actu.png";
 import { Filtre } from "../icons/Filtre";
 import { Calendar } from "../icons/Calendar";
 import { MenuSection } from "../components/MenuSection";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { actualites } from "../utils/TabMenu";
+import { useParams } from "react-router-dom";
 
 export const ActuEven = () => {
     const [data, setData] = useState({})
+    const {slugOne} = useParams()
+    const [label, setLabel] = useState()
+    useEffect(() => {
+        getLabel()
+    },[slugOne])
+
+    const getLabel = () => {
+        actualites.map((data) => {
+            if(data.slug === slugOne){
+                setLabel(data.label)
+            }
+        })
+    }
     return (
         <Page>
             <Container>
@@ -70,7 +84,7 @@ export const ActuEven = () => {
                         </div>
                     </div>
                     <div className="col-12 col-md-8">
-                        <h1 className="text-primary mb-4">Actualités</h1>
+                        <h1 className="text-primary mb-4">{label}</h1>
 
                         <div className="row row-cols-1 row-cols-md-2 g-4">
                             {[...Array(6).keys()].map((data, idx) => {
