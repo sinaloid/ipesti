@@ -9,7 +9,7 @@ export const AppLink = {
     formation:"/formation/:slugOne?/:slugTwo?",
     publication:"/publication/:slugOne?/:slugTwo?",
     expertise:"/expertise/:slugOne?/:slugTwo?",
-    fasolics:"/fasolics/*",
+    fasolics:"/fasolics/:slugOne?/:slugTwo?",
     actuEven:"/actualites-evenements/:slugOne?/:slugTwo?",
     dashboard:"/dashboard/*",
     accueil:"accueil",

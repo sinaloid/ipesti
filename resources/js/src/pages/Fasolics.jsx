@@ -5,9 +5,19 @@ import recherche from "../assets/images/recherche.png";
 import { Filtre } from "../icons/Filtre";
 import { DownIcon } from "../icons/DownIcon";
 import { RightIcon } from "../icons/RightIcon";
+import { MenuSection } from "../components/MenuSection";
+import { useState } from "react";
+import { fasolics } from "../utils/TabMenu";
 
 export const Fasolics = () => {
-    const tab = ["Thématiques", "Gouvernance", "Impacts", "Projet RCR", "Organisations partenaires"];
+    const [data,setData] = useState({})
+    const tab = [
+        "Thématiques",
+        "Gouvernance",
+        "Impacts",
+        "Projet RCR",
+        "Organisations partenaires",
+    ];
 
     return (
         <Page>
@@ -17,21 +27,11 @@ export const Fasolics = () => {
                         <h3 className="bg-gray-60 text-white text-center py-2 text-uppercase">
                             FasoLics
                         </h3>
-                        <div className="bg-gray-e9 p-4">
-                            {tab.map((data, idx) => {
-                                return (
-                                    <>
-                                        <div
-                                            className="d-inline-block mb-3 fw-bold"
-                                            key={idx}
-                                        >
-                                            <FlecheIcon /> {data}
-                                        </div>
-                                        <br />
-                                    </>
-                                );
-                            })}
-                        </div>
+                        <MenuSection
+                            list={fasolics}
+                            setData={setData}
+                            link={"fasolics"}
+                        />
                     </div>
                     <div className="col-12 col-md-8">
                         <h1 className="text-success">à propos</h1>
@@ -106,22 +106,20 @@ export const Fasolics = () => {
                                 </div>
                             </div>
                         </div>
-                        {
-                            tab.map((data, idx) => {
-
-                                return <div className="mb-2" key={idx}>
-                                <div className="d-flex bg-green p-2">
-                                    <span className="text-white fw-bold">
-                                        {data}
-                                    </span>
-                                    <span className="text-white ms-auto">
-                                        <RightIcon />
-                                    </span>
+                        {tab.map((data, idx) => {
+                            return (
+                                <div className="mb-2" key={idx}>
+                                    <div className="d-flex bg-green p-2">
+                                        <span className="text-white fw-bold">
+                                            {data}
+                                        </span>
+                                        <span className="text-white ms-auto">
+                                            <RightIcon />
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
-                            })
-                        }
-                        
+                            );
+                        })}
                     </div>
                 </div>
             </Container>

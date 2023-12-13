@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 export const Equipe = ({ data }) => {
     const [viewContent, setViewContent] = useState(false);
-    const [idView, setIdView] = useState(0)
+    const [idView, setIdView] = useState(0);
     const equipe = [
         "Directeur",
         "Directeur Adjoint",
@@ -22,7 +22,7 @@ export const Equipe = ({ data }) => {
             data.children?.length !== 0
         ) {
             changerView(data.slug + "/" + data?.children[0]?.slug);
-            setIdView(0)
+            setIdView(0);
         }
     }, [data]);
 
@@ -47,7 +47,7 @@ export const Equipe = ({ data }) => {
                             onClick={(e) => {
                                 e.preventDefault();
                                 changerView(data.slug + "/" + item.slug);
-                                setIdView(idx)
+                                setIdView(idx);
                             }}
                         >
                             {item.label}
@@ -58,39 +58,45 @@ export const Equipe = ({ data }) => {
 
             {!viewContent ? (
                 <>
-                    <div className="mb-4 fs-18 text-primary fw-bold">
-                        {(data?.children && data.children?.length !== 0)&& data.children[idView].label}
-                    </div>
-                    <div className="row row-cols-2 g-4 mb-4">
-                        {equipe.map((data, idx) => {
-                            return (
-                                <div
-                                    className="col"
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        setViewContent(!viewContent);
-                                    }}
-                                >
-                                    <div className="d-flex">
-                                        <img
-                                            className="rounded-3"
-                                            width={"150px"}
-                                            src={prof}
-                                        />
-                                        <div>
-                                            <div>
-                                                {" "}
-                                                <span className="fw-bold">
-                                                    Poste
-                                                </span>{" "}
-                                                : {data}
+                    {slugTwo === "equipes-de-direction-administrative" && (
+                        <>
+                            <div className="mb-4 fs-18 text-primary fw-bold">
+                                {data?.children &&
+                                    data.children?.length !== 0 &&
+                                    data.children[idView].label}
+                            </div>
+                            <div className="row row-cols-2 g-4 mb-4">
+                                {equipe.map((data, idx) => {
+                                    return (
+                                        <div
+                                            className="col"
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                setViewContent(!viewContent);
+                                            }}
+                                        >
+                                            <div className="d-flex">
+                                                <img
+                                                    className="rounded-3"
+                                                    width={"150px"}
+                                                    src={prof}
+                                                />
+                                                <div>
+                                                    <div>
+                                                        {" "}
+                                                        <span className="fw-bold">
+                                                            Poste
+                                                        </span>{" "}
+                                                        : {data}
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
+                                    );
+                                })}
+                            </div>
+                        </>
+                    )}
                 </>
             ) : (
                 <div className="mb-4">

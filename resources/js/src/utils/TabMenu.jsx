@@ -148,25 +148,107 @@ const publication = [
 ];
 
 const expertise = [
-    { slug: "centres", label: "Centres", children: [
-        { slug: "centre-expertise-decision", label: "Centre d’Expertise et d’Aide à la Décision", children: [] },
-        { slug: "enseignement-superieur", label: "Observatoire de l’Enseignement Supérieur", children: [] },
-        { slug: "science-technologie", label: "Observatoire de la Science et de la Technologie", children: [] },
-        { slug: "innovation", label: "Observatoire de l’Innovation", children: [] },
-        { slug: "ethique-et-qualite", label: "Observatoire d’éthique et la Qualité de l’Enseignement supérieur", children: [] },
-        { slug: "transformation-numerique", label: "Observatoire de la transformation numérique", children: [] },
-    ] },
-    
+    {
+        slug: "centres",
+        label: "Centres",
+        children: [
+            {
+                slug: "centre-expertise-decision",
+                label: "Centre d’Expertise et d’Aide à la Décision",
+                children: [],
+            },
+            {
+                slug: "enseignement-superieur",
+                label: "Observatoire de l’Enseignement Supérieur",
+                children: [],
+            },
+            {
+                slug: "science-technologie",
+                label: "Observatoire de la Science et de la Technologie",
+                children: [],
+            },
+            {
+                slug: "innovation",
+                label: "Observatoire de l’Innovation",
+                children: [],
+            },
+            {
+                slug: "ethique-et-qualite",
+                label: "Observatoire d’éthique et la Qualité de l’Enseignement supérieur",
+                children: [],
+            },
+            {
+                slug: "transformation-numerique",
+                label: "Observatoire de la transformation numérique",
+                children: [],
+            },
+        ],
+    },
 ];
-
-
-
-
-
 
 const actualites = [
     { slug: "actualites", label: "Actualités", children: [] },
     { slug: "evenements", label: "événements", children: [] },
 ];
 
-export { ipesti, recherche, formation, publication, actualites, expertise };
+const fasolics = [
+    {
+        slug: "a_propos",
+        label: "A propos",
+        children: [
+            { slug: "objectifs", label: "Objectifs", children: [] },
+            { slug: "thematiques", label: "Thématiques", children: [] },
+            { slug: "gouvernance", label: "Gouvernance", children: [] },
+            { slug: "impacts", label: "Impacts", children: [] },
+            { slug: "projets-de-rcr", label: "Projets de RCR", children: [] },
+            {
+                slug: "organisations-partenaires",
+                label: "Organisations partenaires",
+                children: [],
+            },
+        ],
+    },
+    {
+        slug: "nos-activites",
+        label: "Nos activités",
+        children: [
+            {
+                slug: "les-academies-doctorales",
+                label: "Les Académies Doctorales",
+                children: [],
+            },
+            {
+                slug: "conferences-scientifiques",
+                label: "Conférences scientifiques",
+                children: [],
+            },
+            {
+                slug: "programme-de-bourses",
+                label: "Programme de bourses",
+                children: [],
+            },
+            {
+                slug: "bourses-de-sejour",
+                label: "Bourses de séjour postdoctorales",
+                children: [],
+            },
+            {
+                slug: "serie-de-webinaires",
+                label: "Série de webinaires",
+                children: [],
+            },
+            {
+                slug: "strategie-de-mentorat",
+                label: "Stratégie de mentorat",
+                children: [],
+            },
+            {
+                slug: "toutes-les-annonces",
+                label: "Toutes les annonces ",
+                children: [],
+            },
+        ],
+    },
+];
+
+export { ipesti, recherche, formation, publication, actualites, expertise, fasolics };
