@@ -1,30 +1,40 @@
 import { Container } from "../components/Container";
 import { Page } from "../components/Page";
 import { FlecheIcon } from "../icons/FlecheIcon";
-import book from "../assets/images/book.png";
 import { Filtre } from "../icons/Filtre";
-import { FlecheLongIcon } from "../icons/FlecheLong";
 import { EditIcon } from "../icons/EditIcon";
 import { publication } from "../utils/TabMenu";
 import { useEffect, useState } from "react";
 import { MenuSection } from "../components/MenuSection";
 import { useParams } from "react-router-dom";
+import { Livre } from "./publication/Livre";
 
 export const Publication = () => {
     const [data, setData] = useState({});
-    const {slugOne} = useParams()
-    const [label, setLabel] = useState()
+    const { slugOne } = useParams();
+    const [label, setLabel] = useState();
+
+    const pages = {
+        "vision-missions": <></>,
+        theses: <></>,
+        "rapports-annuel": <></>,
+        articles: <></>,
+        livres: <Livre label={label} />,
+        "rapport-de-projets": <></>,
+        "plans-strategiques": <></>,
+        newsletters: <></>,
+    };
     useEffect(() => {
-        getLabel()
-    },[slugOne])
+        getLabel();
+    }, [slugOne]);
 
     const getLabel = () => {
         publication.map((data) => {
-            if(data.slug === slugOne){
-                setLabel(data.label)
+            if (data.slug === slugOne) {
+                setLabel(data.label);
             }
-        })
-    }
+        });
+    };
     return (
         <Page>
             <Container>
@@ -85,47 +95,7 @@ export const Publication = () => {
                         </div>
                     </div>
                     <div className="col-12 col-md-8">
-                        <h1 className="text-primary">{label}</h1>
-                        <div className="my-4">
-                            De la dizaine de centres de recherche sur les STIES
-                            sur le continent, aucune ne se trouve en Afrique
-                            francophone. Pourtant, comme le souligne l’Union
-                            Africaine. De la dizaine de centres de recherche sur
-                            les STIES sur le continent, aucune ne se trouve en
-                            Afrique francophone.
-                        </div>
-                        <div className="row row-cols-1 row-cols-md-3 g-4">
-                            {[...Array(6).keys()].map((data, idx) => {
-                                return (
-                                    <div className="col ">
-                                        <div className="position-relative">
-                                            <img
-                                                width={"100%"}
-                                                src={book}
-                                                alt=""
-                                            />
-                                            <div
-                                                className="position-absolute text-white text-center px-2 d-none"
-                                                style={{
-                                                    bottom: "12px",
-                                                    left: "0",
-                                                }}
-                                            >
-                                                <span>
-                                                    Projet {idx + 1}{" "}
-                                                    <FlecheLongIcon />
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                        <div className="d-flex justify-content-center mt-4">
-                            <div className="btn border">
-                                Voir tous les livres
-                            </div>
-                        </div>
+                        {pages[slugOne]}
                     </div>
                 </div>
             </Container>

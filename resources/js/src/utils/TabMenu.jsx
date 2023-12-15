@@ -95,7 +95,38 @@ const recherche = [
     {
         slug: "programmes-de-recherche",
         label: "Programmes de recherche",
-        children: [],
+        children: [
+            {
+                slug: "science-technologie-et-societe",
+                label: "Science Technologie et société",
+                children: [],
+            },
+            {
+                slug: "enseignement-superieur-et-societe",
+                label: "Enseignement Supérieur et société ",
+                children: [],
+            },
+            {
+                slug: "innovation",
+                label: "Innovation",
+                children: [],
+            },
+            {
+                slug: "entrepreneuriat-et-developpement-regional",
+                label: "Entrepreneuriat et développement régional",
+                children: [],
+            },
+            {
+                slug: "digitalisation",
+                label: "Digitalisation de l’Enseignement Supérieur, la Science, la technologie et l’Innovation",
+                children: [],
+            },
+            {
+                slug: "ethique-et-qualite",
+                label: "Ethique et Qualité dans L'enseignement Supérieur et la recherche",
+                children: [],
+            },
+        ],
     },
     {
         slug: "projets-de-recherche",
@@ -123,7 +154,26 @@ const formation = [
     {
         slug: "formation-longue-duree",
         label: "Formation longue durée",
-        children: [],
+        children: [
+            {
+                slug: "licence",
+                label: "Licence",
+                children: [],
+            },
+            {
+                slug: "master",
+                label: "Master",
+                children: [],
+            },
+            {
+                slug: "doctorat",
+                label: "Doctorat",
+                children: [],
+            },
+            
+
+
+        ],
     },
     { slug: "phd-academy", label: "PhD Academy", children: [] },
     { slug: "etudes", label: "Etudier à IPESTI", children: [] },

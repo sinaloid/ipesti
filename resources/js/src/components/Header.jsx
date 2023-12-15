@@ -133,7 +133,7 @@ export const Header = () => {
             >
                 <div className="col-12 col-md-10 mx-auto d-flex flex-wrap">
                     <nav
-                        className="navbar navbar-dark navbar-expand-xxl w-100 m-0 p-0"
+                        className="navbar navbar-dark navbar-expand-md navbar-expand-xxl1 w-100 m-0 p-0"
                         aria-label="Seventh navbar example"
                     >
                         <div className="container-fluid px-0">
