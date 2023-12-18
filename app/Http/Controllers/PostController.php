@@ -43,16 +43,19 @@ class PostController extends Controller
         //dd($request->parent);
         $validator = Validator::make($request->all(), [
             'titre' => 'required|string|max:255',
-            'parent' => 'nullable|string|max:8',
+            'parent' => 'nullable|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'date' => 'nullable|date',
             'date_debut' => 'nullable|date',
             'date_fin' => 'nullable|date',
-            'lien_inscription' => 'nullable|string',
+            'lien' => 'nullable|string',
+            'email' => 'nullable|string|email|max:255',
             'contenu' => 'nullable|string',
+            'htmlOne' => 'nullable|string',
 
         ]);
-        
+         
+        //dd(Str::slug($request->titre));
         if ($validator->fails()) {
             return response(['errors' => $validator->errors()->all()], 422);
         }
@@ -62,13 +65,15 @@ class PostController extends Controller
         $data = Post::create([
             'titre' => $request->input('titre'),
             'contenu' => $request->input('contenu'),
+            'htmlOne' => $request->input('htmlOne'),
+            'email' => $request->input('email'),
             'date' => $request->input('date'),
             'date_debut' => $request->input('date_debut'),
             'date_fin' => $request->input('date_fin'),
-            'lien_inscription' => $request->input('lien_inscription'),
+            'lien' => $request->input('lien'),
             'parent_id' => isset($parent) ? $parent->id : null,
             'user_id' => Auth::user()->id,
-            'slug' => Str::random(8),
+            'slug' => Str::slug($request->titre),
         ]);
 
         if ($request->hasFile('image')) {
@@ -124,14 +129,16 @@ class PostController extends Controller
     {
         // Vérifier que les champs obligatoires sont remplis
         $validator = Validator::make($request->all(), [
-            'titre' => 'required|string|max:255',
+            'titre' => 'nullable|string|max:255',
             'parent' => 'nullable|string|max:8',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'date' => 'nullable|date',
             'date_debut' => 'nullable|date',
             'date_fin' => 'nullable|date',
-            'lien_inscription' => 'nullable|string',
+            'lien' => 'nullable|string',
+            'email' => 'nullable|string|email|max:255',
             'contenu' => 'nullable|string',
+            'htmlOne' => 'nullable|string',
         ]);
         
         if ($validator->fails()) {
@@ -148,10 +155,12 @@ class PostController extends Controller
         $data->update([
             'titre' => $request->input('titre'),
             'contenu' => $request->input('contenu'),
+            'htmlOne' => $request->input('htmlOne'),
+            'email' => $request->input('email'),
             'date' => $request->input('date'),
             'date_debut' => $request->input('date_debut'),
             'date_fin' => $request->input('date_fin'),
-            'lien_inscription' => $request->input('lien_inscription'),
+            'lien' => $request->input('lien'),
         ]);
 
         if($parent){

@@ -9,22 +9,36 @@ import { expertise, publication } from "../utils/TabMenu";
 import { useEffect, useState } from "react";
 import { MenuSection } from "../components/MenuSection";
 import { useParams } from "react-router-dom";
+import request from "../services/request";
+import endPoint from "../services/endPoint";
 
 export const Expertise = () => {
+    const { slugOne, slugTwo } = useParams();
     const [data, setData] = useState({});
-    const {slugOne} = useParams()
-    const [label, setLabel] = useState()
-    useEffect(() => {
-        getLabel()
-    },[slugOne])
+    const [detail, setDetail] = useState({});
+    const [index, setIndex] = useState(0);
 
-    const getLabel = () => {
-        expertise.map((data) => {
-            if(data.slug === slugOne){
-                setLabel(data.label)
-            }
-        })
-    }
+    const pages = {
+        "programmes-de-recherche": <></>,
+        "projets-de-recherche": <></>,
+        
+    };
+    //partenaires-academiques-internationaux
+    useEffect(() => {
+        get();
+    }, []);
+
+    const get = () => {
+        request
+            .get(endPoint.categories + "/expertise-conseil")
+            .then((res) => {
+                console.log(res.data.data);
+                setDetail(res.data.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
     return (
         <Page>
             <Container>
@@ -34,13 +48,13 @@ export const Expertise = () => {
                             Expertise Conseil
                         </h3>
                         <MenuSection
-                            list={expertise}
+                            list={detail.toutes_sous_categories}
                             setData={setData}
                             link={"expertise"}
                         />
                     </div>
                     <div className="col-12 col-md-8">
-                        <h1 className="text-primary">{label}</h1>
+                        <h1 className="text-primary">{detail.titre}</h1>
                         <div className="my-4">
                             Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem
                             ipsumLorem ipsumLorem ipsum Lorem ipsum Lorem ipsum

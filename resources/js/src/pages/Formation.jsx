@@ -8,28 +8,37 @@ import { formation } from "../utils/TabMenu";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { MenuSection } from "../components/MenuSection";
+import { FormationContent } from "./formation/FormationContent";
+import request from "../services/request";
+import endPoint from "../services/endPoint";
 
 export const Formation = () => {
+    const { slugOne, slugTwo } = useParams();
     const [data, setData] = useState({});
-    
+    const [detail, setDetail] = useState({});
+    const [index, setIndex] = useState(0);
+
     const pages = {
-        histoire: <></>,
+        "programmes-de-recherche": <FormationContent />,
+        "projets-de-recherche": <FormationContent />,
         
     };
-
-    const {slugOne} = useParams()
-    const [label, setLabel] = useState()
+    //partenaires-academiques-internationaux
     useEffect(() => {
-        getLabel()
-    },[slugOne])
+        get();
+    }, []);
 
-    const getLabel = () => {
-        formation.map((data) => {
-            if(data.slug === slugOne){
-                setLabel(data.label)
-            }
-        })
-    }
+    const get = () => {
+        request
+            .get(endPoint.categories + "/formations")
+            .then((res) => {
+                console.log(res.data.data);
+                setDetail(res.data.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
     return (
         <Page>
             <Container>
@@ -38,10 +47,14 @@ export const Formation = () => {
                         <h3 className="bg-gray-60 text-white text-center py-2">
                             La recherche
                         </h3>
-                        <MenuSection list={formation} setData={setData} link={"formation"} />
+                        <MenuSection
+                            list={detail.toutes_sous_categories}
+                            setData={setData}
+                            link={"formations"}
+                        />
                     </div>
                     <div className="col-12 col-md-8">
-                        <h1 className="text-primary">{label}</h1>
+                        <h1 className="text-primary">{detail.titre}</h1>
                         <div className="my-4">
                             De la dizaine de centres de recherche sur les STIES
                             sur le continent, aucune ne se trouve en Afrique
@@ -82,7 +95,8 @@ export const Formation = () => {
                                                 }}
                                             >
                                                 <span>
-                                                    Projet {idx + 1} <FlecheLongIcon />
+                                                    Projet {idx + 1}{" "}
+                                                    <FlecheLongIcon />
                                                 </span>
                                             </div>
                                         </div>
@@ -91,9 +105,7 @@ export const Formation = () => {
                             })}
                         </div>
                         <div className="d-flex justify-content-center mt-4">
-                            <div className="btn border">
-                                Voir tous
-                            </div>
+                            <div className="btn border">Voir tous</div>
                         </div>
                     </div>
                 </div>

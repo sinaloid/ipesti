@@ -19,9 +19,11 @@ return new class extends Migration
             $table->date('date')->nullable();
             $table->date('date_debut')->nullable();
             $table->date('date_fin')->nullable();
-            $table->string('lien_inscription')->nullable();
+            $table->string('lien')->nullable();
             $table->string('image')->nullable();
+            $table->string('email')->nullable();
             $table->longText('contenu')->nullable();
+            $table->longText('htmlOne')->nullable();
             $table->string('slug');
             $table->boolean("is_deleted")->default(false);
 

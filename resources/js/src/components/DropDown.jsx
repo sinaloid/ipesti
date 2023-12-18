@@ -13,26 +13,25 @@ export const DropDown = ({ menu, link = "content" }) => {
                                 class="dropdown-item text-white"
                                 href={src + dataOne.slug}
                             >
-                                {dataOne.label}
+                                {dataOne.titre}
                             </a>
-
-                            {dataOne.children.length !== 0 && (
+                            {dataOne.toutes_sous_categories.length !== 0 && (
                                 <>
                                     <ul class="dropdown-menu dropdown-submenu bg-black">
-                                        {dataOne.children.map((dataTwo, idx) => {
+                                        {dataOne.toutes_sous_categories.map((dataTwo, idx) => {
                                             return (
                                                 <li>
                                                     <a
                                                         class="dropdown-item text-white"
                                                         href={src + dataOne.slug+"/"+dataTwo.slug}
                                                     >
-                                                        {dataTwo.label}
+                                                        {dataTwo.titre}
                                                     </a>
-                                                    {dataTwo.children.length !==
+                                                    {dataTwo.toutes_sous_categories.length !==
                                                         0 && (
                                                         <>
                                                             <ul class="dropdown-menu dropdown-submenu bg-black">
-                                                                {dataTwo.children.map(
+                                                                {dataTwo.toutes_sous_categories.map(
                                                                     (
                                                                         dataThree,
                                                                         idx
@@ -43,7 +42,7 @@ export const DropDown = ({ menu, link = "content" }) => {
                                                                                     class="dropdown-item text-white"
                                                                                     href={src + dataOne.slug+"/"+dataTwo.slug+"/"+dataThree.slug}
                                                                                 >
-                                                                                    {dataThree.label}
+                                                                                    {dataThree.titre}
                                                                                 </a>
                                                                             </li>
                                                                         );

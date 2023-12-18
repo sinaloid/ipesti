@@ -14,16 +14,32 @@ import {
     publication,
     recherche,
 } from "../utils/TabMenu";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import request from "../services/request";
+import endPoint from "../services/endPoint";
 
 export const Header = () => {
     const url = window.location.pathname;
+    const [rubriques, setRubriques] = useState([])
 
     useEffect(() => {
         console.log(url);
         const content = url.includes("ipesti");
         console.log(content);
+        get()
     }, []);
+
+    const get = () => {
+        request
+            .get(endPoint.categories)
+            .then((res) => {
+                //console.log(res.data);
+                setRubriques(res.data.data)
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
 
     return (
         <>
@@ -125,11 +141,12 @@ export const Header = () => {
                 </div>
             </header>
 
-            <div 
-            
-            className={`row border-bottom  bg-black ${
-                url.includes("fasolics") ? "border-color-green" : "border-color"
-            }`}
+            <div
+                className={`row border-bottom  bg-black ${
+                    url.includes("fasolics")
+                        ? "border-color-green"
+                        : "border-color"
+                }`}
             >
                 <div className="col-12 col-md-10 mx-auto d-flex flex-wrap">
                     <nav
@@ -169,163 +186,46 @@ export const Header = () => {
                                             </span>
                                         </NavLink>
                                     </li>
-                                    <li className="nav-item">
-                                        <div className="dropdown position-relative">
-                                            <NavLink
-                                                href="#"
-                                                role="button"
-                                                data-bs-toggle="dropdown"
-                                                aria-expanded="false"
-                                                className={`dropdown-toggle nav-link text-uppercase text-white px-2 active ${
-                                                    url.includes("ipesti") &&
-                                                    "text-primary"
-                                                }`}
-                                            >
-                                                <span>L’IPESTI</span>
+                                    {
+                                        rubriques.map((data,idx) => {
 
-                                                <span className="d-flex arrow-up w-100 px-2">
-                                                    <span className="selected mx-auto">
-                                                        <LinkSelectedIcon />
+                                            if(data.slug === "fasolics"){
+                                                return
+                                            }
+                                            return <li className="nav-item">
+                                            <div className="dropdown position-relative">
+                                                <NavLink
+                                                    href="#"
+                                                    role="button"
+                                                    data-bs-toggle="dropdown"
+                                                    aria-expanded="false"
+                                                    className={`dropdown-toggle nav-link text-uppercase text-white px-2 active ${
+                                                        url.includes(data.slug) &&
+                                                        "text-primary"
+                                                    }`}
+                                                >
+                                                    <span>{data.titre}</span>
+    
+                                                    <span className="d-flex arrow-up w-100 px-2">
+                                                        <span className="selected mx-auto">
+                                                            <LinkSelectedIcon />
+                                                        </span>
                                                     </span>
-                                                </span>
-                                            </NavLink>
-                                            <DropDown
-                                                menu={ipesti}
-                                                link={"ipesti"}
-                                            />
-                                        </div>
-                                    </li>
-                                    <li className="nav-item">
-                                        <div className="dropdown">
-                                            <NavLink
-                                                href="#"
-                                                role="button"
-                                                data-bs-toggle="dropdown"
-                                                aria-expanded="false"
-                                                className={`dropdown-toggle nav-link text-uppercase text-white px-2 active ${
-                                                    url.includes("recherche") &&
-                                                    "text-primary"
-                                                }`}
-                                            >
-                                                La Recherche
-                                                <span className="d-flex arrow-up w-100 px-2">
-                                                    <span className="selected mx-auto">
-                                                        <LinkSelectedIcon />
-                                                    </span>
-                                                </span>
-                                            </NavLink>
-                                            <DropDown
-                                                menu={recherche}
-                                                link="recherche"
-                                            />
-                                        </div>
-                                    </li>
-                                    <li className="nav-item">
-                                        <div className="dropdown">
-                                            <NavLink
-                                                href="#"
-                                                role="button"
-                                                data-bs-toggle="dropdown"
-                                                aria-expanded="false"
-                                                className={`dropdown-toggle nav-link text-uppercase text-white px-2 active ${
-                                                    url.includes("formation") &&
-                                                    "text-primary"
-                                                }`}
-                                            >
-                                                Formations
-                                                <span className="d-flex arrow-up w-100 px-2">
-                                                    <span className="selected mx-auto">
-                                                        <LinkSelectedIcon />
-                                                    </span>
-                                                </span>
-                                            </NavLink>
-                                            <DropDown
-                                                menu={formation}
-                                                link="formation"
-                                            />
-                                        </div>
-                                    </li>
-                                    <li className="nav-item">
-                                        <div className="dropdown">
-                                            <NavLink
-                                                href="#"
-                                                role="button"
-                                                data-bs-toggle="dropdown"
-                                                aria-expanded="false"
-                                                className={`dropdown-toggle nav-link text-uppercase text-white px-2 active ${
-                                                    url.includes(
-                                                        "publication"
-                                                    ) && "text-primary"
-                                                }`}
-                                            >
-                                                Publications
-                                                <span className="d-flex arrow-up w-100 px-2">
-                                                    <span className="selected mx-auto">
-                                                        <LinkSelectedIcon />
-                                                    </span>
-                                                </span>
-                                            </NavLink>
-                                            <DropDown
-                                                menu={publication}
-                                                link="publication"
-                                            />
-                                        </div>
-                                    </li>
-                                    <li className="nav-item">
-                                        <div className="dropdown">
-                                            <NavLink
-                                                href="#"
-                                                role="button"
-                                                data-bs-toggle="dropdown"
-                                                aria-expanded="false"
-                                                className={`dropdown-toggle nav-link text-uppercase text-white px-2 active ${
-                                                    url.includes("expertise") &&
-                                                    "text-primary"
-                                                }`}
-                                            >
-                                                Expertise conseil
-                                                <span className="d-flex arrow-up w-100 px-2">
-                                                    <span className="selected mx-auto">
-                                                        <LinkSelectedIcon />
-                                                    </span>
-                                                </span>
-                                            </NavLink>
-                                            <DropDown
-                                                menu={expertise}
-                                                link="expertise"
-                                            />
-                                        </div>
-                                    </li>
-                                    <li className="nav-item">
-                                        <div className="dropdown">
-                                            <NavLink
-                                                href="#"
-                                                role="button"
-                                                data-bs-toggle="dropdown"
-                                                aria-expanded="false"
-                                                className={`dropdown-toggle nav-link text-uppercase text-white px-2 active ${
-                                                    url.includes(
-                                                        "actualites-evenements"
-                                                    ) && "text-primary"
-                                                }`}
-                                            >
-                                                Actualités & Evénements
-                                                <span className="d-flex arrow-up w-100 px-2">
-                                                    <span className="selected mx-auto">
-                                                        <LinkSelectedIcon />
-                                                    </span>
-                                                </span>
-                                            </NavLink>
-                                            <DropDown
-                                                menu={actualites}
-                                                link="actualites-evenements"
-                                            />
-                                        </div>
-                                    </li>
+                                                </NavLink>
+                                                <DropDown
+                                                    menu={data.toutes_sous_categories}
+                                                    link={data.slug}
+                                                />
+                                            </div>
+                                        </li>
+                                        })
+                                    }
+                                    
                                 </ul>
                                 <ul
                                     className={`nav py-2 ${
-                                        url.includes("fasolics") && "bg-green no-hover"
+                                        url.includes("fasolics") &&
+                                        "bg-green no-hover"
                                     }`}
                                 >
                                     <li className="nav-item ">
@@ -337,21 +237,23 @@ export const Header = () => {
                                         </NavLink>
                                     </li>
                                 </ul>
-                                <ul className="nav py-2">
-                                    <li className="nav-item">
-                                        <NavLink
-                                            to="/login"
-                                            className="nav-link text-uppercase text-white px-2 active"
-                                        >
-                                            connexion
-                                            <span className="d-flex arrow-up w-100 px-2">
-                                                <span className="selected mx-auto">
-                                                    <LinkSelectedIcon />
-                                                </span>
-                                            </span>
-                                        </NavLink>
-                                    </li>
-                                </ul>
+                                {/*** 
+                                        <ul className="nav py-2">
+                                            <li className="nav-item">
+                                                <NavLink
+                                                    to="/login"
+                                                    className="nav-link text-uppercase text-white px-2 active"
+                                                >
+                                                    connexion
+                                                    <span className="d-flex arrow-up w-100 px-2">
+                                                        <span className="selected mx-auto">
+                                                            <LinkSelectedIcon />
+                                                        </span>
+                                                    </span>
+                                                </NavLink>
+                                            </li>
+                                        </ul>
+                                     */}
                             </div>
                         </div>
                     </nav>

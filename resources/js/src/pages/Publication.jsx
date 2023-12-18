@@ -8,32 +8,36 @@ import { useEffect, useState } from "react";
 import { MenuSection } from "../components/MenuSection";
 import { useParams } from "react-router-dom";
 import { Livre } from "./publication/Livre";
+import request from "../services/request";
+import endPoint from "../services/endPoint";
+import { PublicationContent } from "./publication/PublicationContent";
 
 export const Publication = () => {
+    const { slugOne, slugTwo } = useParams();
     const [data, setData] = useState({});
-    const { slugOne } = useParams();
-    const [label, setLabel] = useState();
+    const [detail, setDetail] = useState({});
+    const [index, setIndex] = useState(0);
 
     const pages = {
-        "vision-missions": <></>,
-        theses: <></>,
-        "rapports-annuel": <></>,
-        articles: <></>,
-        livres: <Livre label={label} />,
-        "rapport-de-projets": <></>,
-        "plans-strategiques": <></>,
-        newsletters: <></>,
+        "programmes-de-recherche": <PublicationContent />,
+        "projets-de-recherche": <PublicationContent />,
+        
     };
+    //partenaires-academiques-internationaux
     useEffect(() => {
-        getLabel();
-    }, [slugOne]);
+        get();
+    }, []);
 
-    const getLabel = () => {
-        publication.map((data) => {
-            if (data.slug === slugOne) {
-                setLabel(data.label);
-            }
-        });
+    const get = () => {
+        request
+            .get(endPoint.categories + "/publications")
+            .then((res) => {
+                console.log(res.data.data);
+                setDetail(res.data.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
     return (
         <Page>
@@ -44,7 +48,7 @@ export const Publication = () => {
                             <EditIcon /> publications
                         </h3>
                         <MenuSection
-                            list={publication}
+                            list={detail.toutes_sous_categories}
                             setData={setData}
                             link={"publication"}
                         />

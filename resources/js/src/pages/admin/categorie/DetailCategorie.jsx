@@ -318,7 +318,7 @@ export const DetailCategorie = () => {
                             <Input
                                 type={"text"}
                                 placeholder="Nom de la catégorie"
-                                name={"nom"}
+                                name={"titre"}
                                 formik={formik}
                             />
                             <Input

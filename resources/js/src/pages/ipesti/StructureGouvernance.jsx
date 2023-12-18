@@ -1,12 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import request from "../../services/request";
+import endPoint from "../../services/endPoint";
 
-export const StructureGouvernance = ({ data }) => {
-    const { slugTwo } = useParams();
+export const StructureGouvernance = ({ data, slug }) => {
+    const { slugOne, slugTwo } = useParams();
     const navigate = useNavigate();
+    const [content, setContent] = useState({});
+    const [index, setIndex] = useState(0);
 
     useEffect(() => {
         console.log(data);
+        get();
         if (
             slugTwo === undefined &&
             data.children !== undefined &&
@@ -19,13 +24,25 @@ export const StructureGouvernance = ({ data }) => {
     const changerView = (slug) => {
         navigate("/ipesti/" + slug);
     };
+
+    const get = () => {
+        request
+            .get(endPoint.categories + "/" + slugOne)
+            .then((res) => {
+                console.log(res.data);
+                setContent(res.data.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
     return (
         <div className="col-12 col-md-8">
             <h1 className="text-primary mb-4">
                 Structure et gouvernance de l’IPESTI
             </h1>
             <div className="d-flex mb-4 border-bottom">
-                {data.children?.map((item, idx) => {
+                {content.toutes_sous_categories?.map((item, idx) => {
                     return (
                         <div
                             key={"scat" + idx}
@@ -36,10 +53,11 @@ export const StructureGouvernance = ({ data }) => {
                             }`}
                             onClick={(e) => {
                                 e.preventDefault();
-                                changerView(data.slug + "/" + item.slug);
+                                setIndex(idx)
+                                changerView(slug + "/" + item.slug);
                             }}
                         >
-                            {item.label}
+                            {item.titre}
                         </div>
                     );
                 })}
@@ -184,6 +202,19 @@ export const StructureGouvernance = ({ data }) => {
                         validera ses choix scientifiques et stratégiques.
                     </div>
                 </div>
+            )}
+
+            {content.toutes_sous_categories && (
+                <>
+                <span className="text-primary fs-18 fw-bold mb-4 d-inline-block">
+                        {content.toutes_sous_categories[index].titre}
+                    </span>
+                <div
+                    dangerouslySetInnerHTML={{
+                        __html: content.toutes_sous_categories[index].contenu,
+                    }}
+                />
+                </>
             )}
         </div>
     );

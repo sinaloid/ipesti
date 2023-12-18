@@ -8,22 +8,35 @@ import { MenuSection } from "../components/MenuSection";
 import { useEffect, useState } from "react";
 import { actualites } from "../utils/TabMenu";
 import { useParams } from "react-router-dom";
+import request from "../services/request";
+import endPoint from "../services/endPoint";
 
 export const ActuEven = () => {
-    const [data, setData] = useState({})
-    const {slugOne} = useParams()
-    const [label, setLabel] = useState()
-    useEffect(() => {
-        getLabel()
-    },[slugOne])
+    const { slugOne, slugTwo } = useParams();
+    const [data, setData] = useState({});
+    const [detail, setDetail] = useState({});
+    const [index, setIndex] = useState(0);
 
-    const getLabel = () => {
-        actualites.map((data) => {
-            if(data.slug === slugOne){
-                setLabel(data.label)
-            }
-        })
-    }
+    const pages = {
+        "programmes-de-recherche": <></>,
+        "projets-de-recherche": <></>,
+    };
+    //partenaires-academiques-internationaux
+    useEffect(() => {
+        get();
+    }, []);
+
+    const get = () => {
+        request
+            .get(endPoint.categories + "/actualites-evenements")
+            .then((res) => {
+                console.log(res.data.data);
+                setDetail(res.data.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
     return (
         <Page>
             <Container>
@@ -33,7 +46,7 @@ export const ActuEven = () => {
                             actualités & événements
                         </h3>
                         <MenuSection
-                            list={actualites}
+                            list={detail.toutes_sous_categories}
                             setData={setData}
                             link={"actualites-evenements"}
                         />
@@ -84,7 +97,7 @@ export const ActuEven = () => {
                         </div>
                     </div>
                     <div className="col-12 col-md-8">
-                        <h1 className="text-primary mb-4">{label}</h1>
+                        <h1 className="text-primary mb-4">{detail.titre}</h1>
 
                         <div className="row row-cols-1 row-cols-md-2 g-4">
                             {[...Array(6).keys()].map((data, idx) => {
@@ -110,7 +123,8 @@ export const ActuEven = () => {
                                                 en Afrique francophone.
                                             </span>
                                             <span className="d-block text-muted mb-3">
-                                                <Calendar /> 03/09/2023 à 16h30 minutes
+                                                <Calendar /> 03/09/2023 à 16h30
+                                                minutes
                                             </span>
                                         </div>
                                     </div>

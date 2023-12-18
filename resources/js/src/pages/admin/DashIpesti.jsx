@@ -5,6 +5,7 @@ import request from "../../services/request";
 import { Input } from "../../components/Input";
 import { useFormik } from "formik";
 import { pagination } from "../../services/function";
+import { useParams } from "react-router-dom";
 
 const initProduit = {
     label: "",
@@ -27,6 +28,7 @@ export const DashIpesti = () => {
         index: 0,
     });
     const close = useRef();
+    const {slugOne} = useParams()
 
     const tabBtn = [
         "Histoire",
@@ -82,10 +84,10 @@ export const DashIpesti = () => {
     };
     const getCategories = () => {
         request
-            .get(endPoint.categories)
+            .get(endPoint.categories+"/"+slugOne)
             .then((res) => {
-                console.log(res.data.categories.data);
-                setCategories(res.data.categories.data);
+                console.log(res.data.data);
+                setCategories(res.data.data.toutes_sous_categories);
             })
             .catch((error) => {
                 console.log(error);
@@ -144,7 +146,7 @@ export const DashIpesti = () => {
                     </div>
                     <div className="d-flex">
                         <div className="me-auto">
-                            {tabBtn.map((data, idx) => {
+                            {categories.map((data, idx) => {
                                 return (
                                     <button
                                     key={idx}
@@ -153,7 +155,7 @@ export const DashIpesti = () => {
                                         data-bs-toggle="modal"
                                         data-bs-target="#produit"
                                     >
-                                        {data}
+                                        {data.titre}
                                     </button>
                                 );
                             })}

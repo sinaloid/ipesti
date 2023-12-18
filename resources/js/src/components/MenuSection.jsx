@@ -49,10 +49,10 @@ export const MenuSection = ({ list = [], setData, link="ipesti" }) => {
                                     }`}
                                     onClick={(e) => {
                                         let slug =
-                                            dataOne.children.length !== 0
+                                            dataOne.toutes_sous_categories.length !== 0
                                                 ? dataOne.slug +
                                                   "/" +
-                                                  dataOne.children[0].slug
+                                                  dataOne.toutes_sous_categories[0].slug
                                                 : dataOne.slug;
 
                                         changerView(e, slug);
@@ -60,11 +60,11 @@ export const MenuSection = ({ list = [], setData, link="ipesti" }) => {
                                         setData(dataOne);
                                     }}
                                 >
-                                    <FlecheIcon /> {dataOne.label}
+                                    <FlecheIcon /> {dataOne.titre}
                                 </span>
                                 {dataOne.slug === slugOne && (
                                     <>
-                                        {dataOne.children.map(
+                                        {dataOne.toutes_sous_categories.map(
                                             (dateTwo, idx) => {
                                                 return (
                                                     <div className="ms-3">
@@ -90,7 +90,7 @@ export const MenuSection = ({ list = [], setData, link="ipesti" }) => {
                                                                 }}
                                                             >
                                                                 <FlecheIcon />{" "}
-                                                                {dateTwo.label}
+                                                                {dateTwo.titre}
                                                             </span>
                                                         </div>{" "}
                                                         <br />
