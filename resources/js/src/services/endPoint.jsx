@@ -4,7 +4,7 @@ const endPoint = {
     login:"login",
     users:"users",
     user:"/users/auth",
-    categories:"posts",
+    categories:"public/posts",
    
 }
 
