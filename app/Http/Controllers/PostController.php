@@ -161,6 +161,7 @@ class PostController extends Controller
             'date_debut' => $request->input('date_debut'),
             'date_fin' => $request->input('date_fin'),
             'lien' => $request->input('lien'),
+            'slug' => Str::slug($request->titre),
         ]);
 
         if($parent){
