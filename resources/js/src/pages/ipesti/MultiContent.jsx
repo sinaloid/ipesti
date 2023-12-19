@@ -39,7 +39,7 @@ export const MultiContent = ({ data, slug }) => {
     return (
         <div className="col-12 col-md-8">
             <h1 className="text-primary mb-4">
-                Structure et gouvernance de l’IPESTI
+            {content.titre}
             </h1>
             <div className="d-flex mb-4 border-bottom">
                 {content.toutes_sous_categories?.map((item, idx) => {
