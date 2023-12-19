@@ -61,7 +61,8 @@ const AppRoute = ({ type }) => {
                 <Route path={AppLink.formations_dashboard} element={<DashFormation />} />
                 <Route path={AppLink.recherches_dashboard} element={<DashRecherche />} />
                 <Route path={AppLink.ipesti_dashboard} element={<DashIpesti />} />
-                <Route path={AppLink.fasolics_dashboard} element={<DashFasolics />} />
+                <Route path={AppLink.ipesti_dashboard+"/:slug?"} element={<DetailCategorie />} />
+                <Route path={AppLink.fasolics_dashboard} element={<DashIpesti slug="fasolics" />} />
                 <Route path={AppLink.compte} element={<MonCompte />} />
             </Routes>
         );

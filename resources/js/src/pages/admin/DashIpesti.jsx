@@ -5,11 +5,11 @@ import request, { URL } from "../../services/request";
 import { Input } from "../../components/Input";
 import { useFormik } from "formik";
 import { pagination } from "../../services/function";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { MenuDashboard } from "../../components/MenuDashboard";
 import { Editor } from "@tinymce/tinymce-react";
 
-const lang = "http://127.0.0.1:8000/assets/langs/fr_FR.js";
+const lang = URL + "assets/langs/fr_FR.js";
 
 const initData = {
     titre: "",
@@ -37,7 +37,10 @@ export const DashIpesti = ({ slug = "ipesti" }) => {
     const [currentElement, setCurrentElement] = useState({});
     const [viewData, setViewData] = useState({});
     const [value, setValue] = useState("");
+    const [initvalue, setInitValue] = useState("");
     const [text, setText] = useState("");
+    const {id} = useParams()
+    const navigate = useNavigate()
 
     const tabBtn = [
         "Histoire",
@@ -50,32 +53,39 @@ export const DashIpesti = ({ slug = "ipesti" }) => {
     ];
     useEffect(() => {
         get();
-    }, []);
+    }, [slug,id]);
     const formik = useFormik({
         initialValues: initData,
         onSubmit: (values) => {
             values.contenu = value;
-            values.parent = currentElement.slug;
+
             console.log(values);
             ///post(values);
             if (values.slug) {
                 values._method = "put";
+                values.parent = "";
                 update(values);
+                formik.resetForm();
             } else {
+                values.parent = currentElement.slug;
                 post(values);
+                formik.resetForm();
             }
         },
     });
 
     const get = () => {
+        const slugData = id ? id : slug
         request
-            .get(endPoint.categories + "/" + slug)
+            .get(endPoint.categories + "/" + slugData)
             .then((res) => {
-                //console.log(res.data);
+                console.log(res.data);
                 setDetail(res.data.data);
                 if (res.data.data.toutes_sous_categories.length !== 0) {
                     setCurrentElement(res.data.data.toutes_sous_categories[0]);
                     //setSlugOne(res.data.data.toutes_sous_categories[0].slug)
+                } else {
+                    setCurrentElement({});
                 }
             })
             .catch((error) => {
@@ -133,13 +143,19 @@ export const DashIpesti = ({ slug = "ipesti" }) => {
         formik.setFieldValue("slug", data.slug);
         formik.setFieldValue("titre", data.titre);
         formik.setFieldValue("contenu", data.contenu);
-        setValue(data.contenu);
+        setInitValue(data.contenu);
     };
 
     const view = (e, data) => {
         e.preventDefault();
+        console.log(data);
         setViewData(data);
     };
+
+    const goTo = (e, id) => {
+        e.preventDefault()
+        navigate("/dashboard/ipesti/"+id)
+    }
     return (
         <>
             <div className="row mb-3">
@@ -276,6 +292,14 @@ export const DashIpesti = ({ slug = "ipesti" }) => {
                                                     >
                                                         Modifier
                                                     </button>
+                                                    <button
+                                                        className="btn btn-primary mx-1 rounded-3"
+                                                        onClick={(e) =>
+                                                            goTo(e, data.slug)
+                                                        }
+                                                    >
+                                                        Détails
+                                                    </button>
                                                     <button className="btn btn-danger mx-1 rounded-3">
                                                         Supprimer
                                                     </button>
@@ -410,7 +434,7 @@ export const DashIpesti = ({ slug = "ipesti" }) => {
                                     language_url: lang,
                                     toolbar_mode: "wrap",
                                 }}
-                                initialValue={value}
+                                initialValue={initvalue}
                                 onEditorChange={(newValue, editor) =>
                                     onEditorInputChange(newValue, editor)
                                 }

@@ -6,11 +6,16 @@ import { useFormik } from "formik";
 import { pagination } from "../../../services/function";
 import { useNavigate, useParams } from "react-router-dom";
 import AppRoute from "../../../routes/AppRoute";
+import { Editor } from "@tinymce/tinymce-react";
+const lang = URL + "assets/langs/fr_FR.js";
 
 const initData = {
-    nom: "",
+    titre: "",
+    contenu: "",
+    htmlOne: "",
+    email: "",
     image: "",
-    description: "",
+    lien: "",
 };
 export const DetailCategorie = () => {
     const [datas, setDatas] = useState({
@@ -27,7 +32,12 @@ export const DetailCategorie = () => {
     const [detail, setDetail] = useState("");
     const [viewData, setViewData] = useState({});
     const { slug } = useParams();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
+    const [contenu, setContenu] = useState("");
+    const [profile, setProfile] = useState("");
+    const [initvalue, setInitValue] = useState("");
+    const [text, setText] = useState("");
     useEffect(() => {
         get();
     }, []);
@@ -35,6 +45,8 @@ export const DetailCategorie = () => {
         initialValues: initData,
         onSubmit: (values) => {
             values.parent = slug;
+            values.contenu = contenu
+            values.htmlOne = profile
             console.log(values);
             if (values.slug) {
                 update(values);
@@ -71,7 +83,7 @@ export const DetailCategorie = () => {
     };
     const post = (values) => {
         request
-            .post(endPoint.categories, values)
+            .post(endPoint.categories_admin, values)
             .then((res) => {
                 console.log(res.data);
                 close.current.click();
@@ -84,7 +96,7 @@ export const DetailCategorie = () => {
 
     const update = (values) => {
         request
-            .post(endPoint.categories + "/" + values.slug, values)
+            .post(endPoint.categories_admin + "/" + values.slug, values)
             .then((res) => {
                 console.log(res.data);
                 close.current.click();
@@ -97,7 +109,7 @@ export const DetailCategorie = () => {
 
     const destroy = () => {
         request
-            .delete(endPoint.categories + "/" + viewData.slug)
+            .delete(endPoint.categories_admin + "/" + viewData.slug)
             .then((res) => {
                 console.log(res.data);
                 closeDelete.current.click();
@@ -138,6 +150,14 @@ export const DetailCategorie = () => {
         e.preventDefault();
         navigate("/dashboard/categories/pages/" + slug);
     };
+
+    const onContenuChange = (newValue, editor) => {
+        setContenu(newValue);
+    };
+
+    const onProfileChange = (newValue, editor) => {
+        setProfile(newValue);
+    };
     return (
         <>
             <div className="row mb-5">
@@ -145,7 +165,9 @@ export const DetailCategorie = () => {
                     <div className="d-flex">
                         <span className="fs-40 ">Section : </span>
                         <div className="ms-3 text-start">
-                            <span className="fw-bold fs-40 ">{detail.nom}</span>
+                            <span className="fw-bold fs-40 ">
+                                {detail.titre}
+                            </span>
                             <p className="text-start">{detail.description}</p>
                             <div>
                                 Créer le :{" "}
@@ -199,8 +221,8 @@ export const DetailCategorie = () => {
                                 type="button"
                                 className="btn btn-primary"
                                 data-bs-toggle="modal"
-                                data-bs-target="#produit"
-                                onClick={e => formik.resetForm()}
+                                data-bs-target="#add"
+                                onClick={(e) => formik.resetForm()}
                             >
                                 Ajouter
                             </button>
@@ -236,7 +258,7 @@ export const DetailCategorie = () => {
                                                     alt=""
                                                 />
                                                 <div className="text-100">
-                                                    {data.nom}
+                                                    {data.titre}
                                                 </div>
                                             </div>
                                         </td>
@@ -269,7 +291,7 @@ export const DetailCategorie = () => {
                                                         editData(e, data)
                                                     }
                                                 >
-                                                     Modifier
+                                                    Modifier
                                                 </button>
                                                 <button
                                                     className="btn btn-danger mx-1 rounded-3"
@@ -455,6 +477,135 @@ export const DetailCategorie = () => {
                 </div>
             </div>
             <AppRoute type={"detailOfPage"} />
+            <div
+                className="modal fade"
+                id="add"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+            >
+                <div className="modal-dialog modal-xl modal-dialog-centered">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h1
+                                className="modal-title fs-5"
+                                id="exampleModalLabel"
+                            >
+                                Ajout d'un nouvelle catégorie
+                            </h1>
+                            <button
+                                type="button"
+                                className="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                            ></button>
+                        </div>
+                        <div className="modal-body">
+                            <Input
+                                type={"text"}
+                                label="Titre du contenu"
+                                placeholder="Titre du contenu"
+                                name={"titre"}
+                                formik={formik}
+                            />
+                            <Input
+                                type={"file"}
+                                label="image"
+                                placeholder="image"
+                                name={"image"}
+                                formik={formik}
+                            />
+                            <Input
+                                type={"textarea"}
+                                placeholder="Description du produit"
+                                name={"description"}
+                                formik={formik}
+                            />
+                            <div>Profile</div>
+                            <Editor
+                                apiKey="inw3u1xr6hvvw2ezjwlonyy3wu489wqh6vl0437mbkfyakgv"
+                                init={{
+                                    plugins:
+                                        " anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount  textcolor",
+                                    toolbar:
+                                        "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat | forecolor backcolor",
+                                    tinycomments_mode: "embedded",
+                                    tinycomments_author: "Author name",
+                                    mergetags_list: [
+                                        {
+                                            value: "First.Name",
+                                            title: "First Name",
+                                        },
+                                        { value: "Email", title: "Email" },
+                                    ],
+                                    ai_request: (request, respondWith) =>
+                                        respondWith.string(() =>
+                                            Promise.reject(
+                                                "See docs to implement AI Assistant"
+                                            )
+                                        ),
+                                    language: "fr_FR",
+                                    language_url: lang,
+                                    toolbar_mode: "wrap",
+                                }}
+                                initialValue={initvalue}
+                                onEditorChange={(newValue, editor) =>
+                                    onProfileChange(newValue, editor)
+                                }
+                            />
+                            <div>Contenu</div>
+                            <Editor
+                                apiKey="inw3u1xr6hvvw2ezjwlonyy3wu489wqh6vl0437mbkfyakgv"
+                                init={{
+                                    plugins:
+                                        " anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount  textcolor",
+                                    toolbar:
+                                        "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat | forecolor backcolor",
+                                    tinycomments_mode: "embedded",
+                                    tinycomments_author: "Author name",
+                                    mergetags_list: [
+                                        {
+                                            value: "First.Name",
+                                            title: "First Name",
+                                        },
+                                        { value: "Email", title: "Email" },
+                                    ],
+                                    ai_request: (request, respondWith) =>
+                                        respondWith.string(() =>
+                                            Promise.reject(
+                                                "See docs to implement AI Assistant"
+                                            )
+                                        ),
+                                    language: "fr_FR",
+                                    language_url: lang,
+                                    toolbar_mode: "wrap",
+                                }}
+                                initialValue={initvalue}
+                                onEditorChange={(newValue, editor) =>
+                                    onContenuChange(newValue, editor)
+                                }
+                            />
+                        </div>
+                        <div className="modal-footer">
+                            <button
+                                type="button"
+                                className="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                                ref={close}
+                            >
+                                Annuler
+                            </button>
+                            <button
+                                type="button"
+                                className="btn btn-primary"
+                                onClick={formik.handleSubmit}
+                            >
+                                Enregistrer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     );
 };

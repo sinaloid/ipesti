@@ -149,7 +149,7 @@ class PostController extends Controller
         $parent = Post::where("slug", $request->parent)->where("is_deleted",false)->first();
 
         if (!$data) {
-            return response()->json(['message' => 'Post parent non trouvée'], 404);
+            return response()->json(['message' => 'Post non trouvée'], 404);
         }
 
         $data->update([

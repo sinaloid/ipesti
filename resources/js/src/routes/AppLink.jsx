@@ -21,7 +21,7 @@ export const AppLink = {
     publications_dashboard:"publications", 
     formations_dashboard:"formations", 
     recherches_dashboard:"recherches", 
-    ipesti_dashboard:":slugOne?/:id?", 
+    ipesti_dashboard:":slugOne?", 
     fasolics_dashboard:"fasolics", 
 
     compte:"compte",

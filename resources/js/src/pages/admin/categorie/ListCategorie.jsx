@@ -61,7 +61,7 @@ export const ListCategorie = () => {
     };
     const post = (values) => {
         request
-            .post(endPoint.categories, values)
+            .post(endPoint.categories_admin, values)
             .then((res) => {
                 console.log(res.data);
                 close.current.click();
@@ -73,7 +73,7 @@ export const ListCategorie = () => {
     };
     const update = (values) => {
         request
-            .post(endPoint.categories + "/" + values.slug, values)
+            .post(endPoint.categories_admin + "/" + values.slug, values)
             .then((res) => {
                 console.log(res.data);
                 close.current.click();
@@ -86,7 +86,7 @@ export const ListCategorie = () => {
 
     const destroy = () => {
         request
-            .delete(endPoint.categories + "/" + viewData.slug)
+            .delete(endPoint.categories_admin + "/" + viewData.slug)
             .then((res) => {
                 console.log(res.data);
                 closeDelete.current.click();
@@ -123,7 +123,7 @@ export const ListCategorie = () => {
         e.preventDefault();
         formik.setFieldValue("_method", "put");
         formik.setFieldValue("slug", data.slug);
-        formik.setFieldValue("nom", data.nom);
+        formik.setFieldValue("titre", data.titre);
         formik.setFieldValue("description", data.description);
     };
     return (
@@ -205,7 +205,7 @@ export const ListCategorie = () => {
                                                     alt=""
                                                 />
                                                 <div className="text-100">
-                                                    {data.nom}
+                                                    {data.titre}
                                                 </div>
                                             </div>
                                         </td>

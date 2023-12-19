@@ -7,9 +7,10 @@ import { useFormik } from "formik";
 import { pagination } from "../../services/function";
 import { useParams } from "react-router-dom";
 import { MenuDashboard } from "../../components/MenuDashboard";
-import { Editor } from "@tinymce/tinymce-react";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
-const lang = URL+"assets/langs/fr_FR.js";
+const lang = URL + "assets/langs/fr_FR.js";
 
 const initData = {
     titre: "",
@@ -354,9 +355,9 @@ export const DashContent = ({ slug = "ipesti" }) => {
                                 className="modal-title fs-5"
                                 id="exampleModalLabel"
                             >
-                                {
-                                    formik.values["slug"] ? "Création de contenu" : "Modification de contenu"
-                                }
+                                {formik.values["slug"]
+                                    ? "Création de contenu"
+                                    : "Modification de contenu"}
                             </h1>
                             <button
                                 type="button"
@@ -382,26 +383,48 @@ export const DashContent = ({ slug = "ipesti" }) => {
                             />
                             <Input
                                 type={"textarea"}
-                                placeholder="Description du produit"
+                                placeholder="Description du ok"
                                 name={"description"}
                                 formik={formik}
                             />
-                            <Editor
+                            {/**
+                                 * <Editor
                                 apiKey="inw3u1xr6hvvw2ezjwlonyy3wu489wqh6vl0437mbkfyakgv"
                                 init={{
                                     plugins:
                                         " anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount  textcolor",
                                     toolbar:
                                         "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat | forecolor backcolor",
-                                    
+
                                     language: "fr_FR",
                                     language_url: lang,
                                     toolbar_mode: "wrap",
                                 }}
-                                initialValue={"value"}
+                                initialValue={value}
                                 onEditorChange={(newValue, editor) =>
                                     onEditorInputChange(newValue, editor)
                                 }
+                            />
+                                 */}
+                            <CKEditor
+                                editor={ClassicEditor}
+                                data="<p>Hello from CKEditor&nbsp;5!</p>"
+                                onReady={(editor) => {
+                                    // You can store the "editor" and use when it is needed.
+                                    console.log(
+                                        "Editor is ready to use!",
+                                        editor
+                                    );
+                                }}
+                                onChange={(event) => {
+                                    console.log(event);
+                                }}
+                                onBlur={(event, editor) => {
+                                    console.log("Blur.", editor);
+                                }}
+                                onFocus={(event, editor) => {
+                                    console.log("Focus.", editor);
+                                }}
                             />
                         </div>
                         <div className="modal-footer">
