@@ -142,7 +142,7 @@ export const DetailCategorie = () => {
         e.preventDefault();
         formik.setFieldValue("_method", "put");
         formik.setFieldValue("slug", data.slug);
-        formik.setFieldValue("nom", data.nom);
+        formik.setFieldValue("titre", data.titre);
         formik.setFieldValue("description", data.description);
     };
 
@@ -286,7 +286,7 @@ export const DetailCategorie = () => {
                                                 <button
                                                     className="btn btn-warning mx-1 rounded-3"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#produit"
+                                                    data-bs-target="#add"
                                                     onClick={(e) =>
                                                         editData(e, data)
                                                     }
