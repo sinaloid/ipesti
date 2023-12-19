@@ -130,7 +130,7 @@ class PostController extends Controller
         // Vérifier que les champs obligatoires sont remplis
         $validator = Validator::make($request->all(), [
             'titre' => 'nullable|string|max:255',
-            'parent' => 'nullable|string|max:8',
+            'parent' => 'nullable|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'date' => 'nullable|date',
             'date_debut' => 'nullable|date',
