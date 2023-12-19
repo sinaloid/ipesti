@@ -5,6 +5,7 @@ const endPoint = {
     users:"users",
     user:"/users/auth",
     categories:"public/posts",
+    categories_admin:"posts",
    
 }
 

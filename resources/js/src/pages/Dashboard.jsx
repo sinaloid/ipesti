@@ -132,21 +132,6 @@ const Dashboard = () => {
                                 </div>
                             </div>
                             <ul class="nav flex-column bg-gray mx-2 rounded-3">
-                                {/***
-                     * <li class="nav-item">
-                    <NavLink
-                      className={({ isActive }) =>
-                        `nav-link d-flex align-items-center text-white gap-2 text-uppercase  ${
-                          isActive && "dash-active text-white rounded-3"
-                        }`
-                      }
-                      to={AppLink.accueil}
-                    >
-                      <i class="bi bi-house"></i>
-                      Accueil
-                    </NavLink>
-                  </li>
-                     */}
                                 {categories.map((data, idx) => {
                                     return (
                                         <li class="nav-item">
@@ -157,9 +142,7 @@ const Dashboard = () => {
                                                         "dash-active text-white rounded-3"
                                                     }`
                                                 }
-                                                to={
-                                                    data.slug
-                                                }
+                                                to={data.slug}
                                             >
                                                 <i class="bi bi-house"></i>
                                                 {data.titre}
@@ -170,102 +153,17 @@ const Dashboard = () => {
                                 <li class="nav-item">
                                     <NavLink
                                         className={({ isActive }) =>
-                                            `nav-link d-flex align-items-center text-white gap-2 text-uppercase  ${
+                                            `nav-link d-flex align-items-center text-white gap-2 text-uppercase   ${
                                                 isActive &&
                                                 "dash-active text-white rounded-3"
                                             }`
                                         }
-                                        to={AppLink.actualites_dashboard}
+                                        to={AppLink.categories}
                                     >
                                         <i class="bi bi-house"></i>
-                                        Actualités
+                                        Catégories
                                     </NavLink>
                                 </li>
-                                <li class="nav-item">
-                                    <NavLink
-                                        className={({ isActive }) =>
-                                            `nav-link d-flex align-items-center text-white gap-2 text-uppercase  ${
-                                                isActive &&
-                                                "dash-active text-white rounded-3"
-                                            }`
-                                        }
-                                        to={AppLink.publications_dashboard}
-                                    >
-                                        <i class="bi bi-house"></i>
-                                        Publications
-                                    </NavLink>
-                                </li>
-                                <li class="nav-item">
-                                    <NavLink
-                                        className={({ isActive }) =>
-                                            `nav-link d-flex align-items-center text-white gap-2 text-uppercase  ${
-                                                isActive &&
-                                                "dash-active text-white rounded-3"
-                                            }`
-                                        }
-                                        to={AppLink.formations_dashboard}
-                                    >
-                                        <i class="bi bi-house"></i>
-                                        Formations
-                                    </NavLink>
-                                </li>
-                                <li class="nav-item">
-                                    <NavLink
-                                        className={({ isActive }) =>
-                                            `nav-link d-flex align-items-center text-white gap-2 text-uppercase  ${
-                                                isActive &&
-                                                "dash-active text-white rounded-3"
-                                            }`
-                                        }
-                                        to={AppLink.recherches_dashboard}
-                                    >
-                                        <i class="bi bi-house"></i>
-                                        Recherches
-                                    </NavLink>
-                                </li>
-                                <li class="nav-item">
-                                    <NavLink
-                                        className={({ isActive }) =>
-                                            `nav-link d-flex align-items-center text-white gap-2 text-uppercase  ${
-                                                isActive &&
-                                                "dash-active text-white rounded-3"
-                                            }`
-                                        }
-                                        to={AppLink.ipesti_dashboard}
-                                    >
-                                        <i class="bi bi-house"></i>
-                                        Ipesti
-                                    </NavLink>
-                                </li>
-                                <li class="nav-item">
-                                    <NavLink
-                                        className={({ isActive }) =>
-                                            `nav-link d-flex align-items-center text-white gap-2 text-uppercase  ${
-                                                isActive &&
-                                                "dash-active text-white rounded-3"
-                                            }`
-                                        }
-                                        to={AppLink.fasolics_dashboard}
-                                    >
-                                        <i class="bi bi-house"></i>
-                                        FasoLICS
-                                    </NavLink>
-                                </li>
-                                {/**
-                     * <li class="nav-item">
-                    <NavLink
-                      className={({ isActive }) =>
-                        `nav-link d-flex align-items-center text-white gap-2 text-uppercase  ${
-                          isActive && "dash-active text-white rounded-3"
-                        }`
-                      }
-                      to={AppLink.categories}
-                    >
-                      <i class="bi bi-house"></i>
-                      Catégories
-                    </NavLink>
-                  </li>
-                     */}
 
                                 <li class="nav-item">
                                     <NavLink

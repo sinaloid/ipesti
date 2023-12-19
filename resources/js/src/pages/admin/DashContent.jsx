@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 import { MenuDashboard } from "../../components/MenuDashboard";
 import { Editor } from "@tinymce/tinymce-react";
 
-const lang = "http://127.0.0.1:8000/assets/langs/fr_FR.js";
+const lang = URL+"assets/langs/fr_FR.js";
 
 const initData = {
     titre: "",
@@ -19,7 +19,7 @@ const initData = {
     image: "",
     lien: "",
 };
-export const DashIpesti = ({ slug = "ipesti" }) => {
+export const DashContent = ({ slug = "ipesti" }) => {
     const [datas, setDatas] = useState({
         all: [],
         small: [],

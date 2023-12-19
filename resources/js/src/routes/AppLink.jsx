@@ -17,7 +17,7 @@ export const AppLink = {
     pages:"pages",
     utilisateurs:"utilisateurs",
 
-    actualites_dashboard:"actualites", 
+    actualites_dashboard:"actualites-evenements", 
     publications_dashboard:"publications", 
     formations_dashboard:"formations", 
     recherches_dashboard:"recherches", 
