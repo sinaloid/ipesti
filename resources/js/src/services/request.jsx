@@ -3,7 +3,7 @@ import { getUser } from './storage';
 
 //export const URL = "https://emc.edic-municipalities.com/"
 //export const URL = "https://ipesti.fasodigi.com/"
-export const URL = "https://ipesti-bg.org/"
+export const URL = "https://ipesti-bf.org/"
 //export const URL = "http://127.0.0.1:8000/"
 export const URL_ = URL
 
