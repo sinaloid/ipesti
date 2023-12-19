@@ -50,7 +50,7 @@ export const Publication = () => {
                         <MenuSection
                             list={detail.toutes_sous_categories}
                             setData={setData}
-                            link={"publication"}
+                            link={"publications"}
                         />
 
                         <div className="bg-gray-e9  mt-4 p-4">
