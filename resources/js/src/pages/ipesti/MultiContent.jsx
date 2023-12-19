@@ -63,7 +63,7 @@ export const MultiContent = ({ data, slug }) => {
                 })}
             </div>
 
-            {content.toutes_sous_categories && (
+            {content.toutes_sous_categories.length !== 0 && (
                 <>
                 <span className="text-primary fs-18 fw-bold mb-4 d-inline-block">
                         {content.toutes_sous_categories[index].titre}
