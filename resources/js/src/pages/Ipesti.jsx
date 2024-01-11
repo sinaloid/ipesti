@@ -26,6 +26,7 @@ export const Ipesti = () => {
     const pages = {
         histoire: <OneContent/>,
         "vision-missions": <OneContent/>,
+        "objectifs": <OneContent/>,
         "structure-gouvernance": <MultiContent data={data} slug={"structure-gouvernance"} />,
         "partenaires-de-recherche": <MultiContent data={data} slug={"partenaires-de-recherche"} />,
         opportunites: <MultiContent data={data} slug={"opportunites"} />,

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('lien')->nullable();
             $table->string('image')->nullable();
             $table->string('email')->nullable();
+            $table->string('post_ordre')->nullable();
             $table->longText('contenu')->nullable();
             $table->longText('htmlOne')->nullable();
             $table->string('slug');

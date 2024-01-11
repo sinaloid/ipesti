@@ -19,6 +19,7 @@ class Post extends Model
         "contenu",
         "htmlOne",
         "email",
+        "post_ordre",
         "slug",
         "is_deleted",
         "parent_id",
