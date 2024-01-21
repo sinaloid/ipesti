@@ -286,4 +286,17 @@ select {
     cursor: pointer;
 }
 
+p{
+    margin: 0;
+    padding: 0;
+}
+
+div > h3 {
+    font-weight: bold;
+}
+div > ul {
+    margin: 0;
+    padding: 0;
+    padding-left: 80px;
+}
 

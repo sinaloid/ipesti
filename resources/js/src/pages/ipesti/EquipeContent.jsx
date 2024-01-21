@@ -87,11 +87,11 @@ export const EquipeContent = ({ data, slug }) => {
                                     <div className="d-flex">
                                         <img
                                             className="rounded-3"
-                                            width={"200px"}
-                                            height={"200px"}
+                                            width={"100px"}
+                                            height={"100px"}
                                             src={URL+""+data.image}
                                         />
-                                        <div>
+                                        <div className="ps-2">
                                             <div>
                                                 <div dangerouslySetInnerHTML={{__html: data.htmlOne}} />
                                             </div>
