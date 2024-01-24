@@ -17,6 +17,7 @@ import { OneContent } from "./ipesti/OneContent";
 import { MultiContent } from "./ipesti/MultiContent";
 import { RechercheContent } from "./recherche/RechercheContent";
 import { ProjetContent } from "./recherche/ProjetContent";
+import { MenuSectionTwo } from "../components/MenuSectionTwo";
 
 
 export const Recherche = () => {
@@ -59,7 +60,7 @@ export const Recherche = () => {
                         <h3 className="bg-gray-60 text-white text-center py-2">
                         La recherche
                         </h3>
-                        <MenuSection
+                        <MenuSectionTwo
                             list={detail.toutes_sous_categories}
                             setData={setData}
                             link={"la-recherche"}
