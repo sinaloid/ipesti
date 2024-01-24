@@ -300,3 +300,8 @@ div > ul {
     padding-left: 80px;
 }
 
+.btn-primary{
+    background-color: var(--red-color) !important;
+    border: 1px solid var(--red-color);
+}
+

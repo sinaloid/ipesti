@@ -195,7 +195,7 @@ export const EquipeContent = ({ data, slug }) => {
                                         </p>
                                     </div>
                                     <div>
-                                        <button className="btn btn-primary">Voir le CV complete</button>
+                                        <button className="btn btn-primary">Voir le CV complet</button>
                                     </div>
                                 </div>
                             </>
