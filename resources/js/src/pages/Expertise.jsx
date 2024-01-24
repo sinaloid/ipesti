@@ -11,17 +11,20 @@ import { MenuSection } from "../components/MenuSection";
 import { useParams } from "react-router-dom";
 import request from "../services/request";
 import endPoint from "../services/endPoint";
+import { ExpertiseContent } from "./expertise/ExpertiseContent";
 
 export const Expertise = () => {
     const { slugOne, slugTwo } = useParams();
     const [data, setData] = useState({});
     const [detail, setDetail] = useState({});
     const [index, setIndex] = useState(0);
-
     const pages = {
-        "programmes-de-recherche": <></>,
-        "projets-de-recherche": <></>,
-        
+        "centre-dexpertise-et-daide-a-la-decision": (<><ExpertiseContent /></>),
+        "observatoire-de-lenseignement-superieur": (<><ExpertiseContent /></>),
+        "observatoire-de-la-science-et-de-la-technologie": (<><ExpertiseContent /></>),
+        "observatoire-de-linnovation": (<><ExpertiseContent /></>),
+        "observatoire-dethique-et-la-qualite-de-lenseignement-superieur": (<><ExpertiseContent /></>),
+        "observatoire-de-la-transformation-numerique": (<><ExpertiseContent /></>),
     };
     //partenaires-academiques-internationaux
     useEffect(() => {
@@ -50,17 +53,19 @@ export const Expertise = () => {
                         <MenuSection
                             list={detail.toutes_sous_categories}
                             setData={setData}
-                            link={"expertise"}
+                            link={"expertise-conseil"}
                         />
                     </div>
                     <div className="col-12 col-md-8">
                         <h1 className="text-primary">{detail.titre}</h1>
                         <div className="my-4">
-                            Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem
-                            ipsumLorem ipsumLorem ipsum Lorem ipsum Lorem ipsum
-                            Lorem ipsum Lorem ipsum
+                            <div
+                                dangerouslySetInnerHTML={{
+                                    __html: detail?.contenu,
+                                }}
+                            />
                         </div>
-                        
+                        <div className="">{pages[slugOne]}</div>
                     </div>
                 </div>
             </Container>

@@ -1,21 +1,24 @@
 import { useEffect, useRef, useState } from "react";
-import endPoint from "../../../../services/endPoint";
-import request, { URL } from "../../../../services/request";
-import { Input } from "../../../../components/Input";
+import endPoint from "../services/endPoint";
+import request, { URL } from "../services/request";
+import { Input } from "../components/Input";
 import { useFormik } from "formik";
-import { pagination } from "../../../../services/function";
-import { useParams } from "react-router-dom";
-//import { CKEditor } from "@ckeditor/ckeditor5-react";
-//import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { pagination } from "../services/function";
+import { useNavigate, useParams } from "react-router-dom";
+import AppRoute from "../routes/AppRoute";
 import { Editor } from "@tinymce/tinymce-react";
+const lang = URL + "assets/langs/fr_FR.js";
 
-const lang = "http://127.0.0.1:8000/assets/langs/fr_FR.js";
 const initData = {
-    nom: "",
+    titre: "",
+    contenu: "",
+    htmlOne: "",
+    email: "",
     image: "",
-    description: "",
+    lien: "",
 };
-export const PageList = ({ setView }) => {
+
+export const ViewTable = () => {
     const [datas, setDatas] = useState({
         all: [],
         small: [],
@@ -30,13 +33,21 @@ export const PageList = ({ setView }) => {
     const [detail, setDetail] = useState("");
     const [viewData, setViewData] = useState({});
     const { slug } = useParams();
+    const navigate = useNavigate();
+
+    const [contenu, setContenu] = useState("");
+    const [profile, setProfile] = useState("");
+    const [initvalue, setInitValue] = useState("");
+    const [text, setText] = useState("");
     useEffect(() => {
         get();
-    }, []);
+    }, [slug]);
     const formik = useFormik({
         initialValues: initData,
         onSubmit: (values) => {
             values.parent = slug;
+            values.contenu = contenu;
+            values.htmlOne = profile;
             console.log(values);
             if (values.slug) {
                 update(values);
@@ -65,6 +76,11 @@ export const PageList = ({ setView }) => {
                         small: tab.list[0],
                     });
                     setPages(tab);
+                } else {
+                    setDatas({
+                        all: [],
+                        small: [],
+                    });
                 }
             })
             .catch((error) => {
@@ -73,7 +89,7 @@ export const PageList = ({ setView }) => {
     };
     const post = (values) => {
         request
-            .post(endPoint.categories, values)
+            .post(endPoint.categories_admin, values)
             .then((res) => {
                 console.log(res.data);
                 close.current.click();
@@ -86,7 +102,7 @@ export const PageList = ({ setView }) => {
 
     const update = (values) => {
         request
-            .post(endPoint.categories + "/" + values.slug, values)
+            .post(endPoint.categories_admin + "/" + values.slug, values)
             .then((res) => {
                 console.log(res.data);
                 close.current.click();
@@ -99,7 +115,7 @@ export const PageList = ({ setView }) => {
 
     const destroy = () => {
         request
-            .delete(endPoint.categories + "/" + viewData.slug)
+            .delete(endPoint.categories_admin + "/" + viewData.slug)
             .then((res) => {
                 console.log(res.data);
                 closeDelete.current.click();
@@ -132,32 +148,35 @@ export const PageList = ({ setView }) => {
         e.preventDefault();
         formik.setFieldValue("_method", "put");
         formik.setFieldValue("slug", data.slug);
-        formik.setFieldValue("nom", data.nom);
+        formik.setFieldValue("titre", data.titre);
         formik.setFieldValue("description", data.description);
     };
 
+    const goToDetail = (e, slug) => {
+        e.preventDefault();
+        navigate("/dashboard/categories/pages/" + slug);
+    };
+
+    const goTo = (e, slug) => {
+        e.preventDefault();
+        navigate(slug);
+    };
+
+    const onContenuChange = (newValue, editor) => {
+        setContenu(newValue);
+    };
+
+    const onProfileChange = (newValue, editor) => {
+        setProfile(newValue);
+    };
     return (
         <>
-            <div className="row mb-5">
-                <div className="col-12">
-                    <div className="d-flex">
-                        <span className="fs-40 ">Page : </span>
-                        <div className="ms-3 text-start">
-                            <span className="fw-bold fs-40 ">{detail.nom}</span>
-                            <p className="text-start">{detail.description}</p>
-                            <div>
-                                Créer le :{" "}
-                                {new Date(
-                                    detail.created_at
-                                ).toLocaleDateString()}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
             <div className="row mb-3">
-                <div className="col-12 mb-3">
-                    <h1 className="text-start mb-3 fs-30">Liste des pages</h1>
+                <div className="col-12">
+                    <h1 className="text-start mb-3 fs-30">
+                        Liste des sous sections
+                    </h1>
                     <div className="d-flex">
                         <div className="d-flex align-items-center me-auto">
                             <div>
@@ -190,41 +209,17 @@ export const PageList = ({ setView }) => {
                                 Page {pages.index + 1} / {pages.list.length}
                             </span>
                         </div>
-                    </div>
-                </div>
-                <div className="d-flex">
-                    <div className="me-auto">
-                        <button
-                            type="button"
-                            className="btn btn-primary me-2"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                setView("pages");
-                            }}
-                        >
-                            Pages
-                        </button>
-                        <button
-                            type="button"
-                            className="btn btn-primary"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                setView("categories");
-                            }}
-                        >
-                            Categories
-                        </button>
-                    </div>
-                    <div>
-                        <button
-                            type="button"
-                            className="btn btn-primary"
-                            data-bs-toggle="modal"
-                            data-bs-target="#produit"
-                            onClick={(e) => formik.resetForm()}
-                        >
-                            Ajouter
-                        </button>
+                        <div>
+                            <button
+                                type="button"
+                                className="btn btn-primary"
+                                data-bs-toggle="modal"
+                                data-bs-target="#add"
+                                onClick={(e) => formik.resetForm()}
+                            >
+                                Ajouter
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -234,7 +229,7 @@ export const PageList = ({ setView }) => {
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Catégories</th>
+                                <th scope="col">Section</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Action</th>
@@ -250,13 +245,20 @@ export const PageList = ({ setView }) => {
                                         <th scope="row">{idx + 1}</th>
                                         <td>
                                             <div className="d-flex">
-                                                <img
-                                                    width={"64px"}
-                                                    src={URL + data.image}
-                                                    alt=""
-                                                />
+                                                {data.image && (
+                                                    <>
+                                                        <img
+                                                            width={"64px"}
+                                                            src={
+                                                                URL + data.image
+                                                            }
+                                                            alt=""
+                                                        />
+                                                    </>
+                                                )}
+
                                                 <div className="text-100">
-                                                    {data.nom}
+                                                    {data.titre}
                                                 </div>
                                             </div>
                                         </td>
@@ -272,12 +274,23 @@ export const PageList = ({ setView }) => {
                                         </td>
                                         <td>
                                             <div className="btn-group">
-                                                <button
+                                                {
+                                                    /**
+                                                     * <button
                                                     className="btn btn-primary-light mx-1 rounded-3"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#view"
                                                     onClick={(e) =>
-                                                        onSelectData(e, data)
+                                                        //onSelectData(e, data)
+                                                        goToDetail(e, data.slug)
+                                                    }
+                                                >
+                                                    Voir
+                                                </button>
+                                                     */
+                                                }
+                                                <button
+                                                    className="btn btn-primary mx-1 rounded-3"
+                                                    onClick={(e) =>
+                                                        goTo(e, data.slug)
                                                     }
                                                 >
                                                     Voir
@@ -285,7 +298,7 @@ export const PageList = ({ setView }) => {
                                                 <button
                                                     className="btn btn-warning mx-1 rounded-3"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#produit"
+                                                    data-bs-target="#add"
                                                     onClick={(e) =>
                                                         editData(e, data)
                                                     }
@@ -319,7 +332,7 @@ export const PageList = ({ setView }) => {
                 aria-labelledby="exampleModalLabel"
                 aria-hidden="true"
             >
-                <div className="modal-dialog modal-xl modal-dialog-centered">
+                <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content">
                         <div className="modal-header">
                             <h1
@@ -339,7 +352,7 @@ export const PageList = ({ setView }) => {
                             <Input
                                 type={"text"}
                                 placeholder="Nom de la catégorie"
-                                name={"nom"}
+                                name={"titre"}
                                 formik={formik}
                             />
                             <Input
@@ -354,59 +367,6 @@ export const PageList = ({ setView }) => {
                                 name={"description"}
                                 formik={formik}
                             />
-                            <Editor
-                                apiKey="inw3u1xr6hvvw2ezjwlonyy3wu489wqh6vl0437mbkfyakgv"
-                                init={{
-                                    
-                                    tinycomments_mode: "embedded",
-                                    tinycomments_author: "Author name",
-                                    mergetags_list: [
-                                        {
-                                            value: "First.Name",
-                                            title: "First Name",
-                                        },
-                                        { value: "Email", title: "Email" },
-                                    ],
-                                    ai_request: (request, respondWith) =>
-                                        respondWith.string(() =>
-                                            Promise.reject(
-                                                "See docs to implement AI Assistant"
-                                            )
-                                        ),
-                                    language: "fr_FR",
-                                    language_url: lang,
-                                    toolbar_mode: 'wrap'
-                                }}
-                                initialValue="Welcome to TinyMCE!"
-                                
-                            />
-                            {/**
-                                 * <CKEditor
-                                editor={ClassicEditor}
-                                onfig={ {
-                                    //plugins: [ Base64UploadAdapter],
-                                    //toolbar: [ 'bold', 'italic' ]
-                                } }
-                                data="<p>Hello from CKEditor&nbsp;5!</p>"
-                                onReady={(editor) => {
-                                    // You can store the "editor" and use when it is needed.
-                                    console.log(
-                                        "Editor is ready to use!",
-                                        editor
-                                    );
-                                }}
-                                onChange={(event, editor) => {
-                                    const data = editor.getData();
-                                    console.log({ event, editor, data });
-                                }}
-                                onBlur={(event, editor) => {
-                                    console.log("Blur.", editor);
-                                }}
-                                onFocus={(event, editor) => {
-                                    console.log("Focus.", editor);
-                                }}
-                                    />
-                                 */}
                         </div>
                         <div className="modal-footer">
                             <button
@@ -523,6 +483,136 @@ export const PageList = ({ setView }) => {
                                 data-bs-dismiss="modal"
                             >
                                 Fermer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <AppRoute type={"detailOfPage"} />
+            <div
+                className="modal fade"
+                id="add"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+            >
+                <div className="modal-dialog modal-xl modal-dialog-centered">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h1
+                                className="modal-title fs-5"
+                                id="exampleModalLabel"
+                            >
+                                Ajout d'un nouvelle catégorie
+                            </h1>
+                            <button
+                                type="button"
+                                className="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                            ></button>
+                        </div>
+                        <div className="modal-body">
+                            <Input
+                                type={"text"}
+                                label="Titre du contenu"
+                                placeholder="Titre du contenu"
+                                name={"titre"}
+                                formik={formik}
+                            />
+                            <Input
+                                type={"file"}
+                                label="image"
+                                placeholder="image"
+                                name={"image"}
+                                formik={formik}
+                            />
+                            <Input
+                                type={"textarea"}
+                                placeholder="Description du produit"
+                                name={"description"}
+                                formik={formik}
+                            />
+                            <div>Profile</div>
+                            <Editor
+                                apiKey="inw3u1xr6hvvw2ezjwlonyy3wu489wqh6vl0437mbkfyakgv"
+                                init={{
+                                    plugins:
+                                        " anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount  textcolor",
+                                    toolbar:
+                                        "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat | forecolor backcolor",
+                                    tinycomments_mode: "embedded",
+                                    tinycomments_author: "Author name",
+                                    mergetags_list: [
+                                        {
+                                            value: "First.Name",
+                                            title: "First Name",
+                                        },
+                                        { value: "Email", title: "Email" },
+                                    ],
+                                    ai_request: (request, respondWith) =>
+                                        respondWith.string(() =>
+                                            Promise.reject(
+                                                "See docs to implement AI Assistant"
+                                            )
+                                        ),
+                                    language: "fr_FR",
+                                    language_url: lang,
+                                    toolbar_mode: "wrap",
+                                }}
+                                initialValue={initvalue}
+                                onEditorChange={(newValue, editor) =>
+                                    onProfileChange(newValue, editor)
+                                }
+                            />
+                            <div>Contenu</div>
+                            <Editor
+                                apiKey="inw3u1xr6hvvw2ezjwlonyy3wu489wqh6vl0437mbkfyakgv"
+                                init={{
+                                    plugins:
+                                        " anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount  textcolor",
+                                    toolbar:
+                                        "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat | forecolor backcolor",
+                                    tinycomments_mode: "embedded",
+                                    tinycomments_author: "Author name",
+                                    mergetags_list: [
+                                        {
+                                            value: "First.Name",
+                                            title: "First Name",
+                                        },
+                                        { value: "Email", title: "Email" },
+                                    ],
+                                    ai_request: (request, respondWith) =>
+                                        respondWith.string(() =>
+                                            Promise.reject(
+                                                "See docs to implement AI Assistant"
+                                            )
+                                        ),
+                                    language: "fr_FR",
+                                    language_url: lang,
+                                    toolbar_mode: "wrap",
+                                }}
+                                initialValue={initvalue}
+                                onEditorChange={(newValue, editor) =>
+                                    onContenuChange(newValue, editor)
+                                }
+                            />
+                        </div>
+                        <div className="modal-footer">
+                            <button
+                                type="button"
+                                className="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                                ref={close}
+                            >
+                                Annuler
+                            </button>
+                            <button
+                                type="button"
+                                className="btn btn-primary"
+                                onClick={formik.handleSubmit}
+                            >
+                                Enregistrer
                             </button>
                         </div>
                     </div>

@@ -11,6 +11,7 @@ import { Livre } from "./publication/Livre";
 import request from "../services/request";
 import endPoint from "../services/endPoint";
 import { PublicationContent } from "./publication/PublicationContent";
+import { MenuSectionTwo } from "../components/MenuSectionTwo";
 
 export const Publication = () => {
     const { slugOne, slugTwo } = useParams();
@@ -19,8 +20,14 @@ export const Publication = () => {
     const [index, setIndex] = useState(0);
 
     const pages = {
-        "programmes-de-recherche": <PublicationContent />,
-        "projets-de-recherche": <PublicationContent />,
+        "theses": <PublicationContent />,
+        "articles": <PublicationContent />,
+        "livres": <PublicationContent />,
+        "rapports-de-projets": <PublicationContent />,
+        "rapports-annuels": <PublicationContent />,
+        "plans-strategiques": <PublicationContent />,
+        "newsletter": <PublicationContent />,
+
         
     };
     //partenaires-academiques-internationaux
@@ -47,7 +54,7 @@ export const Publication = () => {
                         <h3 className="bg-primary text-white text-center1 ps-4 py-2">
                             <EditIcon /> publications
                         </h3>
-                        <MenuSection
+                        <MenuSectionTwo
                             list={detail.toutes_sous_categories}
                             setData={setData}
                             link={"publications"}

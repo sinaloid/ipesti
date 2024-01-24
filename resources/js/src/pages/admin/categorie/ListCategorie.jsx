@@ -111,7 +111,7 @@ export const ListCategorie = () => {
 
     const goToDetail = (e, slug) => {
         e.preventDefault();
-        navigate("detail/" + slug);
+        navigate("" + slug);
     };
 
     const onSelectData = (e, data) => {
@@ -130,7 +130,7 @@ export const ListCategorie = () => {
         <>
             <div className="row mb-3">
                 <div className="col-12">
-                    <h1 className="text-start mb-3">Nos Categories</h1>
+                    <h1 className="text-start mb-3">Liste des pages</h1>
                     <div className="d-flex">
                         <div className="d-flex align-items-center me-auto">
                             <div>
@@ -183,7 +183,7 @@ export const ListCategorie = () => {
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Catégories</th>
+                                <th scope="col">Pages</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Action</th>
@@ -199,11 +199,6 @@ export const ListCategorie = () => {
                                         <th scope="row">{idx + 1}</th>
                                         <td>
                                             <div className="d-flex">
-                                                <img
-                                                    width={"64px"}
-                                                    src={URL + data.image}
-                                                    alt=""
-                                                />
                                                 <div className="text-100">
                                                     {data.titre}
                                                 </div>
@@ -222,7 +217,7 @@ export const ListCategorie = () => {
                                         <td>
                                             <div className="btn-group">
                                                 <button
-                                                    className="btn btn-primary-light mx-1 rounded-3"
+                                                    className="btn btn-primary mx-1 rounded-3"
                                                     onClick={(e) =>
                                                         goToDetail(e, data.slug)
                                                     }

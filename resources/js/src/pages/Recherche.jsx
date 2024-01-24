@@ -16,6 +16,7 @@ import endPoint from "../services/endPoint";
 import { OneContent } from "./ipesti/OneContent";
 import { MultiContent } from "./ipesti/MultiContent";
 import { RechercheContent } from "./recherche/RechercheContent";
+import { ProjetContent } from "./recherche/ProjetContent";
 
 
 export const Recherche = () => {
@@ -25,8 +26,8 @@ export const Recherche = () => {
     const [index, setIndex] = useState(0)
 
     const pages = {
-        "programmes-de-recherche": <RechercheContent/>,
-        "projets-de-recherche": <RechercheContent/>,
+        "programmes-de-recherches": <RechercheContent/>,
+        "projets-de-recherche": <ProjetContent/>,
         "structure-gouvernance": <MultiContent data={data} slug={"structure-gouvernance"} />,
         "partenaires-de-recherche": <MultiContent data={data} slug={"partenaires-de-recherche"} />,
         opportunites: <MultiContent data={data} slug={"opportunites"} />,
@@ -65,7 +66,14 @@ export const Recherche = () => {
                         />
                     </div>
                     <div className="col-12 col-md-8">
-                        {pages[slugOne]}
+                        <div className="my-41">
+                            <div
+                                dangerouslySetInnerHTML={{
+                                    __html: detail?.contenu,
+                                }}
+                            />
+                        </div>
+                        <div className="">{pages[slugOne]}</div>
                     </div>
                 </div>
             </Container>

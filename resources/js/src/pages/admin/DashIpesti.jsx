@@ -52,8 +52,9 @@ export const DashIpesti = ({ slug = "ipesti" }) => {
         "Prix & distinctions",
     ];
     useEffect(() => {
-        get();
+        get(id);
     }, [slug,id]);
+
     const formik = useFormik({
         initialValues: initData,
         onSubmit: (values) => {
@@ -74,8 +75,9 @@ export const DashIpesti = ({ slug = "ipesti" }) => {
         },
     });
 
-    const get = () => {
+    const get = (id) => {
         const slugData = id ? id : slug
+        console.log(slugData)
         request
             .get(endPoint.categories + "/" + slugData)
             .then((res) => {
@@ -155,6 +157,7 @@ export const DashIpesti = ({ slug = "ipesti" }) => {
     const goTo = (e, id) => {
         e.preventDefault()
         navigate("/dashboard/ipesti/"+id)
+        get(id)
     }
     return (
         <>

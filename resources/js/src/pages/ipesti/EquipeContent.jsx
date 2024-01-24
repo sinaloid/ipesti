@@ -8,6 +8,11 @@ export const EquipeContent = ({ data, slug }) => {
     const navigate = useNavigate();
     const [content, setContent] = useState({});
     const [index, setIndex] = useState(0);
+    const [detail, setDetail] = useState({
+        isset: false,
+        data: {},
+    });
+    const [sectionDetail, setSectionDetail] = useState("");
 
     useEffect(() => {
         console.log(data);
@@ -36,11 +41,16 @@ export const EquipeContent = ({ data, slug }) => {
                 console.log(error);
             });
     };
+
+    const dataSelected = (data) => {
+        setDetail({
+            isset: true,
+            data: data,
+        });
+    };
     return (
         <div className="col-12 col-md-8">
-            <h1 className="text-primary mb-4">
-                {content.titre}
-            </h1>
+            <h1 className="text-primary mb-4">{content.titre}</h1>
             <div className="d-flex mb-4 border-bottom">
                 {content.toutes_sous_categories?.map((item, idx) => {
                     return (
@@ -55,6 +65,11 @@ export const EquipeContent = ({ data, slug }) => {
                                 e.preventDefault();
                                 setIndex(idx);
                                 changerView(slug + "/" + item.slug);
+                                setDetail({
+                                    isset:false,
+                                    data:[]
+                                })
+                                setSectionDetail({})
                             }}
                         >
                             {item.titre}
@@ -63,46 +78,130 @@ export const EquipeContent = ({ data, slug }) => {
                 })}
             </div>
 
-            {(content.toutes_sous_categories && content.toutes_sous_categories?.length !== 0) && (
-                <>
-                    <span className="text-primary fs-18 fw-bold mb-4 d-inline-block">
-                        {content.toutes_sous_categories[index].titre}
-                    </span>
-                    <div
-                        dangerouslySetInnerHTML={{
-                            __html: content.toutes_sous_categories[index]
-                                .contenu,
-                        }}
-                    />
-                    <div className="row row-cols-2 g-4 mb-4">
-                        {content.toutes_sous_categories[index]?.toutes_sous_categories.map((data, idx) => {
-                            return (
-                                <div
-                                    className="col"
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        //setViewContent(!viewContent);
-                                    }}
-                                >
-                                    <div className="d-flex">
-                                        <img
-                                            className="rounded-3"
-                                            width={"100px"}
-                                            height={"100px"}
-                                            src={URL+""+data.image}
-                                        />
-                                        <div className="ps-2">
-                                            <div>
-                                                <div dangerouslySetInnerHTML={{__html: data.htmlOne}} />
+            {content.toutes_sous_categories &&
+                content.toutes_sous_categories?.length !== 0 && (
+                    <>
+                        <span className="text-primary fs-18 fw-bold mb-4 d-inline-block">
+                            {content.toutes_sous_categories[index].titre}
+                        </span>
+                        <div
+                            dangerouslySetInnerHTML={{
+                                __html: content.toutes_sous_categories[index]
+                                    .contenu,
+                            }}
+                        />
+                        {!detail.isset && (
+                            <>
+                                <div className="row row-cols-2 g-4 mb-4">
+                                    {content.toutes_sous_categories[
+                                        index
+                                    ]?.toutes_sous_categories.map(
+                                        (data, idx) => {
+                                            return (
+                                                <div
+                                                    className="col"
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        //setViewContent(!viewContent);
+                                                        dataSelected(data);
+                                                    }}
+                                                >
+                                                    <div className="d-flex">
+                                                        <img
+                                                            className="rounded-3"
+                                                            width={"100px"}
+                                                            height={"100px"}
+                                                            src={
+                                                                URL +
+                                                                "" +
+                                                                data.image
+                                                            }
+                                                        />
+                                                        <div className="ps-2">
+                                                            <div>
+                                                                <div
+                                                                    dangerouslySetInnerHTML={{
+                                                                        __html: data.htmlOne,
+                                                                    }}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            );
+                                        }
+                                    )}
+                                </div>
+                            </>
+                        )}
+                        {detail.isset && (
+                            <>
+                                <div className="row">
+                                    <div className="col">
+                                        <div className="d-flex">
+                                            <img
+                                                className="rounded-3"
+                                                width={"100px"}
+                                                height={"100px"}
+                                                src={
+                                                    URL + "" + detail.data.image
+                                                }
+                                            />
+                                            <div className="ps-2">
+                                                <div>
+                                                    <div
+                                                        dangerouslySetInnerHTML={{
+                                                            __html: detail.data
+                                                                .htmlOne,
+                                                        }}
+                                                    />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div className="col-12 my-4">
+                                        <div className="d-flex flex-wrap border-bottom">
+                                            {detail.data.toutes_sous_categories.length !== 0 && detail.data.toutes_sous_categories.map(
+                                                (data, idx) => {
+                                                    if(idx === 0 && sectionDetail?.titre === undefined){
+                                                        setSectionDetail(
+                                                            data
+                                                        );
+                                                    }
+                                                    return (
+                                                        <div
+                                                            className={`me-4 mt-3 cursor p-2 ${sectionDetail?.titre === data.titre && "bg-primary text-white fw-bold"}`}
+                                                            onClick={(e) => {
+                                                                e.preventDefault();
+                                                                //setViewContent(!viewContent);
+                                                                setSectionDetail(
+                                                                    data
+                                                                );
+                                                                console.log(data)
+                                                            }}
+                                                        >
+                                                            {data.titre}
+                                                        </div>
+                                                    );
+                                                }
+                                            )}
+                                        </div>
+                                        <p className="py-2">
+                                            <div
+                                                dangerouslySetInnerHTML={{
+                                                    __html: sectionDetail?.contenu,
+                                                }}
+                                            />
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <button className="btn btn-primary">Voir le CV complete</button>
+                                    </div>
                                 </div>
-                            );
-                        })}
-                    </div>
-                </>
-            )}
+                            </>
+                        )}
+                    </>
+                )}
         </div>
     );
 };

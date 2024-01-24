@@ -62,6 +62,7 @@ const AppRoute = ({ type }) => {
                 <Route path={AppLink.recherches_dashboard} element={<DashRecherche />} />
                 <Route path={AppLink.ipesti_dashboard} element={<DashIpesti />} />
                 <Route path={AppLink.ipesti_dashboard+"/:slug?"} element={<DetailCategorie />} />
+                <Route path={AppLink.ipesti_dashboard+"/:slug?/:slug?"} element={<DetailCategorie />} />
                 <Route path={AppLink.fasolics_dashboard} element={<DashIpesti slug="fasolics" />} />
                 <Route path={AppLink.compte} element={<MonCompte />} />
             </Routes>
@@ -72,7 +73,11 @@ const AppRoute = ({ type }) => {
         return (
             <Routes>
                 <Route path={AppLink.home} element={<ListCategorie />} />
-                <Route path={AppLink.detail+"/*"} element={<DetailCategorie />} />
+                <Route path={AppLink.detail} element={<DetailCategorie />} />
+                <Route path={AppLink.detail+"/:slug"} element={<DetailCategorie />} />
+                <Route path={AppLink.detail+"/:slug"+"/:slug"} element={<DetailCategorie />} />
+                <Route path={AppLink.detail+"/:slug"+"/:slug"+"/:slug"} element={<DetailCategorie />} />
+                <Route path={AppLink.detail+"/:slug"+"/:slug"+"/:slug"+"/:slug"} element={<DetailCategorie />} />
                 <Route path={AppLink.detailOfPage} element={<DetailOfPage />} />
 
             </Routes>

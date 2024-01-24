@@ -28,7 +28,7 @@ export const AppLink = {
     newsletters:"newsletters",
 
     list:"list",
-    detail:"detail/:slug",
+    detail:":slug",
     detailOfPage:"pages/:slug",
 
 }

@@ -21,7 +21,6 @@ export const Formation = () => {
     const pages = {
         "programmes-de-recherche": <FormationContent />,
         "projets-de-recherche": <FormationContent />,
-        
     };
     //partenaires-academiques-internationaux
     useEffect(() => {
@@ -56,26 +55,14 @@ export const Formation = () => {
                     <div className="col-12 col-md-8">
                         <h1 className="text-primary">{detail.titre}</h1>
                         <div className="my-4">
-                            De la dizaine de centres de recherche sur les STIES
-                            sur le continent, aucune ne se trouve en Afrique
-                            francophone. Pourtant, comme le souligne l’Union
-                            Africaine, «Les indicateurs de la science, de la
-                            technologie et de l'innovation sont essentiels pour
-                            suivre le développement scientifique et
-                            technologique de l'Afrique. Ils sont utiles pour
-                            formuler, ajuster et mettre en œuvre les politiques
-                            de STI. Les indicateurs peuvent être utilisés pour
-                            suivre les tendances technologiques mondiales,
-                            effectuer des exercices de prospective et déterminer
-                            des domaines d’investissement spécifiques".  Il est
-                            donc urgent de développer les capacités de recherche
-                            sur l’enseignement supérieur, la recherche et
-                            l’innovation des pays d’Afrique francophone, dont le
-                            Burkina Faso, pour leur contribution effective aux
-                            initiatives nationales et régionales en matière de
-                            développement basé sur la connaissance. La recherche
-                            à l’IPESTI concernera six(6) thèmes principaux,
-                            s’appliquant chacun aux secteurs prioritaire.
+                            Le programme de formation de l’IPESTI comprend des
+                            formations de courtes durées et de longues durées.
+                            Conçus de façon participative, les programmes de
+                            formations contribueront à la professionnalisation
+                            des fonctions dans l’enseignement supérieur et de la
+                            recherche. Le PhD Academy, est un Séminaire doctoral
+                            à vocation régionale afin de favoriser des échanges
+                            entre chercheurs séniors et jeunes chercheurs.
                         </div>
                         <div className="row row-cols-1 row-cols-md-3 g-4">
                             {[...Array(6).keys()].map((data, idx) => {

@@ -4,7 +4,7 @@ import request from "../../services/request";
 import endPoint from "../../services/endPoint";
 import rech from "../../assets/images/recherche.png";
 
-export const RechercheContent = ({}) => {
+export const ProjetContent = ({}) => {
     const { slugOne } = useParams();
     const [data, setData] = useState({});
     const [seletedData, setSelectedData] = useState({});
@@ -98,7 +98,7 @@ export const RechercheContent = ({}) => {
                         <p className="py-2">
                             <div
                                 dangerouslySetInnerHTML={{
-                                    __html: sectionDetail?.contenu,
+                                    __html: sectionDetail?.contenu__,
                                 }}
                             />
                         </p>
