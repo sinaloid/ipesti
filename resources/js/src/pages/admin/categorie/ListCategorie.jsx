@@ -41,7 +41,7 @@ export const ListCategorie = () => {
     });
     const get = () => {
         request
-            .get(endPoint.categories)
+            .get(endPoint.categories_admin)
             .then((res) => {
                 const tab = pagination(res.data.data, 10);
 
