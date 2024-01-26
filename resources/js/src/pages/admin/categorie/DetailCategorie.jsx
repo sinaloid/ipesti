@@ -43,7 +43,7 @@ export const DetailCategorie = () => {
 
     const get = () => {
         request
-            .get(endPoint.categories + "/" + slug)
+            .get(endPoint.categories_admin + "/" + slug)
             .then((res) => {
                 //console.log(res.data.data);
                 setDetail(res.data.data);

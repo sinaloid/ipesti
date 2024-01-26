@@ -59,9 +59,9 @@ export const ViewContent = () => {
 
     const get = () => {
         request
-            .get(endPoint.categories_admin + "/" + slug)
+            .get(endPoint.categories_admin +"/"+ slug)
             .then((res) => {
-                //console.log(res.data.data);
+                console.log(res.data.data);
                 setDetail(res.data.data);
                 const tab = pagination(
                     res.data.data.toutes_sous_categories,
