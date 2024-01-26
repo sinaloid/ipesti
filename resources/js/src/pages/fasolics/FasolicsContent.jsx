@@ -29,7 +29,12 @@ export const FasolicsContent = ({}) => {
 
     const changerView = (e, slug) => {
         e.preventDefault();
-        navigate("/fasolics/"+slugOne+"/" + slug);
+        if(slugTwo === slug){
+            navigate("/fasolics/"+slugOne);
+        }else{
+            navigate("/fasolics/"+slugOne+"/" + slug);
+        }
+        
     };
     
 

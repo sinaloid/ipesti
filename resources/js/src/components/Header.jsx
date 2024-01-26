@@ -230,7 +230,7 @@ export const Header = () => {
                                 >
                                     <li className="nav-item ">
                                         <NavLink
-                                            to={"/fasolics"}
+                                            to={"/fasolics/a-propos"}
                                             className="nav-link text-uppercase text-white px-2"
                                         >
                                             fasolics

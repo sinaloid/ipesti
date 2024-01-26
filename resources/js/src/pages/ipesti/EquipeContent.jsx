@@ -3,15 +3,16 @@ import { useNavigate, useParams } from "react-router-dom";
 import request, { URL } from "../../services/request";
 import endPoint from "../../services/endPoint";
 
+const initDetail = {
+    isset: false,
+        data: {},
+}
 export const EquipeContent = ({ data, slug }) => {
     const { slugOne, slugTwo } = useParams();
     const navigate = useNavigate();
     const [content, setContent] = useState({});
     const [index, setIndex] = useState(0);
-    const [detail, setDetail] = useState({
-        isset: false,
-        data: {},
-    });
+    const [detail, setDetail] = useState(initDetail);
     const [sectionDetail, setSectionDetail] = useState("");
 
     useEffect(() => {
@@ -24,7 +25,7 @@ export const EquipeContent = ({ data, slug }) => {
         ) {
             changerView(data.slug + "/" + data?.children[0]?.slug);
         }
-    }, [data, slugOne]);
+    }, [data, slugOne,slugTwo]);
 
     const changerView = (slug) => {
         navigate("/ipesti/" + slug);
@@ -36,6 +37,13 @@ export const EquipeContent = ({ data, slug }) => {
             .then((res) => {
                 //console.log(res.data);
                 setContent(res.data.data);
+                setDetail(initDetail)
+                setSectionDetail("")
+                res.data.data.toutes_sous_categories?.map((item, idx) =>{
+                    if(item.slug === slugTwo){
+                        setIndex(idx)
+                    }
+                })
             })
             .catch((error) => {
                 console.log(error);
@@ -47,7 +55,13 @@ export const EquipeContent = ({ data, slug }) => {
             isset: true,
             data: data,
         });
+        window.scrollTo(0, 0);
     };
+
+    const currentIndex = () => {
+
+        setIndex(idx);
+    }
     return (
         <div className="col-12 col-md-8">
             <h1 className="text-primary mb-4">{content.titre}</h1>
@@ -65,10 +79,7 @@ export const EquipeContent = ({ data, slug }) => {
                                 e.preventDefault();
                                 setIndex(idx);
                                 changerView(slug + "/" + item.slug);
-                                setDetail({
-                                    isset:false,
-                                    data:[]
-                                })
+                                setDetail(initDetail)
                                 setSectionDetail({})
                             }}
                         >
