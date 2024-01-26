@@ -53,7 +53,7 @@ export const ViewEditor = () => {
             values.contenu = contenu;
             values.htmlOne = profile;
             console.log(values);
-            if (values.slug) {
+            if (values.id) {
                 update(values);
             }
         },
@@ -66,7 +66,7 @@ export const ViewEditor = () => {
                 console.log(res.data.data);
                 setDetail(res.data.data);
                 formik.setFieldValue("_method", "put");
-                formik.setFieldValue("slug", res.data.data.slug);
+                formik.setFieldValue("id", res.data.data.id);
                 formik.setFieldValue("titre", res.data.data.titre);
                 formik.setFieldValue("description", res.data.data.description);
                 formik.setFieldValue("contenu", res.data.data.contenu);
@@ -80,10 +80,11 @@ export const ViewEditor = () => {
 
     const update = (values) => {
         request
-            .post(endPoint.categories_admin + "/" + values.slug, values)
+            .post(endPoint.categories_admin + "/" + values.id, values)
             .then((res) => {
                 console.log(res.data);
-                close.current.click();
+                //close.current.click();
+                alert(res.data.message)
                 get();
             })
             .catch((error) => {

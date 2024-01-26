@@ -32,7 +32,7 @@ export const ListCategorie = () => {
         initialValues: initData,
         onSubmit: (values) => {
             console.log(values);
-            if(values.slug){
+            if(values.id){
               update(values);
             }else{
               post(values);
@@ -73,7 +73,7 @@ export const ListCategorie = () => {
     };
     const update = (values) => {
         request
-            .post(endPoint.categories_admin + "/" + values.slug, values)
+            .post(endPoint.categories_admin + "/" + values.id, values)
             .then((res) => {
                 console.log(res.data);
                 close.current.click();
@@ -86,7 +86,7 @@ export const ListCategorie = () => {
 
     const destroy = () => {
         request
-            .delete(endPoint.categories_admin + "/" + viewData.slug)
+            .delete(endPoint.categories_admin + "/" + viewData.id)
             .then((res) => {
                 console.log(res.data);
                 closeDelete.current.click();
@@ -109,9 +109,9 @@ export const ListCategorie = () => {
         }
     };
 
-    const goToDetail = (e, slug) => {
+    const goToDetail = (e, id) => {
         e.preventDefault();
-        navigate("" + slug);
+        navigate("" + id);
     };
 
     const onSelectData = (e, data) => {
@@ -122,7 +122,7 @@ export const ListCategorie = () => {
     const editData = (e, data) => {
         e.preventDefault();
         formik.setFieldValue("_method", "put");
-        formik.setFieldValue("slug", data.slug);
+        formik.setFieldValue("id", data.id);
         formik.setFieldValue("titre", data.titre);
         formik.setFieldValue("description", data.description);
     };
@@ -219,7 +219,7 @@ export const ListCategorie = () => {
                                                 <button
                                                     className="btn btn-primary mx-1 rounded-3"
                                                     onClick={(e) =>
-                                                        goToDetail(e, data.slug)
+                                                        goToDetail(e, data.id)
                                                     }
                                                 >
                                                     Voir

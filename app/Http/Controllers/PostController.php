@@ -60,7 +60,7 @@ class PostController extends Controller
             return response(['errors' => $validator->errors()->all()], 422);
         }
 
-        $parent = Post::where("slug",$request->parent)->first();
+        $parent = Post::where("id",$request->parent)->first();
         
         $data = Post::create([
             'titre' => $request->input('titre'),
@@ -103,7 +103,22 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($id)
+    {
+        $data = Post::where("id",$id)->with('toutesSousCategories')->first();
+
+        if (!$data) {
+            return response()->json(['message' => 'Post non trouvé'], 404);
+        }
+
+        if ($data->is_deleted) {
+            return response()->json(['message' => 'Post supprimé'], 404);
+        }
+
+        return response()->json(['message' => 'Post trouvé', 'data' => $data], 200);
+    }
+
+    public function showBySlug($slug)
     {
         $data = Post::where("slug",$slug)->with('toutesSousCategories')->first();
 
@@ -125,7 +140,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $slug)
+    public function update(Request $request, $id)
     {
         // Vérifier que les champs obligatoires sont remplis
         $validator = Validator::make($request->all(), [
@@ -145,8 +160,8 @@ class PostController extends Controller
             return response(['errors' => $validator->errors()->all()], 422);
         }
 
-        $data = Post::where("slug", $slug)->where("is_deleted",false)->first();
-        $parent = Post::where("slug", $request->parent)->where("is_deleted",false)->first();
+        $data = Post::where("id", $id)->where("is_deleted",false)->first();
+        $parent = Post::where("id", $request->parent)->where("is_deleted",false)->first();
 
         if (!$data) {
             return response()->json(['message' => 'Post non trouvée'], 404);
@@ -197,10 +212,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($slug)
+    public function destroy($id)
     {
         // Trouver la catégorie de maison à supprimer
-        $data = Post::where("slug",$slug)->where("is_deleted",false)->first();
+        $data = Post::where("id",$id)->where("is_deleted",false)->first();
         if (!$data) {
             return response()->json(['message' => 'Post non trouvée'], 404);
         }

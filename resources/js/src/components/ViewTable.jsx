@@ -37,6 +37,8 @@ export const ViewTable = () => {
 
     const [contenu, setContenu] = useState("");
     const [profile, setProfile] = useState("");
+    const [contenuInit, setContenuInit] = useState("");
+    const [profileInit, setProfileInit] = useState("");
     const [initvalue, setInitValue] = useState("");
     const [text, setText] = useState("");
     useEffect(() => {
@@ -49,7 +51,7 @@ export const ViewTable = () => {
             values.contenu = contenu;
             values.htmlOne = profile;
             console.log(values);
-            if (values.slug) {
+            if (values.id) {
                 update(values);
             } else {
                 post(values);
@@ -102,7 +104,7 @@ export const ViewTable = () => {
 
     const update = (values) => {
         request
-            .post(endPoint.categories_admin + "/" + values.slug, values)
+            .post(endPoint.categories_admin + "/" + values.id, values)
             .then((res) => {
                 console.log(res.data);
                 close.current.click();
@@ -115,7 +117,7 @@ export const ViewTable = () => {
 
     const destroy = () => {
         request
-            .delete(endPoint.categories_admin + "/" + viewData.slug)
+            .delete(endPoint.categories_admin + "/" + viewData.id)
             .then((res) => {
                 console.log(res.data);
                 closeDelete.current.click();
@@ -147,9 +149,12 @@ export const ViewTable = () => {
     const editData = (e, data) => {
         e.preventDefault();
         formik.setFieldValue("_method", "put");
-        formik.setFieldValue("slug", data.slug);
+        formik.setFieldValue("id", data.id);
         formik.setFieldValue("titre", data.titre);
         formik.setFieldValue("description", data.description);
+        formik.setFieldValue("contenu", data.contenu);
+        setContenuInit(data.contenu);
+        setProfileInit(data.htmlOne);
     };
 
     const goToDetail = (e, slug) => {
@@ -157,9 +162,9 @@ export const ViewTable = () => {
         navigate("/dashboard/categories/pages/" + slug);
     };
 
-    const goTo = (e, slug) => {
+    const goTo = (e, id) => {
         e.preventDefault();
-        navigate(slug);
+        navigate(""+id);
     };
 
     const onContenuChange = (newValue, editor) => {
@@ -290,7 +295,7 @@ export const ViewTable = () => {
                                                 <button
                                                     className="btn btn-primary mx-1 rounded-3"
                                                     onClick={(e) =>
-                                                        goTo(e, data.slug)
+                                                        goTo(e, data.id)
                                                     }
                                                 >
                                                     Voir
@@ -560,7 +565,7 @@ export const ViewTable = () => {
                                     language_url: lang,
                                     toolbar_mode: "wrap",
                                 }}
-                                initialValue={initvalue}
+                                initialValue={profileInit}
                                 onEditorChange={(newValue, editor) =>
                                     onProfileChange(newValue, editor)
                                 }
@@ -592,7 +597,7 @@ export const ViewTable = () => {
                                     language_url: lang,
                                     toolbar_mode: "wrap",
                                 }}
-                                initialValue={initvalue}
+                                initialValue={contenuInit}
                                 onEditorChange={(newValue, editor) =>
                                     onContenuChange(newValue, editor)
                                 }

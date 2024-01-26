@@ -28,7 +28,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::post('/editPasswordOTP', [OTPController::class,'generateOTPForPasswordEdit']);
 
     Route::get('/public/posts', [PostController::class,'index']);
-    Route::get('/public/posts/{slug}', [PostController::class,'show']);
+    Route::get('/public/posts/{slug}', [PostController::class,'showBySlug']);
 
 
     Route::middleware(['auth:api'])->group(function () {
