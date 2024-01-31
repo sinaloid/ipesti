@@ -8,6 +8,12 @@
       "assets/rect-ef7ad498.png",
       "assets/equipe-9a723668.jpg",
       "assets/footer-00125d4c.png",
+      "assets/ubobo-b0baf671.png",
+      "assets/unz-dc0a2e8d.png",
+      "assets/cnrst-9a9ce930.png",
+      "assets/ens-2d7c3101.png",
+      "assets/ujkz-df3d710d.png",
+      "assets/uts-d995e2b2.png",
       "assets/header-af53ae7b.png",
       "assets/recherche-9a57e693.png",
       "assets/prof-385f8d9d.png",
@@ -18,7 +24,7 @@
     "css": [
       "assets/app-6e20efa2.css"
     ],
-    "file": "assets/app-04960f87.js",
+    "file": "assets/app-c35542b0.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },
@@ -61,6 +67,30 @@
   "resources/js/src/assets/images/rect.png": {
     "file": "assets/rect-ef7ad498.png",
     "src": "resources/js/src/assets/images/rect.png"
+  },
+  "resources/js/src/assets/logo/cnrst.png": {
+    "file": "assets/cnrst-9a9ce930.png",
+    "src": "resources/js/src/assets/logo/cnrst.png"
+  },
+  "resources/js/src/assets/logo/ens.png": {
+    "file": "assets/ens-2d7c3101.png",
+    "src": "resources/js/src/assets/logo/ens.png"
+  },
+  "resources/js/src/assets/logo/ubobo.png": {
+    "file": "assets/ubobo-b0baf671.png",
+    "src": "resources/js/src/assets/logo/ubobo.png"
+  },
+  "resources/js/src/assets/logo/ujkz.png": {
+    "file": "assets/ujkz-df3d710d.png",
+    "src": "resources/js/src/assets/logo/ujkz.png"
+  },
+  "resources/js/src/assets/logo/unz.png": {
+    "file": "assets/unz-dc0a2e8d.png",
+    "src": "resources/js/src/assets/logo/unz.png"
+  },
+  "resources/js/src/assets/logo/uts.png": {
+    "file": "assets/uts-d995e2b2.png",
+    "src": "resources/js/src/assets/logo/uts.png"
   },
   "resources/sass/app.scss": {
     "file": "assets/app-041e359a.css",

@@ -24,14 +24,14 @@ export const Ipesti = () => {
     const [index, setIndex] = useState(0)
 
     const pages = {
-        histoire: <OneContent/>,
+        presentation: <OneContent/>,
         "vision-missions": <OneContent/>,
         "objectifs": <OneContent/>,
         "structure-gouvernance": <MultiContent data={data} slug={"structure-gouvernance"} />,
         "partenaires-de-recherche": <MultiContent data={data} slug={"partenaires-de-recherche"} />,
         opportunites: <MultiContent data={data} slug={"opportunites"} />,
         "prix-et-distinctions": <></>,
-        equipes: <EquipeContent data={data} slug={"equipes"} />,
+        equipe: <EquipeContent data={data} slug={"equipe"} />,
     };
 //partenaires-academiques-internationaux
     useEffect(() => {

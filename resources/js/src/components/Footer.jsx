@@ -3,6 +3,12 @@ import { FlecheIcon } from "../icons/FlecheIcon";
 import { Logo } from "../icons/Logo";
 import ReseauxSociauxIcon from "../icons/ReseauxSociauxIcon";
 import { SuivFlecheIcon } from "../icons/SuivFlecheIcon";
+import ubobo from "../assets/logo/ubobo.png";
+import unz from "../assets/logo/unz.png";
+import cnrst from "../assets/logo/cnrst.png";
+import ens from "../assets/logo/ens.png";
+import ujkz from "../assets/logo/ujkz.png";
+import uts from "../assets/logo/uts.png";
 
 export const Footer = () => {
     return (
@@ -36,15 +42,6 @@ export const Footer = () => {
                                     Email : contact@ipesti.com
                                 </Link>
                             </li>
-                            <li className="nav-item">
-                                <FlecheIcon />
-                                <Link
-                                    to="#"
-                                    className="nav-link p-0 text-white d-inline-block ms-1"
-                                >
-                                    Email : contact@ipesti.com
-                                </Link>
-                            </li>
                         </ul>
                     </div>
 
@@ -55,57 +52,64 @@ export const Footer = () => {
                         <ul className="nav flex-column">
                             <li className="nav-item">
                                 <FlecheIcon />
-                                <Link
-                                    to="#"
+                                <a
+                                    href="https://www.cnrst.bf"
+                                    target="blank"
                                     className="nav-link p-0 text-white d-inline-block ms-1"
                                 >
                                     CNRST
-                                </Link>
+                                </a>
                             </li>
                             <li className="nav-item">
                                 <FlecheIcon />
-                                <Link
-                                    to="#"
+                                <a
+                                    href="https://www.uts.bf"
+                                    target="blank"
                                     className="nav-link p-0 text-white d-inline-block ms-1"
                                 >
                                     Université Thomas SANKARA
-                                </Link>
+                                </a>
                             </li>
                             <li className="nav-item">
                                 <FlecheIcon />
-                                <Link
-                                    to="#"
+                                <a
+                                    href="https://www.ujkz.bf"
+                                    target="blank"
                                     className="nav-link p-0 text-white d-inline-block ms-1"
                                 >
                                     Université Joseph KI-ZERBO
-                                </Link>
+                                </a>
                             </li>
                             <li className="nav-item">
                                 <FlecheIcon />
-                                <Link
-                                    to="#"
+                                <Link to="#" className=""></Link>
+                                <a
+                                    href="https://www.univ-bobo.gov.bf"
+                                    target="blank"
                                     className="nav-link p-0 text-white d-inline-block ms-1"
                                 >
                                     Université Nazi BONI
-                                </Link>
+                                </a>
                             </li>
                             <li className="nav-item">
                                 <FlecheIcon />
-                                <Link
-                                    to="#"
+                                <a
+                                    href="https://www.unz.bf"
+                                    target="blank"
                                     className="nav-link p-0 text-white d-inline-block ms-1"
                                 >
                                     Université Norbert ZONGO
-                                </Link>
+                                </a>
                             </li>
                             <li className="nav-item">
                                 <FlecheIcon />
-                                <Link
-                                    to="#"
+                                <a
+                                    href="https://www.ens-burkina.bf"
+                                    target="blank"
                                     className="nav-link p-0 text-white d-inline-block ms-1"
                                 >
                                     École Nationale Supérieur
-                                </Link>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -123,7 +127,10 @@ export const Footer = () => {
                                 class="form-control border-end-0 rounded-end-0"
                                 placeholder="Votre adresse mail ici"
                             />
-                            <span className="input-group-text bg-primary px-4" id="basic-addon2">
+                            <span
+                                className="input-group-text bg-primary px-4"
+                                id="basic-addon2"
+                            >
                                 <SuivFlecheIcon />
                             </span>
                         </div>
@@ -131,66 +138,54 @@ export const Footer = () => {
                             <ReseauxSociauxIcon />
                         </div>
                     </div>
-                    <div className="col-12 col-md mb-4 text-white">
+                    <div className="col-12 mb-4 text-white">
                         <h5 className="text-uppercase text-18 fw-bold">
                             Nos partenaires
                         </h5>
-                        <ul className="nav flex-column">
-                            <li className="nav-item">
-                                <FlecheIcon />
-                                <Link
-                                    to="#"
-                                    className="nav-link p-0 text-white d-inline-block ms-1"
-                                >
-                                    CNRST
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <FlecheIcon />
-                                <Link
-                                    to="#"
-                                    className="nav-link p-0 text-white d-inline-block ms-1"
-                                >
-                                    Université Thomas SANKARA
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <FlecheIcon />
-                                <Link
-                                    to="#"
-                                    className="nav-link p-0 text-white d-inline-block ms-1"
-                                >
-                                    Université Joseph KI-ZERBO
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <FlecheIcon />
-                                <Link
-                                    to="#"
-                                    className="nav-link p-0 text-white d-inline-block ms-1"
-                                >
-                                    Université Nazi BONI
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <FlecheIcon />
-                                <Link
-                                    to="#"
-                                    className="nav-link p-0 text-white d-inline-block ms-1"
-                                >
-                                    Université Norbert ZONGO
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <FlecheIcon />
-                                <Link
-                                    to="#"
-                                    className="nav-link p-0 text-white d-inline-block ms-1"
-                                >
-                                    École Nationale Supérieur
-                                </Link>
-                            </li>
-                        </ul>
+                        <div className="d-flex flex-wrap">
+                            <a
+                                href="https://www.cnrst.bf"
+                                target="blank"
+                                className="me-2"
+                            >
+                                <img width={"64px"} src={cnrst} alt="" />
+                            </a>
+                            <a
+                                href="https://www.uts.bf"
+                                target="blank"
+                                className="me-2"
+                            >
+                                <img width={"64px"} src={uts} alt="" />
+                            </a>
+                            <a
+                                href="https://www.ujkz.bf"
+                                target="blank"
+                                className="me-2"
+                            >
+                                <img width={"64px"} src={ujkz} alt="" />
+                            </a>
+                            <a
+                                href="https://www.univ-bobo.gov.bf"
+                                target="blank"
+                                className="me-2"
+                            >
+                                <img width={"64px"} src={ubobo} alt="" />
+                            </a>
+                            <a
+                                href="https://www.unz.bf"
+                                target="blank"
+                                className="me-2"
+                            >
+                                <img width={"64px"} src={unz} alt="" />
+                            </a>
+                            <a
+                                href="https://www.ens-burkina.bf"
+                                target="blank"
+                                className="me-2"
+                            >
+                                <img width={"64px"} src={ens} alt="" />
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

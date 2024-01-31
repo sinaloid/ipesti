@@ -70,9 +70,9 @@ export const EquipeContent = ({ data, slug }) => {
                     return (
                         <div
                             key={"scat" + idx}
-                            className={`cursor border-bottom me-4 ${
+                            className={`cursor border-bottom p-2 ${
                                 item.slug === slugTwo
-                                    ? "border-color fw-bold"
+                                    ? "border-color text-white fw-bold bg-primary"
                                     : "text-opacity-70"
                             }`}
                             onClick={(e) => {
@@ -120,15 +120,15 @@ export const EquipeContent = ({ data, slug }) => {
                                                     <div className="d-flex">
                                                         <img
                                                             className="rounded-3"
-                                                            width={"100px"}
-                                                            height={"100px"}
+                                                            width={"80px"}
+                                                            height={"80px"}
                                                             src={
                                                                 URL +
                                                                 "" +
                                                                 data.image
                                                             }
                                                         />
-                                                        <div className="ps-2">
+                                                        <div className="ps-2 fs-14">
                                                             <div>
                                                                 <div
                                                                     dangerouslySetInnerHTML={{

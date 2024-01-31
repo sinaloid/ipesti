@@ -70,7 +70,7 @@ export const ViewTable = () => {
                     10
                 );
 
-                //console.log(tab);
+                console.log(tab);
 
                 if (tab.counter !== 0) {
                     setDatas({
@@ -198,13 +198,13 @@ export const ViewTable = () => {
                             </div>
                             <div>
                                 <span
-                                    className="ms-2"
+                                    className="ms-2 cursor"
                                     onClick={(e) => changePage(e, "-1")}
                                 >
                                     Prec
                                 </span>
                                 <span
-                                    className="ms-2"
+                                    className="mx-2 cursor"
                                     onClick={(e) => changePage(e, "+1")}
                                 >
                                     Suiv

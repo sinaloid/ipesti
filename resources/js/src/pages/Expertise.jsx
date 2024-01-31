@@ -19,11 +19,11 @@ export const Expertise = () => {
     const [detail, setDetail] = useState({});
     const [index, setIndex] = useState(0);
     const pages = {
-        "centre-dexpertise-et-daide-a-la-decision": (<><ExpertiseContent /></>),
-        "observatoire-de-lenseignement-superieur": (<><ExpertiseContent /></>),
-        "observatoire-de-la-science-et-de-la-technologie": (<><ExpertiseContent /></>),
+        "centre-expertise-et-aide-a-la-decision": (<><ExpertiseContent /></>),
+        "observatoire-enseignement-superieur": (<><ExpertiseContent /></>),
+        "observatoire-science-et-technologie": (<><ExpertiseContent /></>),
         "observatoire-de-linnovation": (<><ExpertiseContent /></>),
-        "observatoire-dethique-et-la-qualite-de-lenseignement-superieur": (<><ExpertiseContent /></>),
+        "observatoire-qualite-de-lenseignement-superieur": (<><ExpertiseContent /></>),
         "observatoire-de-la-transformation-numerique": (<><ExpertiseContent /></>),
     };
     //partenaires-academiques-internationaux

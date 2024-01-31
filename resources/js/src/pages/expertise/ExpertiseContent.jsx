@@ -43,11 +43,12 @@ export const ExpertiseContent = ({ data, slug }) => {
     };
     return (
         <div className="col-12 col-md-8">
-            <h4 className="text-primary mb-3">{content.titre}</h4>
+            {/**<h4 className="text-primary mb-3">{content.titre}</h4> */}
             <div className="d-flex mb-1 border-bottom">
                 <div
+                className="fs-20"
                     dangerouslySetInnerHTML={{
-                        __html: content?.contenu,
+                        __html: content?.htmlOne,
                     }}
                 />
                 {/*content.toutes_sous_categories?.map((item, idx) => {
@@ -78,7 +79,7 @@ export const ExpertiseContent = ({ data, slug }) => {
 
             <>
                 <div className="row">
-                    <div className="col-12 my-">
+                    <div className="col-12">
                         <div className="d-flex flex-wrap">
                             {["Collecte et analyse","Elaboration","Diffusion"].map(
                                     (data, idx) => {

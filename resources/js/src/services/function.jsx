@@ -70,6 +70,7 @@ const pagination = (datas, pageNumber = 6) => {
     return {
         list: list,
         counter: counter,
+        index:0
     };
 };
 
