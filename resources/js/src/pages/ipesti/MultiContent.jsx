@@ -19,7 +19,7 @@ export const MultiContent = ({ data, slug }) => {
         ) {
             changerView(data.slug + "/" + data?.children[0]?.slug);
         }
-    }, [data,slugOne]);
+    }, [data,slugOne,slugTwo]);
 
     const changerView = (slug) => {
         navigate("/ipesti/" + slug);
@@ -31,6 +31,11 @@ export const MultiContent = ({ data, slug }) => {
             .then((res) => {
                 //console.log(res.data);
                 setContent(res.data.data);
+                res.data.data.toutes_sous_categories?.map((item, idx) =>{
+                    if(item.slug === slugTwo){
+                        setIndex(idx)
+                    }
+                })
             })
             .catch((error) => {
                 console.log(error);
@@ -46,9 +51,9 @@ export const MultiContent = ({ data, slug }) => {
                     return (
                         <div
                             key={"scat" + idx}
-                            className={`cursor border-bottom me-4 ${
+                            className={`cursor border-bottom p-2 ${
                                 item.slug === slugTwo
-                                    ? "border-color fw-bold"
+                                    ? "border-color text-white fw-bold bg-primary"
                                     : "text-opacity-70"
                             }`}
                             onClick={(e) => {

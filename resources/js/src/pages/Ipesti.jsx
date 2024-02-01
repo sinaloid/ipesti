@@ -30,8 +30,10 @@ export const Ipesti = () => {
         "structure-gouvernance": <MultiContent data={data} slug={"structure-gouvernance"} />,
         "partenaires-de-recherche": <MultiContent data={data} slug={"partenaires-de-recherche"} />,
         opportunites: <MultiContent data={data} slug={"opportunites"} />,
-        "prix-et-distinctions": <></>,
+        "prix-distinctions": <OneContent/>,
         equipe: <EquipeContent data={data} slug={"equipe"} />,
+        "point-focal-gdn": <MultiContent data={data} slug={"structure-gouvernance"} />,
+        "reseau-stid": <MultiContent data={data} slug={"structure-gouvernance"} />,
     };
 //partenaires-academiques-internationaux
     useEffect(() => {

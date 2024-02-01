@@ -65,9 +65,12 @@ export const RechercheContent = ({}) => {
                 <>
                 <div className="row">
                     <div className="col-12">
-                        <h6 className="text-primary">{seletedData.titre}</h6>
-                        <div className="d-flex flex-wrap">
-                            {["Institution de rattachement","Laboratoires associés","Descriptif du programme","Axes de recherche"].map(
+                        <h6 className="text-primary fs-20">{seletedData.titre}</h6>
+                        <div>
+                            <span className="fw-bold">Institution de rattachement :</span>
+                        </div>
+                        <div className="d-flex flex-wrap border-top mt-4">
+                            {["Laboratoires associés","Descriptif du programme","Axes de recherche"].map(
                                     (data, idx) => {
                                         if (
                                             idx === 0 &&

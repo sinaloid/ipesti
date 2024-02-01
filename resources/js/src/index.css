@@ -305,3 +305,10 @@ div > ul {
     border: 1px solid var(--red-color);
 }
 
+.profile-detail > p:first-child > strong{
+    cursor: pointer;
+    color: var(--red-color);
+  }
+  
+  
+

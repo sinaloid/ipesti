@@ -131,6 +131,7 @@ export const EquipeContent = ({ data, slug }) => {
                                                         <div className="ps-2 fs-14">
                                                             <div>
                                                                 <div
+                                                                className="profile-detail"
                                                                     dangerouslySetInnerHTML={{
                                                                         __html: data.htmlOne,
                                                                     }}

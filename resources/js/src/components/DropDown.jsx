@@ -1,4 +1,4 @@
-export const DropDown = ({ menu, link = "content" }) => {
+export const DropDown = ({ menu, link = "content", linkChildOne = false}) => {
     const  src = "/"+link+"/"
     return (
         <>
@@ -15,7 +15,7 @@ export const DropDown = ({ menu, link = "content" }) => {
                             >
                                 {dataOne.titre}
                             </a>
-                            {dataOne.toutes_sous_categories.length !== 0 && (
+                            {(linkChildOne && dataOne.toutes_sous_categories.length !== 0) && (
                                 <>
                                     <ul class="dropdown-menu dropdown-submenu bg-black">
                                         {dataOne.toutes_sous_categories.map((dataTwo, idx) => {
