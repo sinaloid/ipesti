@@ -10,7 +10,13 @@ import ens from "../assets/logo/ens.png";
 import ujkz from "../assets/logo/ujkz.png";
 import uts from "../assets/logo/uts.png";
 
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper/modules";
+import {
+    Navigation,
+    Pagination,
+    Scrollbar,
+    A11y,
+    Autoplay,
+} from "swiper/modules";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -35,7 +41,7 @@ export const Footer = () => {
                 <div className="my-3">
                     <Logo />
                 </div>
-                <div className="row pb-3 footer">
+                <div className="row footer">
                     <div className="col-12 col-md mb-4 pe-lg-5">
                         <p className="text-justify1 text-white">
                             Restez informés de l'actualité de l’IPESTI en vous
@@ -156,7 +162,9 @@ export const Footer = () => {
                             <ReseauxSociauxIcon />
                         </div>
                     </div>
-                    <div className="col-8 mx-auto mb-4 text-white">
+                </div>
+                <div className="row pb-3">
+                    <div className="col-8 col-md-8 mx-auto mb-4 text-white">
                         <h5 className="text-uppercase text-center text-18 fw-bold">
                             Nos partenaires
                         </h5>
@@ -167,7 +175,8 @@ export const Footer = () => {
                                     Navigation,
                                     Pagination,
                                     Scrollbar,
-                                    A11y,Autoplay
+                                    A11y,
+                                    Autoplay,
                                 ]}
                                 spaceBetween={1}
                                 slidesPerView={6}
@@ -176,7 +185,7 @@ export const Footer = () => {
                                 autoplay={{
                                     delay: 2500,
                                     disableOnInteraction: false,
-                                  }}
+                                }}
                                 //pagination={{ clickable: true }}
                                 //scrollbar={{ draggable: true }}
                                 onSwiper={(swiper) => console.log(swiper)}
@@ -184,7 +193,11 @@ export const Footer = () => {
                                     console.log("slide change")
                                 }
                             >
-                                {[...partenaires,...partenaires,...partenaires].map((data, idx) => {
+                                {[
+                                    ...partenaires,
+                                    ...partenaires,
+                                    ...partenaires,
+                                ].map((data, idx) => {
                                     return (
                                         <SwiperSlide key={idx}>
                                             <a
