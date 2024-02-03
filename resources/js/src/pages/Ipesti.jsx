@@ -16,6 +16,7 @@ import endPoint from "../services/endPoint";
 import { OneContent } from "./ipesti/OneContent";
 import { MultiContent } from "./ipesti/MultiContent";
 import { EquipeContent } from "./ipesti/EquipeContent";
+import { MultiContentDescription } from "./ipesti/MultiContentDescription";
 
 export const Ipesti = () => {
     const { slugOne, slugTwo } = useParams();
@@ -32,8 +33,8 @@ export const Ipesti = () => {
         opportunites: <MultiContent data={data} slug={"opportunites"} />,
         "prix-distinctions": <OneContent/>,
         equipe: <EquipeContent data={data} slug={"equipe"} />,
-        "point-focal-gdn": <MultiContent data={data} slug={"structure-gouvernance"} />,
-        "reseau-stid": <MultiContent data={data} slug={"structure-gouvernance"} />,
+        "point-focal-gdn": <MultiContentDescription data={data} slug={"structure-gouvernance"} />,
+        "reseau-stid": <MultiContentDescription data={data} slug={"structure-gouvernance"} />,
     };
 //partenaires-academiques-internationaux
     useEffect(() => {

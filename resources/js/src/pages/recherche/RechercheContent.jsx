@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import request from "../../services/request";
+import request, { URL } from "../../services/request";
 import endPoint from "../../services/endPoint";
 import rech from "../../assets/images/recherche.png";
 
@@ -42,7 +42,7 @@ export const RechercheContent = ({}) => {
                                     setSelectedData(data)
                                 }}>
                                     <div className="position-relative">
-                                        <img width={"100%"} src={rech} alt="" />
+                                        <img width={"100%"} src={URL+data.image} alt="" />
                                         <div
                                             className="position-absolute text-white text-center px-2"
                                             style={{
@@ -50,7 +50,7 @@ export const RechercheContent = ({}) => {
                                                 left: "0",
                                             }}
                                         >
-                                            <span>{data.titre}</span>
+                                            <span className="fw-bold text-primary bg-white cursor px-1">{data.titre}</span>
                                         </div>
                                     </div>
                                 </div>

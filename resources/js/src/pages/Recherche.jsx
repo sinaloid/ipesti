@@ -27,7 +27,7 @@ export const Recherche = () => {
     const [index, setIndex] = useState(0)
 
     const pages = {
-        "programmes-de-recherches": <RechercheContent/>,
+        "programmes-de-recherche": <RechercheContent/>,
         "projets-de-recherche": <ProjetContent/>,
         "structure-gouvernance": <MultiContent data={data} slug={"structure-gouvernance"} />,
         "partenaires-de-recherche": <MultiContent data={data} slug={"partenaires-de-recherche"} />,

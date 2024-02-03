@@ -10,7 +10,25 @@ import ens from "../assets/logo/ens.png";
 import ujkz from "../assets/logo/ujkz.png";
 import uts from "../assets/logo/uts.png";
 
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper/modules";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+
 export const Footer = () => {
+    const partenaires = [
+        { lien: "https://www.cnrst.bf", image: cnrst },
+        { lien: "https://www.uts.bf", image: uts },
+        { lien: "https://www.ujkz.bf", image: ujkz },
+        { lien: "https://www.univ-bobo.gov.bf", image: ubobo },
+        { lien: "https://www.unz.bf", image: unz },
+        { lien: "https://www.ens-burkina.bf", image: ens },
+    ];
     return (
         <div className="row bg-black">
             <div className="col-12 col-md-10 border-bottom mx-auto">
@@ -138,53 +156,52 @@ export const Footer = () => {
                             <ReseauxSociauxIcon />
                         </div>
                     </div>
-                    <div className="col-12 mb-4 text-white">
-                        <h5 className="text-uppercase text-18 fw-bold">
+                    <div className="col-8 mx-auto mb-4 text-white">
+                        <h5 className="text-uppercase text-center text-18 fw-bold">
                             Nos partenaires
                         </h5>
-                        <div className="d-flex flex-wrap">
-                            <a
-                                href="https://www.cnrst.bf"
-                                target="blank"
-                                className="me-2"
+                        <div className="d-flex flex-wrap pt-3">
+                            <Swiper
+                                // install Swiper modules
+                                modules={[
+                                    Navigation,
+                                    Pagination,
+                                    Scrollbar,
+                                    A11y,Autoplay
+                                ]}
+                                spaceBetween={1}
+                                slidesPerView={6}
+                                //centeredSlides={true}
+                                //navigation
+                                autoplay={{
+                                    delay: 2500,
+                                    disableOnInteraction: false,
+                                  }}
+                                //pagination={{ clickable: true }}
+                                //scrollbar={{ draggable: true }}
+                                onSwiper={(swiper) => console.log(swiper)}
+                                onSlideChange={() =>
+                                    console.log("slide change")
+                                }
                             >
-                                <img width={"64px"} src={cnrst} alt="" />
-                            </a>
-                            <a
-                                href="https://www.uts.bf"
-                                target="blank"
-                                className="me-2"
-                            >
-                                <img width={"64px"} src={uts} alt="" />
-                            </a>
-                            <a
-                                href="https://www.ujkz.bf"
-                                target="blank"
-                                className="me-2"
-                            >
-                                <img width={"64px"} src={ujkz} alt="" />
-                            </a>
-                            <a
-                                href="https://www.univ-bobo.gov.bf"
-                                target="blank"
-                                className="me-2"
-                            >
-                                <img width={"64px"} src={ubobo} alt="" />
-                            </a>
-                            <a
-                                href="https://www.unz.bf"
-                                target="blank"
-                                className="me-2"
-                            >
-                                <img width={"64px"} src={unz} alt="" />
-                            </a>
-                            <a
-                                href="https://www.ens-burkina.bf"
-                                target="blank"
-                                className="me-2"
-                            >
-                                <img width={"64px"} src={ens} alt="" />
-                            </a>
+                                {[...partenaires,...partenaires,...partenaires].map((data, idx) => {
+                                    return (
+                                        <SwiperSlide key={idx}>
+                                            <a
+                                                href={data.lien}
+                                                target="blank"
+                                                className="me-2"
+                                            >
+                                                <img
+                                                    width={"120px"}
+                                                    src={data.image}
+                                                    alt=""
+                                                />
+                                            </a>
+                                        </SwiperSlide>
+                                    );
+                                })}
+                            </Swiper>
                         </div>
                     </div>
                 </div>
