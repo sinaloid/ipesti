@@ -16,15 +16,15 @@
       "assets/uts-d995e2b2.png",
       "assets/header-af53ae7b.png",
       "assets/recherche-9a57e693.png",
-      "assets/prof-385f8d9d.png",
       "assets/educ-c5b0116c.png",
       "assets/actu-e034af51.png",
-      "assets/logo-32389fb7.png"
+      "assets/logo-32389fb7.png",
+      "assets/prof-385f8d9d.png"
     ],
     "css": [
       "assets/app-55480ede.css"
     ],
-    "file": "assets/app-23d546ee.js",
+    "file": "assets/app-df052cc5.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },

@@ -29,13 +29,15 @@ export const Recherche = () => {
     const pages = {
         "programmes-de-recherche": <RechercheContent/>,
         "projets-de-recherche": <ProjetContent/>,
+        "seminaires-de-recherche": <ProjetContent/>,
+        "tous-les-seminaires-de-lipesti": <ProjetContent/>,
         "structure-gouvernance": <MultiContent data={data} slug={"structure-gouvernance"} />,
         "partenaires-de-recherche": <MultiContent data={data} slug={"partenaires-de-recherche"} />,
         opportunites: <MultiContent data={data} slug={"opportunites"} />,
         "prix-et-distinctions": <></>,
         equipes: <Equipe data={data} />,
     };
-//partenaires-academiques-internationaux
+//partenaires-academiques-internationaux 
     useEffect(() => {
         get()
     },[])
