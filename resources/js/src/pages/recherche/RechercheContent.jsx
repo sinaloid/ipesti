@@ -8,7 +8,7 @@ export const RechercheContent = ({}) => {
     const { slugOne } = useParams();
     const [data, setData] = useState({});
     const [seletedData, setSelectedData] = useState({});
-    const [sectionDetail,setSectionDetail] = useState("")
+    const [sectionDetail, setSectionDetail] = useState("");
 
     useEffect(() => {
         get();
@@ -37,12 +37,19 @@ export const RechercheContent = ({}) => {
                     <div className="row row-cols-1 row-cols-md-2 g-4">
                         {data.toutes_sous_categories?.map((data, idx) => {
                             return (
-                                <div className="col " onClick={e => {
-                                    e.preventDefault()
-                                    setSelectedData(data)
-                                }}>
+                                <div
+                                    className="col "
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        setSelectedData(data);
+                                    }}
+                                >
                                     <div className="position-relative">
-                                        <img width={"100%"} src={URL+data.image} alt="" />
+                                        <img
+                                            width={"100%"}
+                                            src={URL + data.image}
+                                            alt=""
+                                        />
                                         <div
                                             className="position-absolute text-white text-center px-2"
                                             style={{
@@ -50,7 +57,9 @@ export const RechercheContent = ({}) => {
                                                 left: "0",
                                             }}
                                         >
-                                            <span className="fw-bold text-primary bg-white cursor px-1">{data.titre}</span>
+                                            <span className="fw-bold text-primary bg-white cursor px-1">
+                                                {data.titre}
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -63,50 +72,54 @@ export const RechercheContent = ({}) => {
                 </>
             ) : (
                 <>
-                <div className="row">
-                    <div className="col-12">
-                        <h6 className="text-primary fs-20">{seletedData.titre}</h6>
-                        <div>
-                            <span className="fw-bold">Institution de rattachement :</span>
-                        </div>
-                        <div className="d-flex flex-wrap border-top mt-4">
-                            {["Laboratoires associés","Descriptif du programme","Axes de recherche"].map(
-                                    (data, idx) => {
-                                        if (
-                                            idx === 0 &&
-                                            sectionDetail === ""
-                                        ) {
-                                            setSectionDetail(data);
-                                        }
-                                        return (
-                                            <div
-                                                className={`me-2 mt-3 cursor p-2 ${
-                                                    sectionDetail ===
-                                                        data &&
-                                                    "bg-primary text-white fw-bold"
-                                                }`}
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    //setViewContent(!viewContent);
-                                                    setSectionDetail(data);
-                                                    console.log(data);
-                                                }}
-                                            >
-                                                {data}
-                                            </div>
-                                        );
+                    <div className="row">
+                        <div className="col-12">
+                            <h6 className="text-primary fs-20">
+                                {seletedData.titre}
+                            </h6>
+                            <div>
+                                <span className="fw-bold">
+                                    Institution de rattachement :
+                                </span>
+                            </div>
+                            <div className="d-flex flex-wrap border-top mt-4">
+                                {[
+                                    "Laboratoires associés",
+                                    "Descriptif du programme",
+                                    "Axes de recherche",
+                                    "Projets",
+                                    "Equipe scientifique",
+                                ].map((data, idx) => {
+                                    if (idx === 0 && sectionDetail === "") {
+                                        setSectionDetail(data);
                                     }
-                                )}
+                                    return (
+                                        <div
+                                            className={`me-1 mt-3 cursor p-2 ${
+                                                sectionDetail === data &&
+                                                "bg-primary text-white fw-bold"
+                                            }`}
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                //setViewContent(!viewContent);
+                                                setSectionDetail(data);
+                                                console.log(data);
+                                            }}
+                                        >
+                                            {data}
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                            <p className="py-2">
+                                <div
+                                    dangerouslySetInnerHTML={{
+                                        __html: sectionDetail?.contenu,
+                                    }}
+                                />
+                            </p>
                         </div>
-                        <p className="py-2">
-                            <div
-                                dangerouslySetInnerHTML={{
-                                    __html: sectionDetail?.contenu,
-                                }}
-                            />
-                        </p>
                     </div>
-                </div>
                 </>
             )}
         </>
