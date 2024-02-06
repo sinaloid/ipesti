@@ -89,7 +89,7 @@ export const GdnStidContent = ({ data, slug }) => {
                     <div className="d-flex flex-wrap">
                         {[
                             "Laboratoires associés",
-                            "Descriptif du programme",
+                            "Descriptif",
                             "Axes de recherche",
                             "Projets",
                             "Equipe scientifique",

@@ -85,7 +85,7 @@ export const RechercheContent = ({}) => {
                             <div className="d-flex flex-wrap border-top mt-4">
                                 {[
                                     "Laboratoires associés",
-                                    "Descriptif du programme",
+                                    "Descriptif",
                                     "Axes de recherche",
                                     "Projets",
                                     "Equipe scientifique",
