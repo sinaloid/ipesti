@@ -108,6 +108,9 @@ export const EquipeContent = ({ data, slug }) => {
                                         index
                                     ]?.toutes_sous_categories.map(
                                         (data, idx) => {
+                                            if(data.is_deleted){
+                                                return
+                                            }
                                             return (
                                                 <div
                                                     className="col"
