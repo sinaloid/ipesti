@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const ReseauxSociauxIcon = () => {
     return (
         <>
-            <Link to="#" className="mx-1">
+            <a href="https://web.facebook.com/profile.php?id=61556329320077&sk=friends_likes" target="blank" className="mx-1">
                 <svg
                     width="38"
                     height="38"
@@ -34,9 +34,9 @@ const ReseauxSociauxIcon = () => {
                         </clipPath>
                     </defs>
                 </svg>
-            </Link>
+            </a>
 
-            <Link to="#" className="mx-1">
+            <a href="https://www.linkedin.com/company/institut-des-politiques-de-l%E2%80%99enseignement-sup%C3%A9rieur-la-science-la-technologie-et-l%E2%80%99innovation/" target="blank" className="mx-1">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="36"
@@ -81,8 +81,8 @@ const ReseauxSociauxIcon = () => {
                         </g>
                     </g>
                 </svg>
-            </Link>
-            <Link to="#" className="mx-1">
+            </a>
+            <a href="https://twitter.com/IpestiBf" target="blank" className="mx-1">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="37.217"
@@ -107,8 +107,8 @@ const ReseauxSociauxIcon = () => {
                         />
                     </g>
                 </svg>
-            </Link>
-            <Link to="#" className="mx-1">
+            </a>
+            <a href="https://www.instagram.com/ipesti.bf/" target="blank" className="mx-1">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="38"
@@ -133,8 +133,8 @@ const ReseauxSociauxIcon = () => {
                         />
                     </g>
                 </svg>
-            </Link>
-            <Link to="#" className="mx-1">
+            </a>
+            <a href="https://www.youtube.com/channel/UCBVWIcVcEAdOeFB8ZPzTtSg" target="blank" className="mx-1">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="39"
@@ -159,7 +159,7 @@ const ReseauxSociauxIcon = () => {
                         />
                     </g>
                 </svg>
-            </Link>
+            </a>
         </>
     );
 };
