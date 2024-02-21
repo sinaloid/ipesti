@@ -77,7 +77,7 @@ export const Banier = ({datas = {}}) => {
                 <div className="col-9 ps-0">
                     <div
                         className="position-relative bg-banier w-100 h-100"
-                        style={{ backgroundImage: `url(${URL+seletedData.image})` }}
+                        style={{ backgroundImage: `url(${URL+seletedData?.image})` }}
                     >
                         <span
                             className="bg-primary position-absolute text-white p-2 text-uppercase fw-bold"
