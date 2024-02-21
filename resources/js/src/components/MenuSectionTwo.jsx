@@ -50,9 +50,7 @@ export const MenuSectionTwo = ({ list = [], setData, link="ipesti" }) => {
                                     onClick={(e) => {
                                         let slug =
                                             dataOne.toutes_sous_categories.length !== 0
-                                                ? dataOne.slug +
-                                                  "/" +
-                                                  dataOne.toutes_sous_categories[0].slug
+                                                ? dataOne.slug 
                                                 : dataOne.slug;
 
                                         changerView(e, slug);

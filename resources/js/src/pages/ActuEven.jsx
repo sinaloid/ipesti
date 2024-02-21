@@ -10,6 +10,8 @@ import { actualites } from "../utils/TabMenu";
 import { useParams } from "react-router-dom";
 import request from "../services/request";
 import endPoint from "../services/endPoint";
+import { Actualite } from "./actuEven/Actualite";
+import { MenuSectionTwo } from "../components/MenuSectionTwo";
 
 export const ActuEven = () => {
     const { slugOne, slugTwo } = useParams();
@@ -18,7 +20,7 @@ export const ActuEven = () => {
     const [index, setIndex] = useState(0);
 
     const pages = {
-        "programmes-de-recherche": <></>,
+        "actualites": <><Actualite /></>,
         "projets-de-recherche": <></>,
     };
     //partenaires-academiques-internationaux
@@ -32,6 +34,8 @@ export const ActuEven = () => {
             .then((res) => {
                 console.log(res.data.data);
                 setDetail(res.data.data);
+                window.scrollTo(0, 0);
+
             })
             .catch((error) => {
                 console.log(error);
@@ -45,7 +49,7 @@ export const ActuEven = () => {
                         <h3 className="bg-gray-60 text-white text-center py-2">
                             actualités & événements
                         </h3>
-                        <MenuSection
+                        <MenuSectionTwo
                             list={detail.toutes_sous_categories}
                             setData={setData}
                             link={"actualites-evenements"}
@@ -97,46 +101,10 @@ export const ActuEven = () => {
                         </div>
                     </div>
                     <div className="col-12 col-md-8">
-                        <h1 className="text-primary mb-4">{detail.titre}</h1>
-
-                        <div className="row row-cols-1 row-cols-md-2 g-4">
-                            {[...Array(6).keys()].map((data, idx) => {
-                                return (
-                                    <div className="col ">
-                                        <div className="position-relative">
-                                            <img
-                                                width={"100%"}
-                                                src={actuP}
-                                                alt=""
-                                            />
-                                        </div>
-                                        <div className="py-3">
-                                            <span className="d-block fw-bold mb-3">
-                                                Pourtant, comme le souligne
-                                                l’Union Africaine les
-                                                indicateurs de la science...
-                                            </span>
-                                            <span className="d-block text-muted mb-3">
-                                                De la dizaine de centres de
-                                                recherche sur les STIES sur le
-                                                continent, aucune ne se trouve
-                                                en Afrique francophone.
-                                            </span>
-                                            <span className="d-block text-muted mb-3">
-                                                <Calendar /> 03/09/2023 à 16h30
-                                                minutes
-                                            </span>
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                        <div className="d-flex justify-content-center mt-4">
-                            <div className="btn border">
-                                Voir tous les projets
-                            </div>
-                        </div>
+                     {pages[slugOne]}   
                     </div>
+                    
+                    
                 </div>
             </Container>
         </Page>

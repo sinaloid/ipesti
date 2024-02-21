@@ -1,6 +1,22 @@
+import { useEffect, useState } from "react";
 import img from "../assets/images/equipe.jpg";
 import { Container } from "./Container";
-export const Banier = () => {
+import { URL } from "../services/request";
+import { useNavigate } from "react-router-dom";
+export const Banier = ({datas = {}}) => {
+    const  [seletedData, setSelectedData] = useState({})
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if(datas?.toutes_sous_categories){
+            setSelectedData(datas?.toutes_sous_categories[0])
+        }
+    },[datas])
+
+    const detail = (e,slug) => {
+        e.preventDefault()
+        navigate("/actualites-evenements/actualites"+"/"+slug)
+    }
     return (
         <Container>
             <div className="row my-5 border-bottom ">
@@ -9,16 +25,46 @@ export const Banier = () => {
                         <div className="border-bottom text-center fw-bold text-uppercase py-2">
                             Accueil
                         </div>
-                        {[...Array(4).keys()].map((data, idx) => {
+                        {datas?.toutes_sous_categories?.map((data, idx) => {
+                           
                             return (
-                                <div className=" border-bottom py-4">
+                                <div className=" border-bottom py-4 cursor" onClick={e => detail(e,data.slug)}>
                                     <p className="px-2 py-0 m-0">
-                                        Festival de l’Histoire des Science et
-                                        des Techniques Burkina Faso 2023
+                                        {data.titre}
                                     </p>
                                 </div>
                             );
                         })}
+                        {datas?.toutes_sous_categories?.map((data, idx) => {
+                           
+                           return (
+                               <div className=" border-bottom py-4 cursor" onClick={e => detail(e,data.slug)}>
+                                   <p className="px-2 py-0 m-0">
+                                       {data.titre}
+                                   </p>
+                               </div>
+                           );
+                       })}
+                       {datas?.toutes_sous_categories?.map((data, idx) => {
+                           
+                           return (
+                               <div className=" border-bottom py-4 cursor" onClick={e => detail(e,data.slug)}>
+                                   <p className="px-2 py-0 m-0">
+                                       {data.titre}
+                                   </p>
+                               </div>
+                           );
+                       })}
+                       {datas?.toutes_sous_categories?.map((data, idx) => {
+                           
+                           return (
+                               <div className=" border-bottom py-4 cursor" onClick={e => detail(e,data.slug)}>
+                                   <p className="px-2 py-0 m-0">
+                                       {data.titre}
+                                   </p>
+                               </div>
+                           );
+                       })}
 
                         <div className="h-100 text-center py-3 pt-lg-4 mt-1">
                             <span className="sm-circle bg-white mx-1"></span>
@@ -31,7 +77,7 @@ export const Banier = () => {
                 <div className="col-9 ps-0">
                     <div
                         className="position-relative bg-banier w-100 h-100"
-                        style={{ backgroundImage: `url(${img})` }}
+                        style={{ backgroundImage: `url(${URL+seletedData.image})` }}
                     >
                         <span
                             className="bg-primary position-absolute text-white p-2 text-uppercase fw-bold"
@@ -43,8 +89,7 @@ export const Banier = () => {
                             className="position-absolute text-white"
                             style={{ left: "20%", bottom: "3%" }}
                         >
-                            Festival de l’Histoire des Science et des Techniques
-                            Burkina Faso 2023...
+                            {seletedData?.titre}
                         </p>
                     </div>
                 </div>

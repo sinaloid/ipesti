@@ -3,7 +3,7 @@ import { LogoIcon } from "../icons/LogoIcon";
 import { ActuCard } from "./ActuCard";
 import { Container } from "./Container";
 
-export const ArticleList = ({ children }) => {
+export const ArticleList = ({ children, datas=[], type=""}) => {
     return (
         <>
             <Container>
@@ -14,15 +14,15 @@ export const ArticleList = ({ children }) => {
                     </div>
                     <div className="col-12">
                         <div className="row row-cols-12 row-cols-md-3">
-                            {[...Array(3).keys()].map((data) => {
+                            {datas?.toutes_sous_categories?.map((data) => {
                                 return <div className="col">
-                                    <ActuCard />
+                                    <ActuCard data={data} type={type}/>
                                 </div>
                             })}
                         </div>
                         <div className="d-flex justify-content-center mt-4">
                             <button className="btn border">
-                                Tous les événements
+                                Voir tous
                             </button>
                         </div>
                     </div>
