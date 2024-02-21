@@ -38,7 +38,7 @@ export const RechercheContent = ({}) => {
                         {data.toutes_sous_categories?.map((data, idx) => {
                             return (
                                 <div
-                                    className="col "
+                                    className="col cursor"
                                     onClick={(e) => {
                                         e.preventDefault();
                                         setSelectedData(data);
@@ -50,18 +50,18 @@ export const RechercheContent = ({}) => {
                                             src={URL + data.image}
                                             alt=""
                                         />
-                                        <div
-                                            className="position-absolute text-white text-center px-2"
+                                    </div>
+                                    <div
+                                            className="text-center px-2"
                                             style={{
                                                 bottom: "12px",
                                                 left: "0",
                                             }}
                                         >
-                                            <span className="fw-bold text-primary bg-white cursor px-1">
+                                            <span className="fw-bold cursor px-1">
                                                 {data.titre}
                                             </span>
                                         </div>
-                                    </div>
                                 </div>
                             );
                         })}

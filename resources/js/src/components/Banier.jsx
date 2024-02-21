@@ -86,7 +86,7 @@ export const Banier = ({datas = {}}) => {
                             Actu
                         </span>
                         <p
-                            className="position-absolute text-white"
+                            className="position-absolute text-"
                             style={{ left: "20%", bottom: "3%" }}
                         >
                             {seletedData?.titre}
