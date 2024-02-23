@@ -7,7 +7,7 @@ import endPoint from "../services/endPoint";
 import request from "../services/request";
 
 const Home = () => {
-    const [actualites, setActualites] = useState([])
+    const [actualites, setActualites] = useState([]);
     useEffect(() => {
         getActualites();
     }, []);
@@ -17,6 +17,14 @@ const Home = () => {
             .get(endPoint.categories + "/actualites")
             .then((res) => {
                 console.log(res.data.data);
+                if (res.data.data.toutes_sous_categories.length < 4) {
+                    res.data.data.toutes_sous_categories = [
+                        ...res.data.data.toutes_sous_categories,
+                        ...res.data.data.toutes_sous_categories,
+                        ...res.data.data.toutes_sous_categories,
+                        ...res.data.data.toutes_sous_categories,
+                    ];
+                }
                 setActualites(res.data.data);
             })
             .catch((error) => {
@@ -37,7 +45,10 @@ const Home = () => {
     return (
         <Page>
             <Banier datas={actualites} />
-            <ArticleList datas={actualites} type={"actualites" /*"evenements"*/}>
+            <ArticleList
+                datas={actualites}
+                type={"actualites" /*"evenements"*/}
+            >
                 Les <span className="fw-bold">évènements</span> à venir
             </ArticleList>
             <Partenaire>

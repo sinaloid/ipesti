@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { DeleteCard } from "../icons/DeleteCard";
 import { LogoIcon } from "../icons/LogoIcon";
 import { ActuCard } from "./ActuCard";
@@ -13,17 +14,20 @@ export const ArticleList = ({ children, datas=[], type=""}) => {
                         <LogoIcon />
                     </div>
                     <div className="col-12">
-                        <div className="row row-cols-12 row-cols-md-3">
-                            {datas?.toutes_sous_categories?.map((data) => {
+                        <div className="row row-cols-12 row-cols-md-3 g-4">
+                            {datas?.toutes_sous_categories?.map((data, idx) => {
+                                if(idx >= 3){
+                                    return null
+                                }
                                 return <div className="col">
                                     <ActuCard data={data} type={type}/>
                                 </div>
                             })}
                         </div>
                         <div className="d-flex justify-content-center mt-4">
-                            <button className="btn border">
+                            <Link to={"/actualites-evenements/"+type} className="btn border">
                                 Voir tous
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
