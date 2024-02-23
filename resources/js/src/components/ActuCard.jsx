@@ -2,6 +2,7 @@ import { bottom } from "@popperjs/core";
 import rect from "../assets/images/rect.png";
 import { URL } from "../services/request";
 import { useNavigate } from "react-router-dom";
+import { truncateText } from "../services/service";
 
 const month = {
     "0": "Janv.",
@@ -47,7 +48,8 @@ export const ActuCard = ({data, type}) => {
                     </span>{" "}
                     <br />
                     <div className="text-start fw-bold">
-                        {data.titre}
+                        {truncateText(data.titre, 95)}
+                        
                     </div>
                 </div>
             </div>

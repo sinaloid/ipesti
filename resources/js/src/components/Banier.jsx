@@ -3,6 +3,7 @@ import img from "../assets/images/equipe.jpg";
 import { Container } from "./Container";
 import { URL } from "../services/request";
 import { useNavigate } from "react-router-dom";
+import { truncateText } from "../services/service";
 export const Banier = ({datas = {}}) => {
     const  [seletedData, setSelectedData] = useState({})
     const navigate = useNavigate()
@@ -29,8 +30,8 @@ export const Banier = ({datas = {}}) => {
                            
                             return (
                                 <div className=" border-bottom py-4 cursor" onClick={e => detail(e,data.slug)}>
-                                    <p className="px-2 py-0 m-0">
-                                        {data.titre}
+                                    <p className="px-2 py-0 m-0 texte-long">
+                                        {truncateText(data.titre, 95)}
                                     </p>
                                 </div>
                             );
@@ -39,32 +40,14 @@ export const Banier = ({datas = {}}) => {
                            
                            return (
                                <div className=" border-bottom py-4 cursor" onClick={e => detail(e,data.slug)}>
-                                   <p className="px-2 py-0 m-0">
-                                       {data.titre}
+                                   <p className="px-2 py-0 m-0 texte-long">
+                                       {truncateText(data.titre, 95)}
                                    </p>
                                </div>
                            );
                        })}
-                       {datas?.toutes_sous_categories?.map((data, idx) => {
-                           
-                           return (
-                               <div className=" border-bottom py-4 cursor" onClick={e => detail(e,data.slug)}>
-                                   <p className="px-2 py-0 m-0">
-                                       {data.titre}
-                                   </p>
-                               </div>
-                           );
-                       })}
-                       {datas?.toutes_sous_categories?.map((data, idx) => {
-                           
-                           return (
-                               <div className=" border-bottom py-4 cursor" onClick={e => detail(e,data.slug)}>
-                                   <p className="px-2 py-0 m-0">
-                                       {data.titre}
-                                   </p>
-                               </div>
-                           );
-                       })}
+                        
+                       
 
                         <div className="h-100 text-center py-3 pt-lg-4 mt-1">
                             <span className="sm-circle bg-white mx-1"></span>

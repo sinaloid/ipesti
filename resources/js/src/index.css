@@ -310,5 +310,18 @@ div > ul {
     color: var(--red-color);
   }
   
-  
+  /*.texte-long {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }*/
+
+  .texte-long {
+    overflow: hidden;
+    /*white-space: nowrap;*/
+    text-overflow: ellipsis;
+    width: 99%; /* Définir la largeur maximale du texte */
+    height: clamp(1em, 200px, 5em); /* Définir la hauteur minimale, maximale et par défaut du texte */
+    line-height: 1.5em; /* Ajuster la hauteur de ligne du texte */
+  }
 
