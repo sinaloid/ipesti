@@ -318,10 +318,11 @@ div > ul {
   }
   
   .actu-title:hover{
-    color: var(--red-color);
+    background-color: var(--red-color);
   }
 
   .actu-title.active{
-    color: var(--red-color);
+    background-color: var(--red-color);
+    
   }
 
