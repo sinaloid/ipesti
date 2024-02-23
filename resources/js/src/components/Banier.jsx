@@ -80,7 +80,7 @@ export const Banier = ({datas = {}}) => {
                             className="position-absolute fs-20 fw-bold"
                             style={{ left: "20%", bottom: "3%" }}
                         >
-                            {seletedData.length !== 0 && seletedData[index].titre}
+                            {/*seletedData.length !== 0 && seletedData[index].titre*/}
                         </p>
                     </div>
                 </div>
