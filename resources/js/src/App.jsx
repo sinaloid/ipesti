@@ -6,7 +6,9 @@ import { useLocation } from "react-router-dom";
 const App = () => {
     const location = useLocation();
     useEffect(() => {
+        ReactGA.initialize("G-YN1SLV3HZV")
         ReactGA.pageview(location.pathname + location.search);
+        console.log(location.pathname + location.search);
     }, [location]);
 
     function handleClick() {
