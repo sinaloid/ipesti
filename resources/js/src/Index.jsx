@@ -7,7 +7,8 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { AppContextProvider } from "./services/context";
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
+ReactGA.initialize("G-YN1SLV3HZV")
 
 const root = ReactDOM.createRoot(document.getElementById("app"));
 root.render(
