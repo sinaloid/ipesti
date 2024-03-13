@@ -1,13 +1,14 @@
 import { useEffect } from "react";
 import AppRoute from "./routes/AppRoute";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import { useLocation } from "react-router-dom";
 
 const App = () => {
     const location = useLocation();
     useEffect(() => {
         ReactGA.initialize("G-YN1SLV3HZV")
-        ReactGA.pageview(location.pathname + location.search);
+        //ReactGA.pageview(location.pathname + location.search);
+        ReactGA.send({ hitType: "pageview", page: location.pathname + location.search, title: "Custom Title" })
         console.log(location.pathname + location.search);
     }, [location]);
 
